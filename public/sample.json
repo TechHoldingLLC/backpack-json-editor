@@ -1,0 +1,33 @@
+{
+  "leagues": [
+    {
+      "id": "premier_league",
+      "logo_image": "https://d5gvige0osb8h.cloudfront.net/leagues/premier_league.png",
+      "enabled": true,
+      "teams": [
+        {
+          "id": "premier_league_team_1",
+          "logo_image": "https://d5gvige0osb8h.cloudfront.net/teams/premier_league/team1.png",
+          "enabled": true
+        },
+        {
+          "id": "premier_league_team_2",
+          "logo_image": "https://d5gvige0osb8h.cloudfront.net/teams/premier_league/team2.png",
+          "enabled": false
+        }
+      ]
+    },
+    {
+      "id": "la_liga",
+      "logo_image": "https://d5gvige0osb8h.cloudfront.net/leagues/la_liga.png",
+      "enabled": true,
+      "teams": [
+        {
+          "id": "la_liga_team_1",
+          "logo_image": "https://d5gvige0osb8h.cloudfront.net/teams/la_liga/team1.png",
+          "enabled": true
+        }
+      ]
+    }
+  ]
+} 

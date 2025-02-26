@@ -1,0 +1,73 @@
+{
+    "leagues": [
+      {
+        "id": "big_10",
+        "logo_image": "leagues_and_teams/big_10/league_logo_big_ten.webp",
+        "enabled": true,
+        "teams": [
+          {
+            "id": "big_ten_conference_michigan_state",
+            "logo_image": "leagues_and_teams/big_10/logo_big_ten_conference_michigan_state.webp",
+            "enabled": true
+          },
+          {
+            "id": "big_ten_conference_washington",
+            "logo_image": "leagues_and_teams/big_10/logo_big_ten_conference_washington.webp",
+            "enabled": false
+          },
+          {
+            "id": "big_ten_conference_wisconsin",
+            "logo_image": "leagues_and_teams/big_10/logo_big_ten_conference_wisconsin.webp",
+            "enabled": true
+          },
+          {
+            "id": "big_ten_conference_penn_state",
+            "logo_image": "leagues_and_teams/big_10/logo_big_ten_conference_penn_state.webp",
+            "enabled": false
+          },
+          {
+            "id": "big_ten_conference_usc",
+            "logo_image": "leagues_and_teams/big_10/logo_big_ten_conference_usc.webp",
+            "enabled": false
+          },
+          {
+            "id": "big_ten_conference_purdue",
+            "logo_image": "leagues_and_teams/big_10/logo_big_ten_conference_purdue.webp",
+            "enabled": false
+          }
+        ]
+      },
+      {
+        "id": "la_liga",
+        "logo_image": "leagues_and_teams/la_liga/league_logo_la_liga.webp",
+        "enabled": false,
+        "teams": [
+          {
+            "id": "la_liga_real_sociedad",
+            "logo_image": "leagues_and_teams/la_liga/logo_la_liga_real_sociedad.webp",
+            "enabled": false
+          },
+          {
+            "id": "la_liga_barcelona",
+            "logo_image": "leagues_and_teams/la_liga/logo_la_liga_barcelona.webp",
+            "enabled": false
+          },
+          {
+            "id": "la_liga_real_betis",
+            "logo_image": "leagues_and_teams/la_liga/logo_la_liga_real_betis.webp",
+            "enabled": false
+          },
+          {
+            "id": "la_liga_villareal",
+            "logo_image": "leagues_and_teams/la_liga/logo_la_liga_villareal.webp",
+            "enabled": false
+          },
+          {
+            "id": "la_liga_las_palmas",
+            "logo_image": "leagues_and_teams/la_liga/logo_la_liga_las_palmas.webp",
+            "enabled": false
+          }
+        ]
+      }
+    ]
+  }
