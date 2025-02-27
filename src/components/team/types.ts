@@ -10,17 +10,20 @@ export interface DropdownOption {
 }
 
 export interface Question {
-  question_type: 'options_list' | '2_options_list' | 'dropdown' | 'image';
+  question_type: 'options_list' | '2_options_list' | 'image' | 'dropdown';
   question: string;
   options?: string[];
-  allow_multiple_selection?: boolean;
   video?: string;
+  allow_multiple_selection?: boolean;
   option_image?: string;
   image_option_hint?: string;
-  dropdown_options?: DropdownOption[];
   options_title_left?: string;
   options_title_right?: string;
-  image_selection?: ImageSelectionOption[];
+  dropdown_options?: DropdownOption[];
+  image_selection?: {
+    title: string;
+    image: string;
+  }[];
 }
 
 export interface Mission {

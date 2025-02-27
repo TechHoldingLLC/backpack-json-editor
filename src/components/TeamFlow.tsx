@@ -15,8 +15,18 @@ const TeamFlow = ({ initialTeam, onTeamUpdate }: TeamFlowProps) => {
   const getFullImageUrl = (path: string) => {
     if (!path) return 'https://via.placeholder.com/150?text=No+Image';
     if (path.startsWith('http://') || path.startsWith('https://')) return path;
+    
     const assetUrl = import.meta.env.VITE_ASSET_URL;
-    return `${assetUrl}${path}`;
+    if (!assetUrl) {
+      console.warn('VITE_ASSET_URL environment variable is not defined');
+      return path;
+    }
+
+    // Remove any leading/trailing slashes from both assetUrl and path
+    const cleanAssetUrl = assetUrl.replace(/\/+$/, '');
+    const cleanPath = path.replace(/^\/+/, '');
+    
+    return `${cleanAssetUrl}/${cleanPath}`;
   };
 
   const handleTeamChange = (section: string, field: string, value: unknown) => {
