@@ -2,8 +2,13 @@ import { useState } from 'react'
 import FileUpload from './components/FileUpload'
 import LeagueCard from './components/LeagueCard'
 import TeamFlow from './components/TeamFlow'
+import { SaveJsonButton } from './components/SaveJsonButton'
+import { SaveTeamJsonButton } from './components/SaveTeamJsonButton'
+import { ValidationErrors } from './components/ValidationErrors'
+import type { ExtendedTeam } from './components/team/types'
 
-interface Team {
+// Basic interfaces for League data
+interface BasicTeam {
   id: string
   logo_image: string
   enabled: boolean
@@ -13,144 +18,16 @@ interface League {
   id: string
   logo_image: string
   enabled: boolean
-  teams: Team[]
+  teams: BasicTeam[]
 }
 
 interface LeagueData {
   leagues: League[]
 }
 
-interface TeamData {
-  id: string
-  name: string
-  logo_image: string
-  survey_url: string
-  welcome_details: {
-    title: string
-    description: string
-    welcome_image: string
-    author: string
-  }
-  enabled: boolean
-  team_home: {
-    motto: string
-    best_ideas: {
-      user_name: string
-      user_image: string
-    }
-    most_missions: {
-      user_name: string
-      user_image: string
-    }
-    top_team_rank: Array<{
-      user_name: string
-      user_image: string
-    }>
-  }
-  missions: Array<{
-    id: string
-    title: string
-    description: string
-    image: string
-    focus_type: string
-    level: string
-    completion_msg: string
-    completion_image: string
-    questions: Array<{
-      question_type: string
-      question: string
-      options?: string[]
-      video?: string
-      allow_multiple_selection: boolean
-      options_title_left?: string
-      options_title_right?: string
-      option_image?: string
-      image_option_hint?: string
-      dropdown_options?: Array<{
-        title: string
-        hint: string
-        options: string[]
-      }>
-      image_selection?: Array<{
-        title: string
-        image: string
-      }>
-    }>
-  }>
-  ideas: {
-    default_youtube_thumbnail_image: string
-    menu_list: {
-      review_title: string
-      review_description: string
-      select_title: string
-      select_description: string
-      submit_title: string
-      submit_description: string
-    }
-    play_ideas: string[]
-    review_idea: {
-      id: string
-      title: string
-      description: string
-      image: string
-      completion_msg: string
-      completion_image: string
-      questions: Array<{
-        question_type: string
-        question: string
-        options?: string[]
-        video?: string
-        allow_multiple_selection: boolean
-        options_title_left?: string
-        options_title_right?: string
-        option_image?: string
-        image_option_hint?: string
-        dropdown_options?: Array<{
-          title: string
-          hint: string
-          options: string[]
-        }>
-        image_selection?: Array<{
-          title: string
-          image: string
-        }>
-      }>
-    }
-    select_idea: {
-      id: string
-      title: string
-      description: string
-      image: string
-      completion_msg: string
-      completion_image: string
-      questions: Array<{
-        question_type: string
-        question: string
-        options?: string[]
-        video?: string
-        allow_multiple_selection: boolean
-        options_title_left?: string
-        options_title_right?: string
-        option_image?: string
-        image_option_hint?: string
-        dropdown_options?: Array<{
-          title: string
-          hint: string
-          options: string[]
-        }>
-        image_selection?: Array<{
-          title: string
-          image: string
-        }>
-      }>
-    }
-    submit_idea: {
-      id: string
-      title: string
-      description: string
-      image: string
-    }
-  }
+interface ValidationError {
+  path: string
+  message: string
 }
 
 type TabType = 'leagues' | 'teams'
@@ -158,18 +35,20 @@ type TabType = 'leagues' | 'teams'
 function App() {
   const [activeTab, setActiveTab] = useState<TabType>('leagues')
   const [leagueData, setLeagueData] = useState<LeagueData | null>(null)
-  const [teamData, setTeamData] = useState<TeamData | null>(null)
+  const [teamData, setTeamData] = useState<ExtendedTeam | null>(null)
   const [error, setError] = useState<string | null>(null)
+  const [validationErrors, setValidationErrors] = useState<ValidationError[]>([])
 
-  const handleFileUpload = (data: LeagueData | TeamData) => {
+  const handleFileUpload = (data: LeagueData | ExtendedTeam) => {
     if ('leagues' in data) {
       setLeagueData(data as LeagueData)
       setTeamData(null)
     } else {
-      setTeamData(data as TeamData)
+      setTeamData(data as ExtendedTeam)
       setLeagueData(null)
     }
     setError(null)
+    setValidationErrors([])
   }
 
   const handleError = (errorMessage: string) => {
@@ -189,13 +68,43 @@ function App() {
     })
   }
 
-  const handleTeamUpdate = (updatedTeam: TeamData) => {
+  const handleTeamUpdate = (updatedTeam: ExtendedTeam) => {
     setTeamData(updatedTeam)
   }
 
   const handleTabChange = (tab: TabType) => {
     setActiveTab(tab)
     setError(null)
+    setValidationErrors([])
+  }
+
+  const handleSaveLeagueJson = () => {
+    const blob = new Blob([JSON.stringify({ leagues: leagueData }, null, 2)], { type: 'application/json' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = 'leagues.json'
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+    URL.revokeObjectURL(url)
+  }
+
+  const handleSaveTeamJson = () => {
+    const blob = new Blob([JSON.stringify(teamData, null, 2)], { type: 'application/json' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = 'team.json'
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+    URL.revokeObjectURL(url)
+  }
+
+  const handleValidationError = (errors: ValidationError[]) => {
+    setValidationErrors(errors)
+    setTimeout(() => setValidationErrors([]), 5000)
   }
 
   return (
@@ -250,6 +159,13 @@ function App() {
 
         {activeTab === 'leagues' && leagueData && (
           <div className="space-y-6">
+            <div className="flex justify-end">
+              <SaveJsonButton
+                data={leagueData.leagues}
+                onSave={handleSaveLeagueJson}
+                onValidationError={handleValidationError}
+              />
+            </div>
             {leagueData.leagues.map((league) => (
               <LeagueCard
                 key={league.id}
@@ -261,11 +177,25 @@ function App() {
         )}
 
         {activeTab === 'teams' && teamData && (
-          <TeamFlow
-            initialTeam={teamData}
-            onTeamUpdate={handleTeamUpdate}
-          />
+          <div className="space-y-4">
+            <div className="flex justify-end mb-4">
+              <SaveTeamJsonButton
+                data={teamData}
+                onSave={handleSaveTeamJson}
+                onValidationError={handleValidationError}
+              />
+            </div>
+            <TeamFlow
+              initialTeam={teamData}
+              onTeamUpdate={handleTeamUpdate}
+            />
+          </div>
         )}
+
+        <ValidationErrors
+          errors={validationErrors}
+          onDismiss={() => setValidationErrors([])}
+        />
       </div>
     </div>
   )

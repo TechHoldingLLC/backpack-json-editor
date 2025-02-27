@@ -49,7 +49,7 @@ export const Ideas = ({
       id: 'review_idea',
       title: ideas.menu_list.review_title,
       description: ideas.menu_list.review_description,
-      count: ideas.review_idea.questions?.length,
+      count: ideas.review_idea?.questions?.length ?? 0,
       onTitleChange: (value: string) => onMenuListChange('review_title', value),
       onDescriptionChange: (value: string) => onMenuListChange('review_description', value),
       icon: <ListChecks className="w-5 h-5 text-primary" />,
@@ -58,7 +58,7 @@ export const Ideas = ({
       id: 'select_idea',
       title: ideas.menu_list.select_title,
       description: ideas.menu_list.select_description,
-      count: ideas.select_idea.questions?.length,
+      count: ideas.select_idea?.questions?.length ?? 0,
       onTitleChange: (value: string) => onMenuListChange('select_title', value),
       onDescriptionChange: (value: string) => onMenuListChange('select_description', value),
       icon: <CheckCircle2 className="w-5 h-5 text-primary" />,
@@ -81,14 +81,22 @@ export const Ideas = ({
       content: (
         <div className="space-y-6">
           <IdeaCard
-            idea={ideas.review_idea}
+            idea={ideas.review_idea || {
+              id: '',
+              title: '',
+              description: '',
+              image: '',
+              completion_msg: '',
+              completion_image: '',
+              questions: []
+            }}
             index={0}
             getFullImageUrl={getFullImageUrl}
             onIdeaChange={(_, field, value) => onIdeaChange('review_idea', field, value)}
             onIdeaRemove={() => {}}
           />
           <IdeaQuestions
-            questions={ideas.review_idea.questions || []}
+            questions={ideas.review_idea?.questions || []}
             onQuestionChange={(questionIndex, field, value) => 
               onQuestionChange('review_idea', questionIndex, field, value)
             }
@@ -106,7 +114,15 @@ export const Ideas = ({
       content: (
         <div className="space-y-6">
           <IdeaCard
-            idea={ideas.select_idea}
+            idea={ideas.select_idea || {
+              id: '',
+              title: '',
+              description: '',
+              image: '',
+              completion_msg: '',
+              completion_image: '',
+              questions: []
+            }}
             index={1}
             getFullImageUrl={getFullImageUrl}
             onIdeaChange={(_, field, value) => onIdeaChange('select_idea', field, value)}
@@ -129,7 +145,7 @@ export const Ideas = ({
               </Button>
             </div>
             <div className="space-y-2">
-              {ideas.play_ideas.map((idea, index) => (
+              {(ideas.play_ideas || []).map((idea, index) => (
                 <div key={index} className="flex items-center gap-2">
                   <div className="flex-1 flex items-center gap-2">
                     <LightbulbIcon className="w-4 h-4 text-primary" />
@@ -153,7 +169,7 @@ export const Ideas = ({
             </div>
           </div>
           <IdeaQuestions
-            questions={ideas.select_idea.questions || []}
+            questions={ideas.select_idea?.questions || []}
             onQuestionChange={(questionIndex, field, value) => 
               onQuestionChange('select_idea', questionIndex, field, value)
             }
@@ -171,7 +187,15 @@ export const Ideas = ({
       content: (
         <div className="space-y-6">
           <IdeaCard
-            idea={ideas.submit_idea}
+            idea={ideas.submit_idea || {
+              id: '',
+              title: '',
+              description: '',
+              image: '',
+              completion_msg: '',
+              completion_image: '',
+              questions: []
+            }}
             index={2}
             getFullImageUrl={getFullImageUrl}
             onIdeaChange={(_, field, value) => onIdeaChange('submit_idea', field, value)}

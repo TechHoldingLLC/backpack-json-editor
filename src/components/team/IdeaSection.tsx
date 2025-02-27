@@ -42,13 +42,13 @@ export const IdeaSection = ({
           <div className="ml-6">
             <input
               type="text"
-              value={section.image}
+              value={section.image || ''}
               onChange={(e) => onSectionChange('image', e.target.value)}
               className="w-full mb-2 text-sm text-gray-600 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent px-2 py-1"
               placeholder="Image path"
             />
             <ImagePreview
-              src={getFullImageUrl(section.image)}
+              src={getFullImageUrl(section.image || '')}
               alt="Section"
               className="w-32 h-32 rounded-lg object-cover"
             />

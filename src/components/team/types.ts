@@ -87,20 +87,32 @@ export interface Ideas {
   submit_idea: Idea;
 }
 
-export interface Team {
+export interface ExtendedTeam {
   id: string;
   name: string;
-  description: string;
-  image: string;
+  logo_image: string;
+  survey_url: string;
+  enabled: boolean;
   welcome_details: {
     title: string;
     description: string;
-    image: string;
+    welcome_image: string;
+    author: string;
   };
   team_home: {
-    title: string;
-    description: string;
-    image: string;
+    motto: string;
+    best_ideas: {
+      user_name: string;
+      user_image: string;
+    };
+    most_missions: {
+      user_name: string;
+      user_image: string;
+    };
+    top_team_rank: Array<{
+      user_name: string;
+      user_image: string;
+    }>;
   };
   missions: Mission[];
   ideas: Ideas;

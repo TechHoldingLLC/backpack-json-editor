@@ -1,67 +1,54 @@
 import { useState } from 'react';
-import { Team, Mission, Question, Ideas as IdeasType, IdeaSection } from './team/types';
+import { Mission, Question, Ideas as IdeasType, IdeaSection, ExtendedTeam } from './team/types';
 import { TeamDetails } from './team/TeamDetails';
 import { Ideas } from './team/Ideas';
 import { Missions } from './team/Missions';
 
 interface TeamFlowProps {
-  initialTeam: Team;
-  onTeamUpdate: (team: Team) => void;
+  initialTeam: ExtendedTeam;
+  onTeamUpdate: (team: ExtendedTeam) => void;
 }
 
 const TeamFlow = ({ initialTeam, onTeamUpdate }: TeamFlowProps) => {
-  const [team, setTeam] = useState<Team>(initialTeam);
-
-  const getFullImageUrl = (path: string) => {
-    if (!path) return 'https://via.placeholder.com/150?text=No+Image';
-    if (path.startsWith('http://') || path.startsWith('https://')) return path;
-    
-    const assetUrl = import.meta.env.VITE_ASSET_URL;
-    if (!assetUrl) {
-      console.warn('VITE_ASSET_URL environment variable is not defined');
-      return path;
-    }
-
-    // Remove any leading/trailing slashes from both assetUrl and path
-    const cleanAssetUrl = assetUrl.replace(/\/+$/, '');
-    const cleanPath = path.replace(/^\/+/, '');
-    
-    return `${cleanAssetUrl}/${cleanPath}`;
-  };
+  const [team, setTeam] = useState(initialTeam);
 
   const handleTeamChange = (section: string, field: string, value: unknown) => {
-    let updatedTeam: Team;
+    const updatedTeam = { ...team };
 
-    switch (section) {
-      case 'basic_info':
-        updatedTeam = { ...team, [field]: value };
-        break;
-      case 'welcome_details':
-        updatedTeam = {
-          ...team,
-          welcome_details: { ...team.welcome_details, [field]: value }
-        };
-        break;
-      case 'team_home':
-        updatedTeam = {
-          ...team,
-          team_home: { ...team.team_home, [field]: value }
-        };
-        break;
-      default:
-        return;
+    if (section === 'basic_info') {
+      updatedTeam[field as keyof ExtendedTeam] = value as never;
+    } else if (section === 'welcome_details') {
+      updatedTeam.welcome_details[field as keyof typeof team.welcome_details] = value as never;
+    } else if (section === 'team_home') {
+      if (typeof value === 'object' && value !== null) {
+        updatedTeam.team_home[field as keyof typeof team.team_home] = value as never;
+      }
     }
 
     setTeam(updatedTeam);
     onTeamUpdate(updatedTeam);
   };
 
+  const assetUrl = import.meta.env.VITE_ASSET_URL || '';
+
+  const getFullImageUrl = (path: string) => {
+    if (path.startsWith('http://') || path.startsWith('https://')) {
+      return path;
+    }
+    const cleanPath = path.replace(/^\/+/, '');
+    return `${assetUrl}${cleanPath}`;
+  };
+
   const handleIdeasChange = (section: keyof IdeasType, field: string, value: unknown) => {
+    const currentSection = team.ideas[section] as IdeaSection;
     const updatedTeam = {
       ...team,
       ideas: {
         ...team.ideas,
-        [section]: typeof value === 'string' ? value : { ...team.ideas[section] as IdeaSection, [field]: value }
+        [section]: {
+          ...currentSection,
+          [field]: value
+        }
       }
     };
     setTeam(updatedTeam);
@@ -94,7 +81,7 @@ const TeamFlow = ({ initialTeam, onTeamUpdate }: TeamFlowProps) => {
   };
 
   const handleMissionRemove = (index: number) => {
-    const updatedMissions = team.missions.filter((_, i) => i !== index);
+    const updatedMissions = team.missions.filter((_: Mission, i: number) => i !== index);
     const updatedTeam = { ...team, missions: updatedMissions };
     setTeam(updatedTeam);
     onTeamUpdate(updatedTeam);
@@ -103,7 +90,7 @@ const TeamFlow = ({ initialTeam, onTeamUpdate }: TeamFlowProps) => {
   const handleQuestionChange = (
     missionIndex: number,
     questionIndex: number,
-    field: keyof Question,
+    field: string,
     value: unknown
   ) => {
     const updatedMissions = [...team.missions];
@@ -138,7 +125,7 @@ const TeamFlow = ({ initialTeam, onTeamUpdate }: TeamFlowProps) => {
   const handleQuestionRemove = (missionIndex: number, questionIndex: number) => {
     const updatedMissions = [...team.missions];
     updatedMissions[missionIndex].questions = updatedMissions[missionIndex].questions.filter(
-      (_, i) => i !== questionIndex
+      (_: Question, i: number) => i !== questionIndex
     );
     const updatedTeam = { ...team, missions: updatedMissions };
     setTeam(updatedTeam);
@@ -195,8 +182,71 @@ const TeamFlow = ({ initialTeam, onTeamUpdate }: TeamFlowProps) => {
         ...team.ideas,
         [section]: {
           ...(team.ideas[section] as IdeaSection),
-          questions: (team.ideas[section] as IdeaSection).questions?.filter((_, i: number) => i !== questionIndex) || []
+          questions: (team.ideas[section] as IdeaSection).questions?.filter((_: Question, i: number) => i !== questionIndex) || []
         }
+      }
+    };
+    setTeam(updatedTeam);
+    onTeamUpdate(updatedTeam);
+  };
+
+  const handleYouTubeThumbnailChange = (value: string) => {
+    const updatedTeam = {
+      ...team,
+      ideas: {
+        ...team.ideas,
+        default_youtube_thumbnail_image: value
+      }
+    };
+    setTeam(updatedTeam);
+    onTeamUpdate(updatedTeam);
+  };
+
+  const handleMenuListChange = (field: keyof IdeasType['menu_list'], value: string) => {
+    const updatedTeam = {
+      ...team,
+      ideas: {
+        ...team.ideas,
+        menu_list: {
+          ...team.ideas.menu_list,
+          [field]: value
+        }
+      }
+    };
+    setTeam(updatedTeam);
+    onTeamUpdate(updatedTeam);
+  };
+
+  const handlePlayIdeaAdd = () => {
+    const updatedTeam = {
+      ...team,
+      ideas: {
+        ...team.ideas,
+        play_ideas: [...team.ideas.play_ideas, '']
+      }
+    };
+    setTeam(updatedTeam);
+    onTeamUpdate(updatedTeam);
+  };
+
+  const handlePlayIdeaChange = (index: number, value: string) => {
+    const updatedTeam = {
+      ...team,
+      ideas: {
+        ...team.ideas,
+        play_ideas: team.ideas.play_ideas.map((idea, i) => i === index ? value : idea)
+      }
+    };
+    setTeam(updatedTeam);
+    onTeamUpdate(updatedTeam);
+  };
+
+  const handlePlayIdeaRemove = (index: number) => {
+    const updatedTeam = {
+      ...team,
+      ideas: {
+        ...team.ideas,
+        play_ideas: team.ideas.play_ideas.filter((_, i) => i !== index)
       }
     };
     setTeam(updatedTeam);
@@ -225,10 +275,15 @@ const TeamFlow = ({ initialTeam, onTeamUpdate }: TeamFlowProps) => {
       <Ideas
         ideas={team.ideas}
         getFullImageUrl={getFullImageUrl}
-        onIdeasChange={handleIdeasChange}
+        onIdeaChange={handleIdeasChange}
         onQuestionChange={handleIdeasQuestionChange}
         onQuestionAdd={handleIdeasQuestionAdd}
         onQuestionRemove={handleIdeasQuestionRemove}
+        onYouTubeThumbnailChange={handleYouTubeThumbnailChange}
+        onMenuListChange={handleMenuListChange}
+        onPlayIdeaAdd={handlePlayIdeaAdd}
+        onPlayIdeaChange={handlePlayIdeaChange}
+        onPlayIdeaRemove={handlePlayIdeaRemove}
       />
     </div>
   );
