@@ -6,6 +6,7 @@ import { SaveJsonButton } from './components/SaveJsonButton'
 import { SaveTeamJsonButton } from './components/SaveTeamJsonButton'
 import { ValidationErrors } from './components/ValidationErrors'
 import type { ExtendedTeam } from './components/team/types'
+import { Header } from './components/Header'
 
 // Basic interfaces for League data
 interface BasicTeam {
@@ -107,96 +108,86 @@ function App() {
     setTimeout(() => setValidationErrors([]), 5000)
   }
 
+  const handleCancel = () => {
+    if (activeTab === 'leagues') {
+      setLeagueData(null);
+    } else {
+      setTeamData(null);
+    }
+    setError(null);
+    setValidationErrors([]);
+  };
+
   return (
-    <div className="min-h-screen bg-gray-100 py-8 px-4">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex justify-center mb-8">
-          <div className="flex space-x-4 bg-white rounded-lg p-1 shadow-sm">
-            <button
-              onClick={() => handleTabChange('leagues')}
-              className={`px-4 py-2 rounded-md transition-colors ${
-                activeTab === 'leagues'
-                  ? 'bg-primary text-text-light'
-                  : 'text-text hover:bg-gray-100'
-              }`}
-            >
-              Leagues
-            </button>
-            <button
-              onClick={() => handleTabChange('teams')}
-              className={`px-4 py-2 rounded-md transition-colors ${
-                activeTab === 'teams'
-                  ? 'bg-primary text-text-light'
-                  : 'text-text hover:bg-gray-100'
-              }`}
-            >
-              Teams
-            </button>
-          </div>
-        </div>
-
-        {error && (
-          <div className="mb-8 p-4 bg-red-100 text-red-700 rounded-lg">
-            {error}
-          </div>
-        )}
-
-        {activeTab === 'leagues' && !leagueData && (
-          <FileUpload
-            type="league"
-            onFileUpload={handleFileUpload}
-            onError={handleError}
-          />
-        )}
-
-        {activeTab === 'teams' && !teamData && (
-          <FileUpload
-            type="team"
-            onFileUpload={handleFileUpload}
-            onError={handleError}
-          />
-        )}
-
-        {activeTab === 'leagues' && leagueData && (
-          <div className="space-y-6">
-            <div className="flex justify-end">
-              <SaveJsonButton
-                data={leagueData.leagues}
-                onSave={handleSaveLeagueJson}
-                onValidationError={handleValidationError}
-              />
+    <div className="min-h-screen bg-gray-50">
+      <Header activeTab={activeTab} onTabChange={handleTabChange} />
+      <main className="container mx-auto px-4 py-8">
+        <div className="max-w-7xl mx-auto">
+          {error && (
+            <div className="mb-8 p-4 bg-red-100 text-red-700 rounded-lg">
+              {error}
             </div>
-            {leagueData.leagues.map((league) => (
-              <LeagueCard
-                key={league.id}
-                league={league}
-                onUpdate={handleLeagueUpdate}
-              />
-            ))}
-          </div>
-        )}
+          )}
 
-        {activeTab === 'teams' && teamData && (
-          <div className="space-y-4">
-            <div className="flex justify-end mb-4">
-              <SaveTeamJsonButton
-                data={teamData}
-                onSave={handleSaveTeamJson}
-                onValidationError={handleValidationError}
-              />
-            </div>
-            <TeamFlow
-              initialTeam={teamData}
-              onTeamUpdate={handleTeamUpdate}
+          {activeTab === 'leagues' && !leagueData && (
+            <FileUpload
+              type="league"
+              onFileUpload={handleFileUpload}
+              onError={handleError}
             />
-          </div>
-        )}
+          )}
 
-        <ValidationErrors
-          errors={validationErrors}
-          onDismiss={() => setValidationErrors([])}
-        />
-      </div>
+          {activeTab === 'teams' && !teamData && (
+            <FileUpload
+              type="team"
+              onFileUpload={handleFileUpload}
+              onError={handleError}
+            />
+          )}
+
+          {activeTab === 'leagues' && leagueData && (
+            <div className="space-y-6">
+              <div className="flex justify-end">
+                <SaveJsonButton
+                  data={leagueData.leagues}
+                  onSave={handleSaveLeagueJson}
+                  onCancel={handleCancel}
+                  onValidationError={handleValidationError}
+                />
+              </div>
+              {leagueData.leagues.map((league) => (
+                <LeagueCard
+                  key={league.id}
+                  league={league}
+                  onUpdate={handleLeagueUpdate}
+                />
+              ))}
+            </div>
+          )}
+
+          {activeTab === 'teams' && teamData && (
+            <div className="space-y-4">
+              <div className="flex justify-end mb-4">
+                <SaveTeamJsonButton
+                  data={teamData}
+                  onSave={handleSaveTeamJson}
+                  onCancel={handleCancel}
+                  onValidationError={handleValidationError}
+                />
+              </div>
+              <TeamFlow
+                initialTeam={teamData}
+                onTeamUpdate={handleTeamUpdate}
+              />
+            </div>
+          )}
+
+          <ValidationErrors
+            errors={validationErrors}
+            onDismiss={() => setValidationErrors([])}
+          />
+        </div>
+      </main>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import { Button } from './ui/button';
-import { Save } from 'lucide-react';
+import { Save, X } from 'lucide-react';
 import type { ExtendedTeam } from './team/types';
 
 interface ValidationError {
@@ -10,10 +10,11 @@ interface ValidationError {
 interface SaveTeamJsonButtonProps {
   data: ExtendedTeam;
   onSave: () => void;
+  onCancel: () => void;
   onValidationError: (errors: ValidationError[]) => void;
 }
 
-export const SaveTeamJsonButton = ({ data, onSave, onValidationError }: SaveTeamJsonButtonProps) => {
+export const SaveTeamJsonButton = ({ data, onSave, onCancel, onValidationError }: SaveTeamJsonButtonProps) => {
   const validateTeamData = (team: ExtendedTeam): ValidationError[] => {
     const errors: ValidationError[] = [];
 
@@ -220,12 +221,22 @@ export const SaveTeamJsonButton = ({ data, onSave, onValidationError }: SaveTeam
   };
 
   return (
-    <Button
-      onClick={handleSave}
-      className="bg-primary text-white hover:bg-primary/90 transition-colors flex items-center gap-2"
-    >
-      <Save className="w-4 h-4" />
-      Save JSON
-    </Button>
+    <div className="flex items-center gap-3">
+      <Button
+        onClick={handleSave}
+        className="bg-primary text-white hover:bg-primary/90 transition-colors flex items-center gap-2"
+      >
+        <Save className="w-4 h-4" />
+        Save JSON
+      </Button>
+      <Button
+        onClick={onCancel}
+        variant="outline"
+        className="border-gray-200 text-gray-700 hover:bg-gray-100 transition-colors flex items-center gap-2"
+      >
+        <X className="w-4 h-4" />
+        Cancel
+      </Button>
+    </div>
   );
 }; 
