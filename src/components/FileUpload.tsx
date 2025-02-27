@@ -1,5 +1,7 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useState, useCallback } from 'react';
 import type { ExtendedTeam } from './team/types';
+import { Upload, AlertCircle } from 'lucide-react';
+import { cn } from '../lib/utils';
 
 interface Team {
   id: string;
@@ -25,6 +27,9 @@ interface FileUploadProps {
 }
 
 const FileUpload = ({ type, onFileUpload, onError }: FileUploadProps) => {
+  const [isDragging, setIsDragging] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
   const validateLeagueData = (data: unknown): { valid: boolean; errors: string[] } => {
     const errors: string[] = [];
 
@@ -119,6 +124,17 @@ const FileUpload = ({ type, onFileUpload, onError }: FileUploadProps) => {
   const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
+    await processFile(file);
+  };
+
+  const processFile = async (file: File) => {
+    setError(null);
+    
+    if (file.type !== 'application/json') {
+      setError('Please upload a JSON file');
+      onError('Please upload a JSON file');
+      return;
+    }
 
     try {
       const text = await file.text();
@@ -127,54 +143,106 @@ const FileUpload = ({ type, onFileUpload, onError }: FileUploadProps) => {
       const validation = type === 'league' ? validateLeagueData(jsonData) : validateTeamData(jsonData);
       
       if (!validation.valid) {
-        onError(`Invalid JSON structure: ${validation.errors.join(', ')}`);
+        const errorMessage = `Invalid JSON structure: ${validation.errors.join(', ')}`;
+        setError(errorMessage);
+        onError(errorMessage);
         return;
       }
 
       onFileUpload(jsonData);
     } catch {
-      onError('Error parsing JSON file. Please ensure it is a valid JSON file.');
+      const errorMessage = 'Error parsing JSON file. Please ensure it is a valid JSON file.';
+      setError(errorMessage);
+      onError(errorMessage);
     }
   };
 
+  const handleDragEnter = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(true);
+  }, []);
+
+  const handleDragLeave = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+  }, []);
+
+  const handleDragOver = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+  }, []);
+
+  const handleDrop = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+
+    const files = Array.from(e.dataTransfer.files);
+    if (files.length > 0) {
+      processFile(files[0]);
+    }
+  }, []);
+
   return (
-    <div className="flex flex-col items-center justify-center w-full">
+    <div className="flex flex-col items-center justify-center w-full max-w-2xl mx-auto px-4">
       <div className="text-center mb-8">
-        <h2 className="text-xl font-semibold text-gray-700 mb-2">
-          Get Started
+        <h2 className="text-2xl font-semibold text-gray-900 mb-3">
+          Upload {type === 'league' ? 'League' : 'Team'} Configuration
         </h2>
-        <p className="text-sm text-gray-600">
+        <p className="text-base text-gray-600">
           Upload your {type === 'league' ? 'leagues and teams' : 'team'} JSON file to begin editing
         </p>
       </div>
-      <label className="flex flex-col items-center justify-center w-64 h-40 bg-white border-2 border-gray-300 border-dashed rounded-lg cursor-pointer hover:bg-gray-50">
-        <div className="flex flex-col items-center justify-center pt-5 pb-6">
-          <svg
-            className="w-10 h-10 mb-3 text-gray-400"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-            />
-          </svg>
-          <p className="mb-2 text-sm text-gray-500">
-            <span className="font-semibold">Click to upload</span> or drag and drop
+
+      <div className="w-full">
+        <label
+          className={cn(
+            "relative flex flex-col items-center justify-center w-full h-64 border-2 border-dashed rounded-xl cursor-pointer transition-all duration-200 bg-white",
+            isDragging ? "border-primary bg-primary/5" : "border-gray-300 hover:bg-gray-50",
+            error ? "border-red-300 bg-red-50" : ""
+          )}
+          onDragEnter={handleDragEnter}
+          onDragLeave={handleDragLeave}
+          onDragOver={handleDragOver}
+          onDrop={handleDrop}
+        >
+          <div className="flex flex-col items-center justify-center pt-5 pb-6 px-4">
+            {error ? (
+              <AlertCircle className="w-12 h-12 text-red-500 mb-4" />
+            ) : (
+              <Upload className="w-12 h-12 text-gray-400 mb-4" />
+            )}
+            
+            <p className="mb-2 text-sm text-gray-500 text-center">
+              <span className="font-semibold">
+                {isDragging ? 'Drop your file here' : 'Click to upload or drag and drop'}
+              </span>
+            </p>
+            <p className="text-xs text-gray-500 text-center">JSON files only</p>
+
+            {error && (
+              <div className="mt-4 text-sm text-red-600 text-center max-w-md">
+                {error}
+              </div>
+            )}
+          </div>
+
+          <input
+            type="file"
+            className="hidden"
+            accept=".json,application/json"
+            onChange={handleFileChange}
+          />
+        </label>
+
+        <div className="mt-6 text-center">
+          <p className="text-sm text-gray-500">
+            Make sure your JSON file follows the required schema for {type === 'league' ? 'leagues' : 'teams'}
           </p>
-          <p className="text-xs text-gray-500">JSON files only</p>
         </div>
-        <input
-          type="file"
-          className="hidden"
-          accept=".json"
-          onChange={handleFileChange}
-        />
-      </label>
+      </div>
     </div>
   );
 };
