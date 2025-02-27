@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Input } from '../ui/input';
 import { ImagePreview } from './ImagePreview';
+import { Youtube, Image as ImageIcon } from 'lucide-react';
 
 interface YouTubeThumbnailProps {
   imagePath: string;
@@ -16,18 +17,24 @@ export const YouTubeThumbnail = ({
   return (
     <Card className="bg-white border border-gray-200 shadow-sm">
       <CardHeader className="px-6 py-4 border-b border-gray-200">
-        <CardTitle className="text-base font-semibold text-gray-900">
+        <CardTitle className="text-base font-semibold text-gray-900 flex items-center gap-2">
+          <Youtube className="w-5 h-5 text-primary" />
           Default YouTube Thumbnail
         </CardTitle>
       </CardHeader>
       <CardContent className="p-6">
         <div className="bg-white p-6 rounded-xl border-2 border-dashed border-gray-200 hover:border-primary transition-colors">
           <div className="flex flex-col items-center space-y-4">
-            <ImagePreview
-              src={getFullImageUrl(imagePath)}
-              alt="Default YouTube Thumbnail"
-              className="w-40 h-32 rounded-xl object-cover shadow-sm"
-            />
+            <div className="relative">
+              <ImagePreview
+                src={getFullImageUrl(imagePath)}
+                alt="Default YouTube Thumbnail"
+                className="w-40 h-32 rounded-xl object-cover shadow-sm"
+              />
+              <div className="absolute -top-2 -right-2 bg-white p-1 rounded-full shadow-sm border border-gray-200">
+                <ImageIcon className="w-4 h-4 text-primary" />
+              </div>
+            </div>
             <div className="w-full">
               <Input
                 type="text"

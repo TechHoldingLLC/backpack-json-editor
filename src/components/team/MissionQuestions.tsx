@@ -1,7 +1,7 @@
 import { Question } from './types';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
-import { PlusCircle } from 'lucide-react';
+import { PlusCircle, HelpCircle, ListChecks, CircleDot } from 'lucide-react';
 import { QuestionEditor } from './QuestionEditor';
 import { ScrollArea } from '../ui/scroll-area';
 import { Separator } from '../ui/separator';
@@ -24,6 +24,7 @@ export const MissionQuestions = ({
       <CardHeader className="px-6 py-4 border-b border-gray-200">
         <div className="flex items-center justify-between">
           <CardTitle className="text-base font-semibold text-gray-900 flex items-center">
+            <HelpCircle className="w-4 h-4 text-primary mr-2" />
             Questions
             <span className="ml-2 text-sm font-medium text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">
               {questions.length}
@@ -44,6 +45,7 @@ export const MissionQuestions = ({
       <CardContent className="p-6">
         {questions.length === 0 ? (
           <div className="text-center py-8 bg-gray-50 rounded-lg border border-dashed border-gray-300">
+            <ListChecks className="w-8 h-8 text-gray-400 mx-auto mb-3" />
             <p className="text-sm text-gray-500 mb-3">No questions added to this mission yet</p>
             <Button
               onClick={onQuestionAdd}
@@ -64,7 +66,8 @@ export const MissionQuestions = ({
                     <Separator className="my-6 bg-gray-200" />
                   )}
                   <div className="relative">
-                    <div className="absolute -left-8 top-0 bg-gray-100 text-gray-500 text-xs font-medium px-2 py-1 rounded-full">
+                    <div className="absolute -left-8 top-0 bg-gray-100 text-gray-500 text-xs font-medium px-2 py-1 rounded-full flex items-center gap-1">
+                      <CircleDot className="w-3 h-3" />
                       Question {questionIndex + 1}
                     </div>
                     <div className="pt-8">

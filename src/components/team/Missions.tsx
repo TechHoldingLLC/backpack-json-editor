@@ -1,6 +1,11 @@
 import { Mission } from './types';
 import { Button } from '../ui/button';
-import { PlusCircle } from 'lucide-react';
+import { 
+  PlusCircle,
+  Target,
+  Medal,
+  ListChecks
+} from 'lucide-react';
 import { MissionCard } from './MissionCard';
 import { MissionQuestions } from './MissionQuestions';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion';
@@ -29,7 +34,14 @@ export const Missions = ({
   return (
     <div className="space-y-6 bg-white p-6 rounded-lg border border-gray-200">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl font-semibold text-gray-900">Missions</h2>
+        <h2 className="text-xl font-semibold text-gray-900 flex items-center gap-2">
+          <Target className="w-5 h-5 text-primary" />
+          Missions
+          <span className="text-sm font-medium text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full flex items-center gap-1">
+            <ListChecks className="w-4 h-4" />
+            {missions.length}
+          </span>
+        </h2>
         <Button 
           onClick={onMissionAdd} 
           variant="outline" 
@@ -52,10 +64,12 @@ export const Missions = ({
             <AccordionItem value="mission" className="border-none">
               <AccordionTrigger className="px-6 py-4 hover:bg-gray-50 transition-colors [&[data-state=open]]:bg-gray-50">
                 <div className="flex items-center gap-4">
-                  <span className="text-base font-medium text-gray-900">
+                  <span className="text-base font-medium text-gray-900 flex items-center gap-2">
+                    <Medal className="w-4 h-4 text-primary" />
                     {mission.title || 'Untitled Mission'}
                   </span>
-                  <span className="text-sm text-gray-500 bg-white px-2 py-0.5 rounded-full border border-gray-200">
+                  <span className="text-sm text-gray-500 bg-white px-2 py-0.5 rounded-full border border-gray-200 flex items-center gap-1">
+                    <ListChecks className="w-3.5 h-3.5" />
                     {mission.questions.length} Questions
                   </span>
                 </div>
@@ -91,9 +105,9 @@ export const Missions = ({
               onClick={onMissionAdd}
               variant="outline"
               size="sm"
-              className="bg-white text-gray-700 border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-colors"
+              className="bg-white text-gray-700 border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-colors flex items-center gap-2"
             >
-              <PlusCircle className="w-4 h-4 mr-1.5" />
+              <PlusCircle className="w-4 h-4" />
               <span className="font-medium">Add First Mission</span>
             </Button>
           </div>

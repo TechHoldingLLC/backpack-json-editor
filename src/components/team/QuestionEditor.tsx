@@ -5,7 +5,18 @@ import { Label } from '../ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import { Textarea } from '../ui/textarea';
 import { Card, CardContent } from '../ui/card';
-import { Trash2, Plus } from 'lucide-react';
+import { 
+  Trash2, 
+  Plus, 
+  ListFilter, 
+  MessageSquare, 
+  List, 
+  Image as ImageIcon, 
+  Video, 
+  CheckSquare,
+  AlignLeft,
+  AlignRight
+} from 'lucide-react';
 
 interface QuestionEditorProps {
   question: Question;
@@ -32,7 +43,10 @@ export const QuestionEditor = ({
           <div className="flex items-start justify-between gap-4">
             <div className="flex-1">
               <div className="space-y-1.5">
-                <Label className="text-sm font-medium text-gray-700">Question Type</Label>
+                <Label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                  <ListFilter className="w-4 h-4 text-primary" />
+                  Question Type
+                </Label>
                 <Select
                   value={question.question_type}
                   onValueChange={(value) => onChange('question_type', value)}
@@ -65,7 +79,10 @@ export const QuestionEditor = ({
           </div>
 
           <div className="space-y-1.5">
-            <Label className="text-sm font-medium text-gray-700">Question Text</Label>
+            <Label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+              <MessageSquare className="w-4 h-4 text-primary" />
+              Question Text
+            </Label>
             <Textarea
               value={question.question}
               onChange={(e) => onChange('question', e.target.value)}
@@ -77,7 +94,10 @@ export const QuestionEditor = ({
           {(question.question_type === 'options_list' || question.question_type === '2_options_list') && (
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <Label className="text-sm font-medium text-gray-700">Options</Label>
+                <Label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                  <List className="w-4 h-4 text-primary" />
+                  Options
+                </Label>
                 <Button
                   variant="outline"
                   size="sm"
@@ -125,7 +145,10 @@ export const QuestionEditor = ({
           {question.question_type === '2_options_list' && (
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-1.5">
-                <Label className="text-sm font-medium text-gray-700">Left Column Title</Label>
+                <Label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                  <AlignLeft className="w-4 h-4 text-primary" />
+                  Left Column Title
+                </Label>
                 <Input
                   value={question.options_title_left}
                   onChange={(e) => onChange('options_title_left', e.target.value)}
@@ -134,7 +157,10 @@ export const QuestionEditor = ({
                 />
               </div>
               <div className="space-y-1.5">
-                <Label className="text-sm font-medium text-gray-700">Right Column Title</Label>
+                <Label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                  <AlignRight className="w-4 h-4 text-primary" />
+                  Right Column Title
+                </Label>
                 <Input
                   value={question.options_title_right}
                   onChange={(e) => onChange('options_title_right', e.target.value)}
@@ -147,7 +173,10 @@ export const QuestionEditor = ({
 
           {question.question_type === 'image' && (
             <div className="space-y-1.5">
-              <Label className="text-sm font-medium text-gray-700">Image URL</Label>
+              <Label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                <ImageIcon className="w-4 h-4 text-primary" />
+                Image URL
+              </Label>
               <Input
                 value={question.option_image}
                 onChange={(e) => onChange('option_image', e.target.value)}
@@ -159,7 +188,10 @@ export const QuestionEditor = ({
 
           <div className="flex items-center justify-between gap-4">
             <div className="flex-1 space-y-1.5">
-              <Label className="text-sm font-medium text-gray-700">Video URL</Label>
+              <Label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                <Video className="w-4 h-4 text-primary" />
+                Video URL
+              </Label>
               <Input
                 value={question.video}
                 onChange={(e) => onChange('video', e.target.value)}
@@ -174,7 +206,10 @@ export const QuestionEditor = ({
                 onChange={(e) => onChange('allow_multiple_selection', e.target.checked)}
                 className="rounded border-gray-300 text-primary focus:ring-primary"
               />
-              <Label className="text-sm font-medium text-gray-700">Allow Multiple Selection</Label>
+              <Label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                <CheckSquare className="w-4 h-4 text-primary" />
+                Allow Multiple Selection
+              </Label>
             </div>
           </div>
         </div>

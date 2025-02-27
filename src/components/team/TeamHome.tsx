@@ -1,5 +1,15 @@
 import { ImagePreview } from './ImagePreview';
-import { TrophyIcon, SparklesIcon, FireIcon } from '@heroicons/react/24/outline';
+import { 
+  Trophy,
+  Home,
+  Quote,
+  Lightbulb,
+  Target,
+  Medal,
+  MonitorSmartphone,
+  Crown,
+  Star
+} from 'lucide-react';
 
 interface TeamMember {
   user_name: string;
@@ -48,8 +58,12 @@ export const TeamHome = ({
     <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-lg border border-gray-100">
       <div className="p-8">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-bold text-gray-900">Team Home</h2>
-          <div className="bg-primary/10 text-primary px-4 py-2 rounded-lg text-sm font-medium">
+          <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
+            <Home className="w-6 h-6 text-primary" />
+            Team Home
+          </h2>
+          <div className="bg-primary/10 text-primary px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2">
+            <MonitorSmartphone className="w-4 h-4" />
             Home Screen
           </div>
         </div>
@@ -57,7 +71,8 @@ export const TeamHome = ({
         <div className="space-y-8">
           {/* Motto Section */}
           <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-            <label htmlFor="motto" className="block text-sm font-semibold text-gray-700 mb-2">
+            <label htmlFor="motto" className="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
+              <Quote className="w-4 h-4 text-primary" />
               Team Motto
             </label>
             <input
@@ -74,7 +89,7 @@ export const TeamHome = ({
             {/* Best Ideas Section */}
             <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
               <div className="flex items-center space-x-2 mb-4">
-                <SparklesIcon className="w-5 h-5 text-yellow-500" />
+                <Lightbulb className="w-5 h-5 text-yellow-500" />
                 <h3 className="text-lg font-semibold text-gray-900">Best Ideas</h3>
               </div>
               <div className="flex items-center space-x-4">
@@ -85,7 +100,7 @@ export const TeamHome = ({
                     className="w-24 h-24 rounded-full object-cover bg-gray-50 shadow-md ring-4 ring-yellow-100"
                   />
                   <div className="absolute -bottom-1 -right-1 bg-yellow-500 text-white p-1.5 rounded-full">
-                    <SparklesIcon className="w-4 h-4" />
+                    <Star className="w-4 h-4" />
                   </div>
                 </div>
                 <div className="flex-1 space-y-3">
@@ -110,7 +125,7 @@ export const TeamHome = ({
             {/* Most Missions Section */}
             <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
               <div className="flex items-center space-x-2 mb-4">
-                <FireIcon className="w-5 h-5 text-red-500" />
+                <Target className="w-5 h-5 text-red-500" />
                 <h3 className="text-lg font-semibold text-gray-900">Most Missions</h3>
               </div>
               <div className="flex items-center space-x-4">
@@ -121,7 +136,7 @@ export const TeamHome = ({
                     className="w-24 h-24 rounded-full object-cover bg-gray-50 shadow-md ring-4 ring-red-100"
                   />
                   <div className="absolute -bottom-1 -right-1 bg-red-500 text-white p-1.5 rounded-full">
-                    <FireIcon className="w-4 h-4" />
+                    <Medal className="w-4 h-4" />
                   </div>
                 </div>
                 <div className="flex-1 space-y-3">
@@ -147,7 +162,7 @@ export const TeamHome = ({
           {/* Top Team Rank Section */}
           <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
             <div className="flex items-center space-x-2 mb-6">
-              <TrophyIcon className="w-5 h-5 text-primary" />
+              <Trophy className="w-5 h-5 text-primary" />
               <h3 className="text-lg font-semibold text-gray-900">Top Team Rank</h3>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
@@ -159,7 +174,8 @@ export const TeamHome = ({
                       alt={`Top Team Member ${index + 1}`}
                       className="w-full h-32 rounded-xl object-cover shadow-md"
                     />
-                    <div className="absolute top-2 left-2 bg-white shadow-md text-primary font-bold px-2.5 py-1 rounded-lg">
+                    <div className="absolute top-2 left-2 bg-white shadow-md text-primary font-bold px-2.5 py-1 rounded-lg flex items-center gap-1">
+                      <Crown className="w-3 h-3" />
                       #{index + 1}
                     </div>
                   </div>

@@ -4,7 +4,15 @@ import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Textarea } from '../ui/textarea';
 import { Label } from '../ui/label';
-import { Trash2 } from 'lucide-react';
+import { 
+  Trash2, 
+  Hash,
+  Type,
+  FileText,
+  Image as ImageIcon,
+  MessageCircle,
+  CheckCircle
+} from 'lucide-react';
 import { ImagePreview } from './ImagePreview';
 
 interface IdeaCardProps {
@@ -26,15 +34,21 @@ export const IdeaCard = ({
     <Card className="bg-white border border-gray-200 shadow-sm">
       <CardContent className="p-6">
         <div className="space-y-6">
-          {/* Title and Remove Button */}
+          {/* ID and Remove Button */}
           <div className="flex items-start justify-between gap-4">
             <div className="flex-1">
-              <Input
-                value={idea.title}
-                onChange={(e) => onIdeaChange(index, 'title', e.target.value)}
-                placeholder="Enter idea title"
-                className="text-lg font-medium bg-white border-0 px-0 h-auto focus:ring-2 focus:ring-primary focus:border-primary p-0 placeholder:text-gray-400 text-gray-900"
-              />
+              <div className="space-y-1.5">
+                <Label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                  <Hash className="w-4 h-4 text-primary" />
+                  Idea ID
+                </Label>
+                <Input
+                  value={idea.id}
+                  onChange={(e) => onIdeaChange(index, 'id', e.target.value)}
+                  placeholder="Enter idea ID"
+                  className="h-9 bg-white text-gray-900 border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                />
+              </div>
             </div>
             <Button
               variant="ghost"
@@ -46,22 +60,42 @@ export const IdeaCard = ({
             </Button>
           </div>
 
+          {/* Title */}
+          <div className="space-y-1.5">
+            <Label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+              <Type className="w-4 h-4 text-primary" />
+              Title
+            </Label>
+            <Input
+              value={idea.title}
+              onChange={(e) => onIdeaChange(index, 'title', e.target.value)}
+              placeholder="Enter idea title"
+              className="text-lg font-medium bg-white text-gray-900 border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+            />
+          </div>
+
           {/* Description */}
           <div className="space-y-2">
-            <Label className="text-sm font-medium text-gray-700">Description</Label>
+            <Label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+              <FileText className="w-4 h-4 text-primary" />
+              Description
+            </Label>
             <Textarea
               value={idea.description}
               onChange={(e) => onIdeaChange(index, 'description', e.target.value)}
               placeholder="Enter idea description"
               rows={3}
-              className="resize-none min-h-[80px] bg-white text-gray-900 border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary transition-colors placeholder:text-gray-400"
+              className="resize-none min-h-[80px] bg-white text-gray-900 border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
             />
           </div>
 
           {/* Idea Image */}
           <div className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor={`idea-${index}-image`}>Idea Image</Label>
+              <Label htmlFor={`idea-${index}-image`} className="flex items-center gap-2">
+                <ImageIcon className="w-4 h-4 text-primary" />
+                Idea Image
+              </Label>
               <div className="space-y-2">
                 <Input
                   id={`idea-${index}-image`}
@@ -83,20 +117,26 @@ export const IdeaCard = ({
 
           {/* Completion Message */}
           <div className="space-y-2">
-            <Label className="text-sm font-medium text-gray-700">Completion Message</Label>
+            <Label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+              <MessageCircle className="w-4 h-4 text-primary" />
+              Completion Message
+            </Label>
             <Textarea
               value={idea.completion_msg}
               onChange={(e) => onIdeaChange(index, 'completion_msg', e.target.value)}
               placeholder="Enter completion message"
               rows={2}
-              className="resize-none min-h-[60px] bg-white text-gray-900 border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary transition-colors placeholder:text-gray-400"
+              className="resize-none min-h-[60px] bg-white text-gray-900 border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
             />
           </div>
 
           {/* Completion Image */}
           <div className="space-y-4">
             <div className="space-y-2">
-              <Label className="text-sm font-medium text-gray-700">Completion Image</Label>
+              <Label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                <CheckCircle className="w-4 h-4 text-primary" />
+                Completion Image
+              </Label>
               <div className="space-y-2">
                 <Input
                   value={idea.completion_image || ''}
