@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import FileUpload from './components/FileUpload'
 import LeagueCard from './components/LeagueCard'
+import TeamFlow from './components/TeamFlow'
 
 interface Team {
   id: string
@@ -15,112 +16,257 @@ interface League {
   teams: Team[]
 }
 
-interface JsonData {
+interface LeagueData {
   leagues: League[]
 }
 
+interface TeamData {
+  id: string
+  name: string
+  logo_image: string
+  survey_url: string
+  welcome_details: {
+    title: string
+    description: string
+    welcome_image: string
+    author: string
+  }
+  enabled: boolean
+  team_home: {
+    motto: string
+    best_ideas: {
+      user_name: string
+      user_image: string
+    }
+    most_missions: {
+      user_name: string
+      user_image: string
+    }
+    top_team_rank: Array<{
+      user_name: string
+      user_image: string
+    }>
+  }
+  missions: Array<{
+    id: string
+    title: string
+    description: string
+    image: string
+    focus_type: string
+    level: string
+    completion_msg: string
+    completion_image: string
+    questions: Array<{
+      question_type: string
+      question: string
+      options?: string[]
+      video?: string
+      allow_multiple_selection: boolean
+      options_title_left?: string
+      options_title_right?: string
+      option_image?: string
+      image_option_hint?: string
+      dropdown_options?: Array<{
+        title: string
+        hint: string
+        options: string[]
+      }>
+      image_selection?: Array<{
+        title: string
+        image: string
+      }>
+    }>
+  }>
+  ideas: {
+    default_youtube_thumbnail_image: string
+    menu_list: {
+      review_title: string
+      review_description: string
+      select_title: string
+      select_description: string
+      submit_title: string
+      submit_description: string
+    }
+    play_ideas: string[]
+    review_idea: {
+      id: string
+      title: string
+      description: string
+      image: string
+      completion_msg: string
+      completion_image: string
+      questions: Array<{
+        question_type: string
+        question: string
+        options?: string[]
+        video?: string
+        allow_multiple_selection: boolean
+        options_title_left?: string
+        options_title_right?: string
+        option_image?: string
+        image_option_hint?: string
+        dropdown_options?: Array<{
+          title: string
+          hint: string
+          options: string[]
+        }>
+        image_selection?: Array<{
+          title: string
+          image: string
+        }>
+      }>
+    }
+    select_idea: {
+      id: string
+      title: string
+      description: string
+      image: string
+      completion_msg: string
+      completion_image: string
+      questions: Array<{
+        question_type: string
+        question: string
+        options?: string[]
+        video?: string
+        allow_multiple_selection: boolean
+        options_title_left?: string
+        options_title_right?: string
+        option_image?: string
+        image_option_hint?: string
+        dropdown_options?: Array<{
+          title: string
+          hint: string
+          options: string[]
+        }>
+        image_selection?: Array<{
+          title: string
+          image: string
+        }>
+      }>
+    }
+    submit_idea: {
+      id: string
+      title: string
+      description: string
+      image: string
+    }
+  }
+}
+
+type TabType = 'leagues' | 'teams'
+
 function App() {
-  const [jsonData, setJsonData] = useState<JsonData | null>(null)
+  const [activeTab, setActiveTab] = useState<TabType>('leagues')
+  const [leagueData, setLeagueData] = useState<LeagueData | null>(null)
+  const [teamData, setTeamData] = useState<TeamData | null>(null)
   const [error, setError] = useState<string | null>(null)
 
-  const handleFileUpload = (data: JsonData) => {
-    setJsonData(data)
+  const handleFileUpload = (data: LeagueData | TeamData) => {
+    if ('leagues' in data) {
+      setLeagueData(data as LeagueData)
+      setTeamData(null)
+    } else {
+      setTeamData(data as TeamData)
+      setLeagueData(null)
+    }
     setError(null)
   }
 
   const handleError = (errorMessage: string) => {
     setError(errorMessage)
-    setJsonData(null)
   }
 
-  const handleLeagueUpdate = (updatedLeague: League, index: number) => {
-    if (!jsonData) return
+  const handleLeagueUpdate = (updatedLeague: League) => {
+    if (!leagueData) return
 
-    const newLeagues = [...jsonData.leagues]
-    newLeagues[index] = updatedLeague
-    setJsonData({
-      ...jsonData,
-      leagues: newLeagues,
+    const updatedLeagues = leagueData.leagues.map((league) =>
+      league.id === updatedLeague.id ? updatedLeague : league
+    )
+
+    setLeagueData({
+      ...leagueData,
+      leagues: updatedLeagues,
     })
   }
 
-  const handleSave = () => {
-    if (!jsonData) return
+  const handleTeamUpdate = (updatedTeam: TeamData) => {
+    setTeamData(updatedTeam)
+  }
 
-    const dataStr = JSON.stringify(jsonData, null, 2)
-    const dataBlob = new Blob([dataStr], { type: 'application/json' })
-    const url = URL.createObjectURL(dataBlob)
-    const link = document.createElement('a')
-    link.href = url
-    link.download = 'leagues_and_teams.json'
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-    URL.revokeObjectURL(url)
+  const handleTabChange = (tab: TabType) => {
+    setActiveTab(tab)
+    setError(null)
   }
 
   return (
-    <div className="min-h-screen w-full bg-secondary">
-      <div className="sticky top-0 z-10 bg-primary shadow-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex justify-between items-center">
-            <h1 className="text-2xl font-bold text-text-light">
-              Backpack JSON Helper
-            </h1>
-            {jsonData && (
-              <button
-                onClick={handleSave}
-                className="bg-text-light text-primary px-4 py-2 rounded-md hover:bg-white/90 transition-colors"
-              >
-                Save JSON
-              </button>
-            )}
+    <div className="min-h-screen bg-gray-100 py-8 px-4">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex justify-center mb-8">
+          <div className="flex space-x-4 bg-white rounded-lg p-1 shadow-sm">
+            <button
+              onClick={() => handleTabChange('leagues')}
+              className={`px-4 py-2 rounded-md transition-colors ${
+                activeTab === 'leagues'
+                  ? 'bg-primary text-text-light'
+                  : 'text-text hover:bg-gray-100'
+              }`}
+            >
+              Leagues
+            </button>
+            <button
+              onClick={() => handleTabChange('teams')}
+              className={`px-4 py-2 rounded-md transition-colors ${
+                activeTab === 'teams'
+                  ? 'bg-primary text-text-light'
+                  : 'text-text hover:bg-gray-100'
+              }`}
+            >
+              Teams
+            </button>
           </div>
         </div>
-      </div>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {error && (
-          <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
-            <div className="flex">
-              <div className="flex-shrink-0">
-                <svg
-                  className="h-5 w-5 text-red-400"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-              <div className="ml-3">
-                <p className="text-sm text-red-700">{error}</p>
-              </div>
-            </div>
+          <div className="mb-8 p-4 bg-red-100 text-red-700 rounded-lg">
+            {error}
           </div>
         )}
 
-        {!jsonData ? (
-          <div className="mt-8">
-            <FileUpload onFileUpload={handleFileUpload} onError={handleError} />
-          </div>
-        ) : (
+        {activeTab === 'leagues' && !leagueData && (
+          <FileUpload
+            type="league"
+            onFileUpload={handleFileUpload}
+            onError={handleError}
+          />
+        )}
+
+        {activeTab === 'teams' && !teamData && (
+          <FileUpload
+            type="team"
+            onFileUpload={handleFileUpload}
+            onError={handleError}
+          />
+        )}
+
+        {activeTab === 'leagues' && leagueData && (
           <div className="space-y-6">
-            {jsonData.leagues.map((league, index) => (
+            {leagueData.leagues.map((league) => (
               <LeagueCard
                 key={league.id}
                 league={league}
-                onUpdate={(updatedLeague) =>
-                  handleLeagueUpdate(updatedLeague, index)
-                }
+                onUpdate={handleLeagueUpdate}
               />
             ))}
           </div>
         )}
-      </main>
+
+        {activeTab === 'teams' && teamData && (
+          <TeamFlow
+            initialTeam={teamData}
+            onTeamUpdate={handleTeamUpdate}
+          />
+        )}
+      </div>
     </div>
   )
 }

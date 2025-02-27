@@ -10,11 +10,11 @@ export interface DropdownOption {
 }
 
 export interface Question {
-  question_type: 'options_list' | 'dropdown' | 'image' | '2_options_list';
+  question_type: 'options_list' | '2_options_list' | 'dropdown' | 'image';
   question: string;
   options?: string[];
-  video?: string;
   allow_multiple_selection?: boolean;
+  video?: string;
   option_image?: string;
   image_option_hint?: string;
   dropdown_options?: DropdownOption[];
@@ -36,10 +36,10 @@ export interface Mission {
 }
 
 export interface IdeaSection {
-  id: string;
+  id?: string;
   title: string;
   description: string;
-  image: string;
+  image?: string;
   completion_msg?: string;
   completion_image?: string;
   questions?: Question[];
@@ -55,7 +55,7 @@ export interface MenuList {
 }
 
 export interface Ideas {
-  default_youtube_thumbnail_image: string;
+  default_youtube_thumbnail_image?: string;
   menu_list: MenuList;
   play_ideas: string[];
   review_idea: IdeaSection;
@@ -66,29 +66,17 @@ export interface Ideas {
 export interface Team {
   id: string;
   name: string;
-  logo_image: string;
-  survey_url: string;
+  description: string;
+  image: string;
   welcome_details: {
     title: string;
     description: string;
-    welcome_image: string;
-    author: string;
+    image: string;
   };
-  enabled: boolean;
   team_home: {
-    motto: string;
-    best_ideas: {
-      user_name: string;
-      user_image: string;
-    };
-    most_missions: {
-      user_name: string;
-      user_image: string;
-    };
-    top_team_rank: Array<{
-      user_name: string;
-      user_image: string;
-    }>;
+    title: string;
+    description: string;
+    image: string;
   };
   missions: Mission[];
   ideas: Ideas;

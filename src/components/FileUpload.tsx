@@ -14,16 +14,31 @@ interface League {
   teams: Team[];
 }
 
-interface JsonData {
+interface LeagueData {
   leagues: League[];
 }
 
+interface TeamData {
+  id: string;
+  name: string;
+  logo_image: string;
+  survey_url: string;
+  welcome_details: {
+    title: string;
+    description: string;
+    welcome_image: string;
+    author: string;
+  };
+  enabled: boolean;
+}
+
 interface FileUploadProps {
-  onFileUpload: (jsonData: JsonData) => void;
+  type: 'league' | 'team';
+  onFileUpload: (jsonData: LeagueData | TeamData) => void;
   onError: (error: string) => void;
 }
 
-const FileUpload = ({ onFileUpload, onError }: FileUploadProps) => {
+const FileUpload = ({ type, onFileUpload, onError }: FileUploadProps) => {
   const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -32,14 +47,14 @@ const FileUpload = ({ onFileUpload, onError }: FileUploadProps) => {
       const text = await file.text();
       const jsonData = JSON.parse(text);
       
-      // Validate JSON structure
-      const { valid, errors } = validateJson(jsonData);
+      // Validate JSON structure based on type
+      const { valid, errors } = validateJson(jsonData, type);
       if (!valid) {
         onError(`Invalid JSON structure: ${errors.join(', ')}`);
         return;
       }
 
-      onFileUpload(jsonData as JsonData);
+      onFileUpload(jsonData);
     } catch {
       onError('Error parsing JSON file. Please ensure it is a valid JSON file.');
     }
@@ -52,7 +67,7 @@ const FileUpload = ({ onFileUpload, onError }: FileUploadProps) => {
           Get Started
         </h2>
         <p className="text-sm text-gray-600">
-          Upload your leagues and teams JSON file to begin editing
+          Upload your {type === 'league' ? 'leagues and teams' : 'team'} JSON file to begin editing
         </p>
       </div>
       <label

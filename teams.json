@@ -1,0 +1,738 @@
+{
+    "id": "nfl_rams",
+    "name": "LA Rams",
+    "logo_image": "nfl_rams/la_rams_logo.webp",
+    "survey_url": "https://www.surveymonkey.com/r/la_rams",
+    "enabled": true,
+    "welcome_details": {
+      "title": "WELCOME TO THE TEAM!",
+      "description": "Super Bowls are the best, aren't they?  Let's win another one, together.  Your participation in this app will give us competitive advantages in all the ways that help us win:  preparing for opponents, evaluating draft picks, developing strategies.  YOU can be the difference.",
+      "welcome_image": "nfl_rams/welcome_image.webp",
+      "author": "- Bobby Portis, Jr. #9"
+    },
+    "team_home": {
+      "motto": "WE IS GREATER THAN ME",
+      "best_ideas": {
+        "user_name": "SoCalSavant",
+        "user_image": "nfl_rams/best_idea.webp"
+      },
+      "most_missions": {
+        "user_name": "footballislife",
+        "user_image": "nfl_rams/most_missions.webp"
+      },
+      "top_team_rank": [
+        {
+          "user_name": "StaffordStan",
+          "user_image": "nfl_rams/top_user_1.webp"
+        },
+        {
+          "user_name": "EstablishTheRun",
+          "user_image": "nfl_rams/top_user_2.webp"
+        },
+        {
+          "user_name": "Legend10",
+          "user_image": "nfl_rams/top_user_3.webp"
+        },
+        {
+          "user_name": "LArings",
+          "user_image": "nfl_rams/top_user_4.webp"
+        },
+        {
+          "user_name": "ManInMotion",
+          "user_image": "nfl_rams/top_user_5.webp"
+        }
+      ]
+    },
+    "missions": [
+      {
+        "id": "WEEK 1 OPPONENT: COWBOYS",
+        "title": "WEEK 1 OPPONENT: COWBOYS",
+        "description": "We are preparing for the playoffs against the Sixers in 1 week and we are studying their offensive tendencies  Help us get smarter by answering the following questions.",
+        "image": "nfl_rams/mission_01.webp",
+        "focus_type": "QB Vision",
+        "level": "SuperFan",
+        "completion_msg": "Thanks for helping us study our opponent. This information gives us an edge. Playoffs start in 1 week, let's go!",
+        "completion_image": "nfl_rams/mission_01.webp",
+        "questions": [
+          {
+            "question_type": "options_list",
+            "question": "How tall is the primary on-ball defender in relation to the ball handler?",
+            "options": [
+              "Much taller",
+              "Slightly taller",
+              "Same height",
+              "Slightly shorter",
+              "Much shorter"
+            ],
+            "video": "nfl_rams/video-test.mp4",
+            "allow_multiple_selection": false
+          },
+          {
+            "question_type": "options_list",
+            "question": "How far is the primary on-ball defender from the ball handler?",
+            "options": [
+              "Very close",
+              "Close",
+              "Medium",
+              "Far",
+              "Very far"
+            ],
+            "video": "nfl_rams/video_test_2.mp4",
+            "allow_multiple_selection": true
+          },
+          {
+            "question_type": "2_options_list",
+            "question": "How far is  the primary on-ball defender from the ball handler?",
+            "options": [
+              "Very close",
+              "Close",
+              "Medium",
+              "Far",
+              "Very far"
+            ],
+            "video": "nfl_rams/video-test.mp4",
+            "allow_multiple_selection": false,
+            "options_title_left": "Taller",
+            "options_title_right": "Shorter"
+          },
+          {
+            "question_type": "2_options_list",
+            "question": "How  far is the primary on-ball defender from the ball handler?",
+            "options": [
+              "Very close",
+              "Close",
+              "Medium",
+              "Far",
+              "Very far",
+              "Closeest",
+              "Mediumest",
+              "Farest",
+              "Very farest",
+              "Closeests",
+              "Mediumests",
+              "Fareste",
+              "Very farestew"
+            ],
+            "video": "nfl_rams/video-test.mp4",
+            "allow_multiple_selection": true,
+            "options_title_left": "Taller",
+            "options_title_right": "Shorter"
+          },
+          {
+            "question_type": "image",
+            "question": "How far is the primary  on-ball defender from the ball handler?",
+            "video": "nfl_rams/video-test.mp4",
+            "option_image": "nfl_rams/idea-3pt-defense.png",
+            "image_option_hint": "Draw a line from the top."
+          },
+          {
+            "question_type": "dropdown",
+            "question": "How tall is the primary on-ball defender in relation to the ball handler?",
+            "dropdown_options": [
+              {
+                "title": "MUN",
+                "hint": "Choose play idea",
+                "options": [
+                  "Much taller",
+                  "Much taller",
+                  "Slightly taller",
+                  "Same height",
+                  "Slightly shorter",
+                  "Much shorter"
+                ]
+              },
+              {
+                "title": "EVE",
+                "hint": "Choose play idea",
+                "options": [
+                  "Much taller",
+                  "Slightly taller",
+                  "Same height",
+                  "Slightly shorter",
+                  "Much shorter"
+                ]
+              }
+            ],
+            "video": "nfl_rams/video_test_2.mp4",
+            "allow_multiple_selection": false
+          },
+          {
+            "question_type": "2_options_list",
+            "question": "How far is  the primary on-ball defender from the ball handler?",
+            "options": [
+              "Very close",
+              "Close",
+              "Medium",
+              "Far",
+              "Very far"
+            ],
+            "image_selection": [
+              {
+                "title": "Damian Lillard",
+                "image": "nfl_rams/player_image_1.png"
+              },
+              {
+                "title": "MarJon Beauchamp",
+                "image": "nfl_rams/player_image_2.png"
+              },
+              {
+                "title": "MarJon Beauchamp",
+                "image": "nfl_rams/player_image_3.png"
+              },
+              {
+                "title": "Chris Livingston",
+                "image": "nfl_rams/player_image_4.png"
+              },
+              {
+                "title": "Damian Lillard",
+                "image": "nfl_rams/player_image_1.png"
+              },
+              {
+                "title": "MarJon Beauchamp",
+                "image": "nfl_rams/player_image_2.png"
+              },
+              {
+                "title": "MarJon Beauchamp",
+                "image": "nfl_rams/player_image_3.png"
+              },
+              {
+                "title": "Chris Livingston",
+                "image": "nfl_rams/player_image_4.png"
+              },
+              {
+                "title": "Damian Lillard",
+                "image": "nfl_rams/player_image_1.png"
+              },
+              {
+                "title": "MarJon Beauchamp",
+                "image": "nfl_rams/player_image_2.png"
+              },
+              {
+                "title": "MarJon Beauchamp",
+                "image": "nfl_rams/player_image_3.png"
+              },
+              {
+                "title": "Chris Livingston",
+                "image": "nfl_rams/player_image_4.png"
+              }
+            ],
+            "allow_multiple_selection": false
+          }
+        ]
+      },
+      {
+        "id": "WEEK 2 OPPONENT: 49ERS",
+        "title": "WEEK 2 OPPONENT: 49ERS",
+        "description": "We are preparing for the playoffs against the Sixers in 1 week and we are studying their offensive tendencies  Help us get smarter by answering the following questions.",
+        "image": "nfl_rams/mission_02.webp",
+        "focus_type": "Play-action",
+        "level": "Analyst",
+        "completion_msg": "Thanks for helping us study our opponent. This information gives us an edge. Playoffs start in 1 week, let's go!",
+        "completion_image": "nfl_rams/mission_02.webp",
+        "questions": [
+          {
+            "question_type": "dropdown",
+            "question": "How tall is the primary on-ball defender in relation to the ball handler?",
+            "dropdown_options": [
+              {
+                "title": "MUN",
+                "hint": "Choose play idea",
+                "options": [
+                  "Much taller",
+                  "Much taller",
+                  "Slightly taller",
+                  "Same height",
+                  "Slightly shorter",
+                  "Much shorter"
+                ]
+              },
+              {
+                "title": "EVE",
+                "hint": "Choose play idea",
+                "options": [
+                  "Much taller",
+                  "Slightly taller",
+                  "Same height",
+                  "Slightly shorter",
+                  "Much shorter"
+                ]
+              }
+            ],
+            "video": "nfl_rams/video-test.mp4",
+            "allow_multiple_selection": false
+          },
+          {
+            "question_type": "options_list",
+            "question": "How tall is the primary on-ball defender in relation to the ball handler?",
+            "options": [
+              "Much taller",
+              "Slightly taller",
+              "Same height",
+              "Slightly shorter",
+              "Much shorter"
+            ],
+            "video": "nfl_rams/video-test.mp4",
+            "allow_multiple_selection": false
+          },
+          {
+            "question_type": "options_list",
+            "question": "How far is the primary on-ball defender from the ball handler?",
+            "options": [
+              "Very close",
+              "Close",
+              "Medium",
+              "Far",
+              "Very far"
+            ],
+            "video": "nfl_rams/video-test.mp4",
+            "allow_multiple_selection": true
+          },
+          {
+            "question_type": "image",
+            "question": "How far is the primary  on-ball defender from the ball handler?",
+            "video": "nfl_rams/video-test.mp4",
+            "option_image": "nfl_rams/idea-3pt-defense.png"
+          },
+          {
+            "question_type": "2_options_list",
+            "question": "How far is  the primary on-ball defender from the ball handler?",
+            "options": [
+              "Very close",
+              "Close",
+              "Medium",
+              "Far",
+              "Very far"
+            ],
+            "video": "nfl_rams/video-test.mp4",
+            "allow_multiple_selection": true,
+            "options_title_left": "Taller",
+            "options_title_right": "Shorter"
+          },
+          {
+            "question_type": "2_options_list",
+            "question": "How  far is the primary on-ball defender from the ball handler?",
+            "options": [
+              "Very close",
+              "Close",
+              "Medium",
+              "Far",
+              "Very far",
+              "Closeest",
+              "Mediumest",
+              "Farest",
+              "Very farest",
+              "Closeests",
+              "Mediumests",
+              "Fareste",
+              "Very farestew"
+            ],
+            "video": "nfl_rams/video-test.mp4",
+            "allow_multiple_selection": true,
+            "options_title_left": "Taller",
+            "options_title_right": "Shorter"
+          }
+        ]
+      },
+      {
+        "id": "DRAFT WAR ROOM",
+        "title": "DRAFT WAR ROOM",
+        "description": "We are preparing for the playoffs against the Sixers in 1 week and we are studying their offensive tendencies  Help us get smarter by answering the following questions.",
+        "image": "nfl_rams/mission_03.webp",
+        "focus_type": "Positional picks",
+        "level": "Genius",
+        "completion_msg": "Thanks for helping us study our opponent. This information gives us an edge. Playoffs start in 1 week, let's go!",
+        "completion_image": "nfl_rams/mission_03.webp",
+        "questions": [
+          {
+            "question_type": "2_options_list",
+            "question": "How far is  the primary on-ball defender from the ball handler?",
+            "options": [
+              "Very close",
+              "Close",
+              "Medium",
+              "Far",
+              "Very far"
+            ],
+            "video": "nfl_rams/video-test.mp4",
+            "allow_multiple_selection": true,
+            "options_title_left": "Taller",
+            "options_title_right": "Shorter"
+          },
+          {
+            "question_type": "2_options_list",
+            "question": "How  far is the primary on-ball defender from the ball handler?",
+            "options": [
+              "Very close",
+              "Close",
+              "Medium",
+              "Far",
+              "Very far",
+              "Closeest",
+              "Mediumest",
+              "Farest",
+              "Very farest",
+              "Closeests",
+              "Mediumests",
+              "Fareste",
+              "Very farestew"
+            ],
+            "video": "nfl_rams/video-test.mp4",
+            "allow_multiple_selection": true,
+            "options_title_left": "Taller",
+            "options_title_right": "Shorter",
+            "option_image": "nfl_rams/idea-3pt-defense.png",
+            "image_option_hint": "Draw a line from the top."
+          }
+        ]
+      },
+      {
+        "id": "WEEK 3 OPPONENT:FALCONS",
+        "title": "WEEK 3 OPPONENT:  FALCONS",
+        "description": "We are preparing for the playoffs against the Sixers in 1 week and we are studying their offensive tendencies  Help us get smarter by answering the following questions.",
+        "image": "nfl_rams/mission_04.webp",
+        "focus_type": "DB tendencies",
+        "level": "SuperFan",
+        "completion_msg": "Thanks for helping us study our opponent. This information gives us an edge. Playoffs start in 1 week, let's go!",
+        "completion_image": "nfl_rams/mission_04.webp",
+        "questions": [
+          {
+            "question_type": "options_list",
+            "question": "How tall is the primary on-ball defender in relation to the ball handler?",
+            "options": [
+              "Much taller",
+              "Slightly taller",
+              "Same height",
+              "Slightly shorter",
+              "Much shorter"
+            ],
+            "video": "nfl_rams/video-test.mp4",
+            "allow_multiple_selection": false
+          },
+          {
+            "question_type": "image",
+            "question": "How far is the primary  on-ball defender from the ball handler?",
+            "video": "nfl_rams/video-test.mp4",
+            "option_image": "nfl_rams/idea-3pt-defense.png",
+            "image_option_hint": "Draw a line from the top."
+          },
+          {
+            "question_type": "2_options_list",
+            "question": "How far is  the primary on-ball defender from the ball handler?",
+            "options": [
+              "Very close",
+              "Close",
+              "Medium",
+              "Far",
+              "Very far"
+            ],
+            "video": "nfl_rams/video-test.mp4",
+            "allow_multiple_selection": true,
+            "options_title_left": "Taller",
+            "options_title_right": "Shorter"
+          },
+          {
+            "question_type": "2_options_list",
+            "question": "How  far is the primary on-ball defender from the ball handler?",
+            "options": [
+              "Very close",
+              "Close",
+              "Medium",
+              "Far",
+              "Very far",
+              "Closeest",
+              "Mediumest",
+              "Farest",
+              "Very farest",
+              "Closeests",
+              "Mediumests",
+              "Fareste",
+              "Very farestew"
+            ],
+            "video": "nfl_rams/video-test.mp4",
+            "allow_multiple_selection": true,
+            "options_title_left": "Taller",
+            "options_title_right": "Shorter"
+          }
+        ]
+      }
+    ],
+    "ideas": {
+      "default_youtube_thumbnail_image": "nfl_rams/mission_04.webp",
+      "menu_list": {
+        "review_title": "Roster Construction",
+        "review_description": "Who do you want to see on the team?",
+        "select_title": "Play Ideas",
+        "select_description": "What do you think the team should try?",
+        "submit_title": "Team Strategies",
+        "submit_description": "How do we best matchup?"
+      },
+      "play_ideas": [
+        "3-Point Defense",
+        "Offensive Rebounding",
+        "Fast Break",
+        "Pick and Roll",
+        "Transition Defense"
+      ],
+      "review_idea": {
+        "id": "review_idea",
+        "title": "PLAYBOOK | OFFENSE",
+        "description": "These innovative plays were submitted by our team's fans.  By describing and rating the plays, you'll help surface the best ones for our coaching staff to consider for our playbook.",
+        "image": "nfl_rams/mission_03.webp",
+        "completion_msg": "Thanks for helping us study our opponent. This information gives us an edge. Playoffs start in 1 week, let's go!",
+        "completion_image": "nfl_rams/mission_03.webp",
+        "questions": [
+          {
+            "question_type": "dropdown",
+            "question": "How tall is the primary on-ball defender in relation to the ball handler?",
+            "dropdown_options": [
+              {
+                "title": "MUN",
+                "hint": "Choose play idea",
+                "options": [
+                  "Much taller",
+                  "Much taller",
+                  "Slightly taller",
+                  "Same height",
+                  "Slightly shorter",
+                  "Much shorter"
+                ]
+              },
+              {
+                "title": "EVE",
+                "hint": "Choose play idea",
+                "options": [
+                  "Much taller",
+                  "Slightly taller",
+                  "Same height",
+                  "Slightly shorter",
+                  "Much shorter"
+                ]
+              }
+            ],
+            "video": "nfl_rams/video_test_2.mp4",
+            "allow_multiple_selection": false
+          },
+          {
+            "question_type": "options_list",
+            "question": "How tall is the primary on-ball defender in relation to the ball handler?",
+            "options": [
+              "Much taller",
+              "Slightly taller",
+              "Same height",
+              "Slightly shorter",
+              "Much shorter"
+            ],
+            "video": "nfl_rams/video-test.mp4",
+            "allow_multiple_selection": false
+          },
+          {
+            "question_type": "options_list",
+            "question": "How far is the primary on-ball defender from the ball handler?",
+            "options": [
+              "Very close",
+              "Close",
+              "Medium",
+              "Far",
+              "Very far"
+            ],
+            "video": "nfl_rams/video-test.mp4",
+            "allow_multiple_selection": true
+          },
+          {
+            "question_type": "image",
+            "question": "How far is the primary  on-ball defender from the ball handler?",
+            "video": "nfl_rams/video-test.mp4",
+            "option_image": "nfl_rams/idea-3pt-defense.png",
+            "image_option_hint": "Draw a line from the top."
+          },
+          {
+            "question_type": "2_options_list",
+            "question": "How far is  the primary on-ball defender from the ball handler?",
+            "options": [
+              "Very close",
+              "Close",
+              "Medium",
+              "Far",
+              "Very far"
+            ],
+            "video": "nfl_rams/video-test.mp4",
+            "allow_multiple_selection": true,
+            "options_title_left": "Taller",
+            "options_title_right": "Shorter"
+          },
+          {
+            "question_type": "2_options_list",
+            "question": "How  far is the primary on-ball defender from the ball handler?",
+            "options": [
+              "Very close",
+              "Close",
+              "Medium",
+              "Far",
+              "Very far",
+              "Closeest",
+              "Mediumest",
+              "Farest",
+              "Very farest",
+              "Closeests",
+              "Mediumests",
+              "Fareste",
+              "Very farestew"
+            ],
+            "video": "nfl_rams/video-test.mp4",
+            "allow_multiple_selection": true,
+            "options_title_left": "Taller",
+            "options_title_right": "Shorter"
+          }
+        ]
+      },
+      "select_idea": {
+        "id": "select_idea",
+        "title": "TEAM BUILDING",
+        "description": "We are evaluating players to acquire this offseason, through free agency and the draft.  Help us by telling us which players you think would improve our team the most.",
+        "image": "nfl_rams/mission_02.webp",
+        "completion_msg": "Thanks for helping us study our opponent. This information gives us an edge. Playoffs start in 1 week, let's go!",
+        "completion_image": "nfl_rams/mission_02.webp",
+        "questions": [
+          {
+            "question_type": "options_list",
+            "question": "How tall is the primary on-ball defender in relation to the ball handler?",
+            "options": [
+              "Much taller",
+              "Slightly taller",
+              "Same height",
+              "Slightly shorter",
+              "Much shorter"
+            ],
+            "image_selection": [
+              {
+                "title": "Damian Lillard",
+                "image": "nfl_rams/player_image_1.png"
+              },
+              {
+                "title": "MarJon Beauchamp",
+                "image": "nfl_rams/player_image_2.png"
+              },
+              {
+                "title": "MarJon Beauchamp",
+                "image": "nfl_rams/player_image_3.png"
+              },
+              {
+                "title": "Chris Livingston",
+                "image": "nfl_rams/player_image_4.png"
+              },
+              {
+                "title": "Damian Lillard",
+                "image": "nfl_rams/player_image_1.png"
+              },
+              {
+                "title": "MarJon Beauchamp",
+                "image": "nfl_rams/player_image_2.png"
+              },
+              {
+                "title": "MarJon Beauchamp",
+                "image": "nfl_rams/player_image_3.png"
+              },
+              {
+                "title": "Chris Livingston",
+                "image": "nfl_rams/player_image_4.png"
+              },
+              {
+                "title": "Damian Lillard",
+                "image": "nfl_rams/player_image_1.png"
+              },
+              {
+                "title": "MarJon Beauchamp",
+                "image": "nfl_rams/player_image_2.png"
+              },
+              {
+                "title": "MarJon Beauchamp",
+                "image": "nfl_rams/player_image_3.png"
+              },
+              {
+                "title": "Chris Livingston",
+                "image": "nfl_rams/player_image_4.png"
+              }
+            ],
+            "allow_multiple_selection": true
+          },
+          {
+            "question_type": "options_list",
+            "question": "How tall is the primary on-ball defender in relation to the ball handler?",
+            "options": [
+              "Much taller",
+              "Slightly taller",
+              "Same height",
+              "Slightly shorter",
+              "Much shorter"
+            ],
+            "video": "nfl_rams/video-test.mp4",
+            "allow_multiple_selection": false
+          },
+          {
+            "question_type": "options_list",
+            "question": "How far is the primary on-ball defender from the ball handler?",
+            "options": [
+              "Very close",
+              "Close",
+              "Medium",
+              "Far",
+              "Very far"
+            ],
+            "video": "nfl_rams/video-test.mp4",
+            "allow_multiple_selection": true
+          },
+          {
+            "question_type": "image",
+            "question": "How far is the primary  on-ball defender from the ball handler?",
+            "video": "nfl_rams/video-test.mp4",
+            "option_image": "nfl_rams/idea-3pt-defense.png",
+            "image_option_hint": "Draw a line from the top."
+          },
+          {
+            "question_type": "2_options_list",
+            "question": "How far is  the primary on-ball defender from the ball handler?",
+            "options": [
+              "Very close",
+              "Close",
+              "Medium",
+              "Far",
+              "Very far"
+            ],
+            "video": "nfl_rams/video-test.mp4",
+            "allow_multiple_selection": true,
+            "options_title_left": "Taller",
+            "options_title_right": "Shorter"
+          },
+          {
+            "question_type": "2_options_list",
+            "question": "How  far is the primary on-ball defender from the ball handler?",
+            "options": [
+              "Very close",
+              "Close",
+              "Medium",
+              "Far",
+              "Very far",
+              "Closeest",
+              "Mediumest",
+              "Farest",
+              "Very farest",
+              "Closeests",
+              "Mediumests",
+              "Fareste",
+              "Very farestew"
+            ],
+            "video": "nfl_rams/video-test.mp4",
+            "allow_multiple_selection": true,
+            "options_title_left": "Taller",
+            "options_title_right": "Shorter"
+          }
+        ]
+      },
+      "submit_idea": {
+        "id": "submit_idea",
+        "title": "SUBMIT AN IDEA",
+        "description": "Share your expertise here:\n\u25CF See something in another game that would be useful to us? \n\u25CF Have a strategy to attack an upcoming opponent?\n\u25CF Thoughts on how we can improve?\n",
+        "image": "nfl_rams/mission_04.webp"
+      }
+    }
+  }
