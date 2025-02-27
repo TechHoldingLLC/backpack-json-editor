@@ -1,224 +1,219 @@
-import { Ideas as IdeasType, IdeaSection as IdeaSectionType } from './types';
-import { ImagePreview } from './ImagePreview';
-import { Tab } from '@headlessui/react';
-import { ChevronRightIcon } from '@heroicons/react/24/outline';
-import { useState } from 'react';
-import { IdeaSection } from './IdeaSection';
-import { PlayIdeas } from './PlayIdeas';
-import { SubmitIdea } from './SubmitIdea';
+import { Ideas as IdeasType, Idea, Question } from './types';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
+import { IdeaCard } from './IdeaCard';
+import { IdeaQuestions } from './IdeaQuestions';
+import { YouTubeThumbnail } from './YouTubeThumbnail';
+import { Input } from '../ui/input';
+import { Textarea } from '../ui/textarea';
 
 interface IdeasProps {
   ideas: IdeasType;
   getFullImageUrl: (path: string) => string;
-  onIdeasChange: (section: keyof IdeasType, field: string, value: string | string[] | IdeaSectionType) => void;
-  onQuestionChange: (section: 'review_idea' | 'select_idea', questionIndex: number, field: string, value: unknown) => void;
-  onQuestionAdd: (section: 'review_idea' | 'select_idea') => void;
-  onQuestionRemove: (section: 'review_idea' | 'select_idea', questionIndex: number) => void;
+  onIdeaChange: (sectionId: 'review_idea' | 'select_idea' | 'submit_idea', field: keyof Idea, value: string) => void;
+  onQuestionChange: (sectionId: 'review_idea' | 'select_idea', questionIndex: number, field: keyof Question, value: unknown) => void;
+  onQuestionAdd: (sectionId: 'review_idea' | 'select_idea') => void;
+  onQuestionRemove: (sectionId: 'review_idea' | 'select_idea', questionIndex: number) => void;
+  onYouTubeThumbnailChange: (value: string) => void;
+  onMenuListChange: (field: keyof IdeasType['menu_list'], value: string) => void;
+  onPlayIdeaAdd: () => void;
+  onPlayIdeaChange: (index: number, value: string) => void;
+  onPlayIdeaRemove: (index: number) => void;
 }
-
-const TabButton = ({ selected }: { selected: boolean }) => {
-  return `w-full rounded-lg py-2.5 text-sm font-medium leading-5 focus:outline-none ${
-    selected
-      ? 'bg-white text-primary shadow'
-      : 'text-gray-600 hover:bg-white/[0.12] hover:text-gray-800'
-  }`;
-};
 
 export const Ideas = ({
   ideas,
   getFullImageUrl,
-  onIdeasChange,
+  onIdeaChange,
   onQuestionChange,
   onQuestionAdd,
-  onQuestionRemove
+  onQuestionRemove,
+  onYouTubeThumbnailChange,
+  onMenuListChange,
+  onPlayIdeaAdd,
+  onPlayIdeaChange,
+  onPlayIdeaRemove,
 }: IdeasProps) => {
-  const [selectedTabIndex, setSelectedTabIndex] = useState(0);
+  const ideaCards = [
+    {
+      id: 'review_idea',
+      title: ideas.menu_list.review_title,
+      description: ideas.menu_list.review_description,
+      count: ideas.review_idea.questions?.length,
+      onTitleChange: (value: string) => onMenuListChange('review_title', value),
+      onDescriptionChange: (value: string) => onMenuListChange('review_description', value),
+    },
+    {
+      id: 'select_idea',
+      title: ideas.menu_list.select_title,
+      description: ideas.menu_list.select_description,
+      count: ideas.select_idea.questions?.length,
+      onTitleChange: (value: string) => onMenuListChange('select_title', value),
+      onDescriptionChange: (value: string) => onMenuListChange('select_description', value),
+    },
+    {
+      id: 'submit_idea',
+      title: ideas.menu_list.submit_title,
+      description: ideas.menu_list.submit_description,
+      onTitleChange: (value: string) => onMenuListChange('submit_title', value),
+      onDescriptionChange: (value: string) => onMenuListChange('submit_description', value),
+    },
+  ];
 
-  const handleTabChange = (index: number) => {
-    setSelectedTabIndex(index);
-  };
-
-  const handleMenuListChange = (field: string, value: string) => {
-    onIdeasChange('menu_list', field, value);
-  };
-
-  const handleSectionChange = (section: 'review_idea' | 'select_idea' | 'submit_idea', field: string, value: string) => {
-    onIdeasChange(section, field, { ...ideas[section], [field]: value });
-  };
+  const tabs = [
+    {
+      id: 'review_idea',
+      title: ideas.review_idea.title || 'Review Ideas',
+      content: (
+        <div className="space-y-6">
+          <IdeaCard
+            idea={ideas.review_idea}
+            index={0}
+            getFullImageUrl={getFullImageUrl}
+            onIdeaChange={(_, field, value) => onIdeaChange('review_idea', field, value)}
+            onIdeaRemove={() => {}}
+          />
+          <IdeaQuestions
+            questions={ideas.review_idea.questions || []}
+            onQuestionChange={(questionIndex, field, value) => 
+              onQuestionChange('review_idea', questionIndex, field, value)
+            }
+            onQuestionAdd={() => onQuestionAdd('review_idea')}
+            onQuestionRemove={(questionIndex) => onQuestionRemove('review_idea', questionIndex)}
+            sectionTitle="Review Questions"
+          />
+        </div>
+      ),
+    },
+    {
+      id: 'select_idea',
+      title: ideas.select_idea.title || 'Select Ideas',
+      content: (
+        <div className="space-y-6">
+          <IdeaCard
+            idea={ideas.select_idea}
+            index={1}
+            getFullImageUrl={getFullImageUrl}
+            onIdeaChange={(_, field, value) => onIdeaChange('select_idea', field, value)}
+            onIdeaRemove={() => {}}
+          />
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <h3 className="text-base font-semibold text-gray-900">Play Ideas</h3>
+              <button
+                onClick={onPlayIdeaAdd}
+                className="text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+              >
+                Add Play Idea
+              </button>
+            </div>
+            <div className="space-y-2">
+              {ideas.play_ideas.map((idea, index) => (
+                <div key={index} className="flex items-center gap-2">
+                  <Input
+                    value={idea}
+                    onChange={(e) => onPlayIdeaChange(index, e.target.value)}
+                    placeholder="Enter play idea"
+                    className="flex-1 h-9 bg-white text-gray-900 border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                  />
+                  <button
+                    onClick={() => onPlayIdeaRemove(index)}
+                    className="text-gray-500 hover:text-red-600 transition-colors"
+                  >
+                    Remove
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+          <IdeaQuestions
+            questions={ideas.select_idea.questions || []}
+            onQuestionChange={(questionIndex, field, value) => 
+              onQuestionChange('select_idea', questionIndex, field, value)
+            }
+            onQuestionAdd={() => onQuestionAdd('select_idea')}
+            onQuestionRemove={(questionIndex) => onQuestionRemove('select_idea', questionIndex)}
+            sectionTitle="Selection Questions"
+          />
+        </div>
+      ),
+    },
+    {
+      id: 'submit_idea',
+      title: ideas.submit_idea.title || 'Submit Ideas',
+      content: (
+        <div className="space-y-6">
+          <IdeaCard
+            idea={ideas.submit_idea}
+            index={2}
+            getFullImageUrl={getFullImageUrl}
+            onIdeaChange={(_, field, value) => onIdeaChange('submit_idea', field, value)}
+            onIdeaRemove={() => {}}
+          />
+        </div>
+      ),
+    },
+  ];
 
   return (
-    <div className="space-y-8">
-      {/* Menu List Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* Review Card */}
-        <div 
-          className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow cursor-pointer"
-          onClick={() => handleTabChange(0)}
-        >
-          <div className="p-6">
-            <input
-              type="text"
-              value={ideas.menu_list.review_title}
-              onChange={(e) => handleMenuListChange('review_title', e.target.value)}
-              className="w-full text-xl font-semibold text-gray-900 mb-2 border-0 border-b border-transparent hover:border-gray-300 focus:ring-0 focus:border-primary px-0"
-              placeholder="Enter review title"
-            />
-            <textarea
-              value={ideas.menu_list.review_description}
-              onChange={(e) => handleMenuListChange('review_description', e.target.value)}
-              className="w-full text-gray-600 mb-4 border-0 border-b border-transparent hover:border-gray-300 focus:ring-0 focus:border-primary px-0 resize-none"
-              placeholder="Enter review description"
-              rows={2}
-            />
-            <div className="flex items-center text-primary">
-              <span>{ideas.review_idea.questions?.length || 0} Questions</span>
-              <ChevronRightIcon className="w-5 h-5 ml-1" />
-            </div>
-          </div>
-        </div>
-
-        {/* Select Card */}
-        <div 
-          className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow cursor-pointer"
-          onClick={() => handleTabChange(1)}
-        >
-          <div className="p-6">
-            <input
-              type="text"
-              value={ideas.menu_list.select_title}
-              onChange={(e) => handleMenuListChange('select_title', e.target.value)}
-              className="w-full text-xl font-semibold text-gray-900 mb-2 border-0 border-b border-transparent hover:border-gray-300 focus:ring-0 focus:border-primary px-0"
-              placeholder="Enter select title"
-            />
-            <textarea
-              value={ideas.menu_list.select_description}
-              onChange={(e) => handleMenuListChange('select_description', e.target.value)}
-              className="w-full text-gray-600 mb-4 border-0 border-b border-transparent hover:border-gray-300 focus:ring-0 focus:border-primary px-0 resize-none"
-              placeholder="Enter select description"
-              rows={2}
-            />
-            <div className="flex items-center text-primary">
-              <span>{ideas.play_ideas.length} Play Ideas</span>
-              <ChevronRightIcon className="w-5 h-5 ml-1" />
-            </div>
-          </div>
-        </div>
-
-        {/* Submit Card */}
-        <div 
-          className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow cursor-pointer"
-          onClick={() => handleTabChange(2)}
-        >
-          <div className="p-6">
-            <input
-              type="text"
-              value={ideas.menu_list.submit_title}
-              onChange={(e) => handleMenuListChange('submit_title', e.target.value)}
-              className="w-full text-xl font-semibold text-gray-900 mb-2 border-0 border-b border-transparent hover:border-gray-300 focus:ring-0 focus:border-primary px-0"
-              placeholder="Enter submit title"
-            />
-            <textarea
-              value={ideas.menu_list.submit_description}
-              onChange={(e) => handleMenuListChange('submit_description', e.target.value)}
-              className="w-full text-gray-600 mb-4 border-0 border-b border-transparent hover:border-gray-300 focus:ring-0 focus:border-primary px-0 resize-none"
-              placeholder="Enter submit description"
-              rows={2}
-            />
-            <div className="flex items-center text-primary">
-              <span>Share Your Ideas</span>
-              <ChevronRightIcon className="w-5 h-5 ml-1" />
-            </div>
-          </div>
-        </div>
+    <div className="space-y-6 bg-white p-6 rounded-lg border border-gray-200">
+      <div className="flex justify-between items-center">
+        <h2 className="text-xl font-semibold text-gray-900">Ideas</h2>
       </div>
 
-      {/* Main Content Tabs */}
-      <Tab.Group selectedIndex={selectedTabIndex} onChange={handleTabChange}>
-        <Tab.List className="flex space-x-2 rounded-xl bg-gray-100 p-1">
-          <Tab className={({ selected }) => TabButton({ selected })}>
-            {ideas.menu_list.review_title}
-          </Tab>
-          <Tab className={({ selected }) => TabButton({ selected })}>
-            {ideas.menu_list.select_title}
-          </Tab>
-          <Tab className={({ selected }) => TabButton({ selected })}>
-            {ideas.menu_list.submit_title}
-          </Tab>
-        </Tab.List>
-
-        <Tab.Panels className="mt-4">
-          {/* Review Ideas Panel */}
-          <Tab.Panel>
-            <IdeaSection
-              section={ideas.review_idea}
-              getFullImageUrl={getFullImageUrl}
-              onSectionChange={(field, value) => handleSectionChange('review_idea', field, value)}
-              onQuestionChange={(questionIndex, field, value) => 
-                onQuestionChange('review_idea', questionIndex, field, value)
-              }
-              onQuestionAdd={() => onQuestionAdd('review_idea')}
-              onQuestionRemove={(questionIndex) => onQuestionRemove('review_idea', questionIndex)}
-            />
-          </Tab.Panel>
-
-          {/* Select Ideas Panel */}
-          <Tab.Panel>
-            <IdeaSection
-              section={ideas.select_idea}
-              getFullImageUrl={getFullImageUrl}
-              onSectionChange={(field, value) => handleSectionChange('select_idea', field, value)}
-              onQuestionChange={(questionIndex, field, value) => 
-                onQuestionChange('select_idea', questionIndex, field, value)
-              }
-              onQuestionAdd={() => onQuestionAdd('select_idea')}
-              onQuestionRemove={(questionIndex) => onQuestionRemove('select_idea', questionIndex)}
-            />
-            <PlayIdeas
-              ideas={ideas.play_ideas}
-              onAdd={() => onIdeasChange('play_ideas', '', [...ideas.play_ideas, ''])}
-              onChange={(index, value) => {
-                const newIdeas = [...ideas.play_ideas];
-                newIdeas[index] = value;
-                onIdeasChange('play_ideas', '', newIdeas);
-              }}
-              onRemove={(index) => {
-                const newIdeas = ideas.play_ideas.filter((_, i) => i !== index);
-                onIdeasChange('play_ideas', '', newIdeas);
-              }}
-            />
-          </Tab.Panel>
-
-          {/* Submit Ideas Panel */}
-          <Tab.Panel>
-            <SubmitIdea
-              section={ideas.submit_idea}
-              getFullImageUrl={getFullImageUrl}
-              onSectionChange={(field, value) => handleSectionChange('submit_idea', field, value)}
-            />
-          </Tab.Panel>
-        </Tab.Panels>
-      </Tab.Group>
-
-      {/* YouTube Thumbnail Section */}
-      <div className="bg-white rounded-xl p-6 shadow-sm">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Default YouTube Thumbnail</h3>
-        <div className="flex items-center space-x-4">
-          <ImagePreview
-            src={getFullImageUrl(ideas.default_youtube_thumbnail_image)}
-            alt="Default YouTube Thumbnail"
-            className="w-32 h-24 rounded-lg object-cover"
-          />
-          <div className="flex-1">
-            <input
-              type="text"
-              value={ideas.default_youtube_thumbnail_image}
-              onChange={(e) => onIdeasChange('default_youtube_thumbnail_image', '', e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-              placeholder="YouTube Thumbnail Image Path"
-            />
+      <div className="grid grid-cols-3 gap-6">
+        {ideaCards.map((card) => (
+          <div
+            key={card.id}
+            className="bg-white rounded-xl border border-gray-200 p-6 hover:border-primary transition-colors"
+          >
+            <div className="space-y-4">
+              <Input
+                value={card.title}
+                onChange={(e) => card.onTitleChange(e.target.value)}
+                placeholder="Enter title"
+                className="text-lg font-semibold bg-white border-0 px-0 h-auto focus:ring-2 focus:ring-primary focus:border-primary p-0 placeholder:text-gray-400 text-gray-900"
+              />
+              <Textarea
+                value={card.description}
+                onChange={(e) => card.onDescriptionChange(e.target.value)}
+                placeholder="Enter description"
+                className="min-h-[80px] bg-white text-gray-600 border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary transition-colors resize-none"
+              />
+              {card.count !== undefined && (
+                <div className="text-sm font-medium text-gray-500 bg-gray-50 px-3 py-1 rounded-full border border-gray-200 w-fit">
+                  {card.count} Questions
+                </div>
+              )}
+            </div>
           </div>
-        </div>
+        ))}
       </div>
+
+      <Tabs defaultValue="review_idea" className="w-full">
+        <TabsList className="w-full border-b border-gray-200 mb-6">
+          {tabs.map((tab) => (
+            <TabsTrigger
+              key={tab.id}
+              value={tab.id}
+              className="flex-1 py-3 text-sm font-medium text-gray-600 [&[data-state=active]]:text-primary [&[data-state=active]]:border-b-2 [&[data-state=active]]:border-primary"
+            >
+              {tab.title}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+
+        {tabs.map((tab) => (
+          <TabsContent key={tab.id} value={tab.id}>
+            {tab.content}
+          </TabsContent>
+        ))}
+      </Tabs>
+
+      <YouTubeThumbnail
+        imagePath={ideas.default_youtube_thumbnail_image}
+        getFullImageUrl={getFullImageUrl}
+        onChange={onYouTubeThumbnailChange}
+      />
     </div>
   );
 }; 
