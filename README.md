@@ -1,4 +1,4 @@
-# Backpack JSON Helper
+# Backpack JSON Editor
 
 A React.js web application for managing leagues and teams JSON data with validation and image path verification.
 
