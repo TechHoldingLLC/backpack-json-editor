@@ -1,6 +1,20 @@
 import { useState, useEffect } from 'react';
 import { Switch } from '@headlessui/react';
 import { validateS3ImagePath } from '../utils/validator';
+import { Card, CardContent } from './ui/card';
+import { Input } from './ui/input';
+import { Button } from './ui/button';
+import { Label } from './ui/label';
+import { 
+  Trophy, 
+  Plus, 
+  Trash2, 
+  Save, 
+  Image as ImageIcon,
+  Hash,
+  Users,
+  ToggleLeft
+} from 'lucide-react';
 
 interface Team {
   id: string;
@@ -179,241 +193,240 @@ const LeagueCard = ({ league, onUpdate }: LeagueCardProps) => {
   };
 
   return (
-    <div className="bg-white shadow-lg rounded-lg p-6 mb-6">
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center space-x-4 flex-1">
-          <div className="flex-1 flex items-start space-x-4">
-            <div className="relative w-64">
-              <input
-                type="text"
-                id={`league-id-${league.id}`}
-                value={leagueId}
-                onChange={handleIdChange}
-                className="peer w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white placeholder-transparent transition-all text-text"
-                placeholder="League ID"
-              />
-              <label
-                htmlFor={`league-id-${league.id}`}
-                className="absolute left-2 -top-2.5 bg-white px-2 text-sm text-text transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary"
-              >
-                League ID
-              </label>
+    <Card className="bg-white border border-gray-200 shadow-sm">
+      <CardContent className="p-6">
+        <div className="space-y-6">
+          {/* League Basic Info */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-2">
+              <Trophy className="w-5 h-5 text-primary" />
+              <h2 className="text-lg font-semibold text-gray-900">League Basic Info</h2>
             </div>
-            <div className="relative flex-1">
-              <div className="flex items-start space-x-4">
-                <div className="flex-1">
-                  <input
-                    type="text"
-                    id={`league-logo-${league.id}`}
-                    value={league.logo_image}
-                    onChange={(e) => onUpdate({ ...league, logo_image: e.target.value })}
-                    className={`peer w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white placeholder-transparent transition-all text-text ${
-                      logoError ? 'border-red-500 focus:ring-red-500' : 'border-gray-300'
-                    }`}
-                    placeholder="Logo Path"
-                  />
-                  <label
-                    htmlFor={`league-logo-${league.id}`}
-                    className={`absolute left-2 -top-2.5 bg-white px-2 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-2 peer-focus:-top-2.5 peer-focus:text-sm ${
-                      logoError 
-                        ? 'text-red-500 peer-placeholder-shown:text-red-400 peer-focus:text-red-500' 
-                        : 'text-text peer-placeholder-shown:text-gray-400 peer-focus:text-primary'
-                    }`}
+
+            <div className="grid grid-cols-2 gap-6">
+              <div className="space-y-1.5">
+                <Label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                  <Hash className="w-4 h-4 text-primary" />
+                  League ID
+                </Label>
+                <Input
+                  value={leagueId}
+                  onChange={handleIdChange}
+                  className="h-9 bg-white text-gray-900 border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                  placeholder="Enter league ID"
+                />
+              </div>
+
+              <div className="space-y-1.5">
+                <Label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                  <ToggleLeft className="w-4 h-4 text-primary" />
+                  Status
+                </Label>
+                <div className="flex items-center gap-3 h-9 px-3">
+                  <Switch
+                    checked={isEnabled}
+                    onChange={handleToggle}
+                    className={`${
+                      isEnabled ? 'bg-primary' : 'bg-gray-200'
+                    } relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2`}
                   >
-                    Logo Path
-                  </label>
-                  {logoError && (
-                    <p className="mt-1 text-sm text-red-500">Invalid image path</p>
-                  )}
-                </div>
-                <div className="relative">
-                  <img
-                    src={getFullImageUrl(league.logo_image)}
-                    alt={`${league.id} logo`}
-                    className={`w-12 h-12 object-contain ${
-                      logoError ? 'border-2 border-red-500' : ''
-                    }`}
-                  />
-                  {logoError && (
-                    <div className="absolute -top-2 -right-2">
-                      <span className="inline-flex items-center justify-center w-5 h-5 bg-red-100 text-red-500 rounded-full">
-                        !
-                      </span>
-                    </div>
-                  )}
+                    <span className="sr-only">Enable League</span>
+                    <span
+                      className={`${
+                        isEnabled ? 'translate-x-6' : 'translate-x-1'
+                      } inline-block h-4 w-4 transform rounded-full bg-white transition-transform`}
+                    />
+                  </Switch>
+                  <span className="text-sm text-gray-600">
+                    {isEnabled ? 'Enabled' : 'Disabled'}
+                  </span>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-        <Switch
-          checked={isEnabled}
-          onChange={handleToggle}
-          className={`${
-            isEnabled ? 'bg-primary' : 'bg-gray-200'
-          } relative inline-flex h-6 w-11 items-center rounded-full ml-4`}
-        >
-          <span className="sr-only">Enable league</span>
-          <span
-            className={`${
-              isEnabled ? 'translate-x-6' : 'translate-x-1'
-            } inline-block h-4 w-4 transform rounded-full bg-white transition`}
-          />
-        </Switch>
-      </div>
 
-      <div className="mt-6">
-        <div className="flex justify-between items-center mb-4">
-          <h3 className="text-lg font-medium text-text">Teams</h3>
-          <button
-            onClick={handleAddTeam}
-            className="bg-primary text-text-light px-4 py-2 rounded-md hover:bg-primary/80"
-          >
-            Add Team
-          </button>
-        </div>
-
-        <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-secondary">
-              <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-text uppercase tracking-wider">
-                  ID
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-text uppercase tracking-wider">
-                  Logo
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-text uppercase tracking-wider">
-                  Preview
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-text uppercase tracking-wider">
-                  Enabled
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-text uppercase tracking-wider">
-                  Actions
-                </th>
-              </tr>
-            </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              {teams.map((team, index) => (
-                <tr key={`team_${index}`} className={team.isNew ? 'bg-secondary/50' : ''}>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="relative">
-                      <input
-                        type="text"
-                        id={`team-id-${team.id}`}
-                        value={team.id}
-                        onChange={(e) => handleTeamUpdate({ id: e.target.value }, index)}
-                        className={`peer w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white placeholder-transparent transition-all text-text ${
-                          team.errors?.id ? 'border-red-500 focus:ring-red-500' : 'border-gray-300'
-                        }`}
-                        placeholder="Team ID"
-                      />
-                      <label
-                        htmlFor={`team-id-${team.id}`}
-                        className={`absolute left-2 -top-2.5 bg-white px-2 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary ${
-                          team.errors?.id ? 'text-red-500' : ''
-                        }`}
-                      >
-                        Team ID
-                      </label>
-                      {team.errors?.id && (
-                        <p className="mt-1 text-sm text-red-500">{team.errors.id}</p>
-                      )}
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="relative">
-                      <input
-                        type="text"
-                        id={`team-logo-${team.id}`}
-                        value={team.logo_image}
-                        onChange={(e) => handleTeamUpdate({ logo_image: e.target.value }, index)}
-                        className={`peer w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white placeholder-transparent transition-all text-text ${
-                          teamLogoErrors[index] ? 'border-red-500 focus:ring-red-500' : 'border-gray-300'
-                        }`}
-                        placeholder="Logo Path"
-                      />
-                      <label
-                        htmlFor={`team-logo-${team.id}`}
-                        className={`absolute left-2 -top-2.5 bg-white px-2 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary ${
-                          teamLogoErrors[index] ? 'text-red-500' : ''
-                        }`}
-                      >
-                        Logo Path
-                      </label>
-                      {team.errors?.logo_image && (
-                        <p className="mt-1 text-sm text-red-500">{team.errors.logo_image}</p>
-                      )}
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
+              <div className="col-span-2 space-y-1.5">
+                <Label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                  <ImageIcon className="w-4 h-4 text-primary" />
+                  Logo Path
+                </Label>
+                <div className="flex items-start gap-6">
+                  <div className="w-[400px]">
+                    <Input
+                      value={league.logo_image}
+                      onChange={(e) => onUpdate({ ...league, logo_image: e.target.value })}
+                      className={`h-9 bg-white text-gray-900 border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary transition-colors ${
+                        logoError ? 'border-red-500 focus:ring-red-500' : ''
+                      }`}
+                      placeholder="Enter logo path"
+                    />
+                    {logoError && (
+                      <p className="mt-1 text-sm text-red-500">Invalid image path</p>
+                    )}
+                  </div>
+                  <div className="shrink-0">
                     <div className="relative">
                       <img
-                        src={getFullImageUrl(team.logo_image)}
-                        alt={`${team.id} preview`}
-                        className={`w-12 h-12 object-contain ${
-                          teamLogoErrors[index] ? 'border-2 border-red-500' : ''
+                        src={getFullImageUrl(league.logo_image)}
+                        alt={`${league.id} logo`}
+                        className={`w-24 h-24 rounded-lg object-contain bg-gray-50 border ${
+                          logoError ? 'border-red-500' : 'border-gray-200'
                         }`}
                       />
-                      {teamLogoErrors[index] && (
+                      {logoError && (
                         <div className="absolute -top-2 -right-2">
-                          <span className="inline-flex items-center justify-center w-5 h-5 bg-red-100 text-red-500 rounded-full">
+                          <span className="inline-flex items-center justify-center w-5 h-5 bg-red-100 text-red-500 rounded-full text-xs font-medium">
                             !
                           </span>
                         </div>
                       )}
                     </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="relative">
-                      <Switch
-                        checked={team.enabled}
-                        onChange={() => handleTeamUpdate({ enabled: !team.enabled }, index)}
-                        className={`${
-                          team.enabled ? 'bg-primary' : 'bg-gray-200'
-                        } relative inline-flex h-6 w-11 items-center rounded-full`}
-                      >
-                        <span className="sr-only">Enable team</span>
-                        <span
-                          className={`${
-                            team.enabled ? 'translate-x-6' : 'translate-x-1'
-                          } inline-block h-4 w-4 transform rounded-full bg-white transition`}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Teams Section */}
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Users className="w-5 h-5 text-primary" />
+                <h3 className="text-lg font-semibold text-gray-900">Teams</h3>
+              </div>
+              <Button
+                onClick={handleAddTeam}
+                variant="outline"
+                size="sm"
+                className="h-8 bg-white text-gray-700 border-gray-200 hover:bg-gray-50 hover:text-gray-900 hover:border-gray-300 transition-colors"
+              >
+                <Plus className="w-4 h-4 mr-1.5" />
+                Add Team
+              </Button>
+            </div>
+
+            <div className="overflow-x-auto rounded-lg border border-gray-200">
+              <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-[200px]">
+                      ID
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-[300px]">
+                      Logo Path
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Preview
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Status
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Actions
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                  {teams.map((team, index) => (
+                    <tr key={index} className={team.isNew ? 'bg-gray-50' : ''}>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <Input
+                          value={team.id}
+                          onChange={(e) => handleTeamUpdate({ id: e.target.value }, index)}
+                          className={`h-9 bg-white text-gray-900 border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary transition-colors ${
+                            team.errors?.id ? 'border-red-500 focus:ring-red-500' : ''
+                          }`}
+                          placeholder="Enter team ID"
                         />
-                      </Switch>
-                      <span className="ml-2 text-sm text-text">
-                        {team.enabled ? 'Enabled' : 'Disabled'}
-                      </span>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                    {team.isNew ? (
-                      <button
-                        onClick={() => handleSaveTeam(index)}
-                        className={`px-4 py-2 rounded-md transition-colors ${
-                          !team.id || !team.logo_image || teamLogoErrors[index]
-                            ? 'bg-primary/50 cursor-not-allowed'
-                            : 'bg-primary hover:bg-primary/80'
-                        } text-text-light`}
-                      >
-                        Save
-                      </button>
-                    ) : (
-                      <button
-                        onClick={() => handleDeleteTeam(index)}
-                        className="text-red-600 hover:text-red-900 px-4 py-2 rounded-md transition-colors"
-                      >
-                        Delete
-                      </button>
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                        {team.errors?.id && (
+                          <p className="mt-1 text-sm text-red-500">{team.errors.id}</p>
+                        )}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <Input
+                          value={team.logo_image}
+                          onChange={(e) => handleTeamUpdate({ logo_image: e.target.value }, index)}
+                          className={`h-9 bg-white text-gray-900 border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary transition-colors ${
+                            team.errors?.logo_image || teamLogoErrors[index] ? 'border-red-500 focus:ring-red-500' : ''
+                          }`}
+                          placeholder="Enter logo path"
+                        />
+                        {(team.errors?.logo_image || teamLogoErrors[index]) && (
+                          <p className="mt-1 text-sm text-red-500">
+                            {team.errors?.logo_image || 'Invalid image path'}
+                          </p>
+                        )}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="relative">
+                          <img
+                            src={getFullImageUrl(team.logo_image)}
+                            alt={`${team.id} logo`}
+                            className={`w-20 h-20 rounded-lg object-contain bg-gray-50 border ${
+                              teamLogoErrors[index] ? 'border-red-500' : 'border-gray-200'
+                            }`}
+                          />
+                          {teamLogoErrors[index] && (
+                            <div className="absolute -top-2 -right-2">
+                              <span className="inline-flex items-center justify-center w-5 h-5 bg-red-100 text-red-500 rounded-full text-xs font-medium">
+                                !
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="flex items-center gap-3">
+                          <Switch
+                            checked={team.enabled}
+                            onChange={() => handleTeamUpdate({ enabled: !team.enabled }, index)}
+                            className={`${
+                              team.enabled ? 'bg-primary' : 'bg-gray-200'
+                            } relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2`}
+                          >
+                            <span className="sr-only">Enable Team</span>
+                            <span
+                              className={`${
+                                team.enabled ? 'translate-x-6' : 'translate-x-1'
+                              } inline-block h-4 w-4 transform rounded-full bg-white transition-transform`}
+                            />
+                          </Switch>
+                          <span className="text-sm text-gray-600">
+                            {team.enabled ? 'Enabled' : 'Disabled'}
+                          </span>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {team.isNew ? (
+                          <Button
+                            onClick={() => handleSaveTeam(index)}
+                            variant="outline"
+                            size="sm"
+                            className="h-9 bg-white text-primary border-primary hover:bg-primary/10 transition-colors"
+                            disabled={!team.id || !team.logo_image || teamLogoErrors[index]}
+                          >
+                            <Save className="w-4 h-4 mr-1.5" />
+                            Save
+                          </Button>
+                        ) : (
+                          <Button
+                            onClick={() => handleDeleteTeam(index)}
+                            variant="ghost"
+                            size="sm"
+                            className="h-9 text-gray-500 hover:text-red-600 hover:bg-red-50 transition-colors"
+                          >
+                            <Trash2 className="w-4 h-4 mr-1.5" />
+                            Delete
+                          </Button>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 };
 
