@@ -29,6 +29,17 @@ VITE_ASSET_URL=https://d5gvige0osb8h.cloudfront.net/
 npm run dev
 ```
 
+4. Build for production:
+```bash
+npm run build
+```
+
+5. Preview production build:
+```bash
+npm run preview
+```
+The preview server will be available at http://localhost:4173
+
 ## Usage
 
 1. Upload a JSON file using the file upload interface

@@ -32,7 +32,7 @@ export const Header = ({ activeTab, onTabChange }: HeaderProps) => {
                   : 'text-gray-600 hover:text-primary'
               }`}
             >
-              League
+              Leagues
             </button>
           </nav>
         </div>

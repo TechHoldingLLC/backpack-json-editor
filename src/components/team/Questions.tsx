@@ -14,8 +14,6 @@ interface QuestionsProps {
 
 export const Questions = ({
   questions,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  missionIndex,
   getFullImageUrl,
   onQuestionChange,
   onQuestionAdd,
