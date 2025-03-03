@@ -1,0 +1,2133 @@
+{
+  "id": "mls_lafc",
+  "name": "LAFC",
+  "logo_image": "mls_lafc/lafc_logo.webp",
+  "survey_url": "https://www.surveymonkey.com/r/lafc",
+  "welcome_details": {
+    "title": "WELCOME TO THE TEAM!",
+    "description": "Trophies are the best, aren’t they? Let’s win another one, together. Your participation in this app will give us competitive advantages in all the ways that help us win: developing our style of play, building our roster, and preparing game plans. YOU can be the difference.",
+    "welcome_image": "mls_lafc/welcome_image.webp",
+    "author": "- Denis Bouanga, #99"
+  },
+  "team_home": {
+    "motto": "DALE! DALE! DALE! BLACK AND GOLD!!",
+    "best_ideas": {
+      "user_name": "Mr_Cherunderful",
+      "user_image": "mls_lafc/best_idea_cherunderful.webp"
+    },
+    "most_missions": {
+      "user_name": "99problems",
+      "user_image": "mls_lafc/most_missions_99problems.webp"
+    },
+    "top_team_rank": [
+      {
+        "user_name": "Blackandgold",
+        "user_image": "mls_lafc/top_user_01_blackandgold.webp"
+      },
+      {
+        "user_name": "CupChamp",
+        "user_image": "mls_lafc/top_user_02_cup_champ.webp"
+      },
+      {
+        "user_name": "Expo_Original",
+        "user_image": "mls_lafc/top_user_03_expo_original.webp"
+      },
+      {
+        "user_name": "3252reasons",
+        "user_image": "mls_lafc/top_user_04_3252reasons.webp"
+      },
+      {
+        "user_name": "beebs",
+        "user_image": "mls_lafc/top_user_05_beebs.webp"
+      }
+    ]
+  },
+  "missions": [
+    {
+      "id": "mls_lafc_mission_01",
+      "title": "LEAGUES CUP: PENALTIES",
+      "description": "Leagues Cup starts in 1 month. If penalty kicks come into play, we want to have an informational advantage. By answering the following questions, you'll help us better understand the tendencies of oopponent kick-takers. The difference between advancing and going home can be just a fingertip. Let's get ready!",
+      "image": "mls_lafc/mission_01_thumbnail.webp",
+      "focus_type": "PKs",
+      "level": "SuperFan",
+      "completion_msg": "Thanks for generating this data -- we'll use it to predict where opponents will direct their penalties. Leagues Cup is coming up, let's win another trophy!",
+      "completion_image": "mls_lafc/mission_01_completion.webp",
+      "questions": [
+        {
+          "question_type": "options_list",
+          "question": "What angle does the kicker approach the ball with?",
+          "options": [
+            "Straight-on (closer to 0 degrees)",
+            "Slight angle (closer to 45 degrees)",
+            "Acute angle (closer to 90 degrees)"
+          ],
+          "video": "mls_lafc/mission_01_video_01_069.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "options_list",
+          "question": "What angle does the kicker approach the ball with?",
+          "options": [
+            "Straight-on (closer to 0 degrees)",
+            "Slight angle (closer to 45 degrees)",
+            "Acute angle (closer to 90 degrees)"
+          ],
+          "video": "mls_lafc/mission_01_video_02_001.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "options_list",
+          "question": "What angle does the kicker approach the ball with?",
+          "options": [
+            "Straight-on (closer to 0 degrees)",
+            "Slight angle (closer to 45 degrees)",
+            "Acute angle (closer to 90 degrees)"
+          ],
+          "video": "mls_lafc/mission_01_video_03_036.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "options_list",
+          "question": "During the run-up, does the kicker check to see where the goalkeeper is?",
+          "options": [
+            "No",
+            "Yes - once",
+            "Yes - more than once",
+            "Not sure"
+          ],
+          "video": "mls_lafc/mission_01_video_03_036.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "dropdown",
+          "question": "How many steps does the kicker take?",
+          "dropdown_options": [
+            {
+              "title": "Steps during run-up:",
+              "hint": "(Choose number)",
+              "options": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12"
+              ]
+            }
+          ],
+          "video": "mls_lafc/mission_01_video_04_009.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "dropdown",
+          "question": "How many steps does the kicker take?",
+          "dropdown_options": [
+            {
+              "title": "Steps during run-up:",
+              "hint": "(Choose number)",
+              "options": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12"
+              ]
+            }
+          ],
+          "video": "mls_lafc/mission_01_video_05_022.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "dropdown",
+          "question": "How many steps does the kicker take?",
+          "dropdown_options": [
+            {
+              "title": "Steps during run-up:",
+              "hint": "(Choose number)",
+              "options": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12"
+              ]
+            }
+          ],
+          "video": "mls_lafc/mission_01_video_06_054.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "options_list",
+          "question": "Where is the kicker's plant foot in comparison to the ball?",
+          "options": [
+            "Way ahead of ball",
+            "Slightly ahead of ball",
+            "Even with ball",
+            "Slightly behind ball",
+            "Way behind ball"
+          ],
+          "video": "mls_lafc/mission_01_video_07_061.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "options_list",
+          "question": "Where is the kicker's plant foot in comparison to the ball?",
+          "options": [
+            "Way ahead of ball",
+            "Slightly ahead of ball",
+            "Even with ball",
+            "Slightly behind ball",
+            "Way behind ball"
+          ],
+          "video": "mls_lafc/mission_01_video_08_035.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "options_list",
+          "question": "Where is the kicker's plant foot in comparison to the ball?",
+          "options": [
+            "Way ahead of ball",
+            "Slightly ahead of ball",
+            "Even with ball",
+            "Slightly behind ball",
+            "Way behind ball"
+          ],
+          "video": "mls_lafc/mission_01_video_09_002.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "options_list",
+          "question": "Where is the kicker's plant foot in comparison to the ball?",
+          "options": [
+            "Way ahead of ball",
+            "Slightly ahead of ball",
+            "Even with ball",
+            "Slightly behind ball",
+            "Way behind ball"
+          ],
+          "video": "mls_lafc/mission_01_video_10_032.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "dropdown",
+          "question": "Look at the kicker's approach:",
+          "dropdown_options": [
+            {
+              "title": "Number of steps?",
+              "hint": "(Choose number)",
+              "options": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12"
+              ]
+            },
+            {
+              "title": "Check goalkeeper?",
+              "hint": "(Choose action)",
+              "options": [
+                "No",
+                "Yes - once",
+                "Yes - more than once",
+                "Not sure"
+              ]
+            }
+          ],
+          "video": "mls_lafc/mission_01_video_11_050.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "dropdown",
+          "question": "Look at the kicker's approach:",
+          "dropdown_options": [
+            {
+              "title": "Number of steps?",
+              "hint": "(Choose number)",
+              "options": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12"
+              ]
+            },
+            {
+              "title": "Check goalkeeper?",
+              "hint": "(Choose action)",
+              "options": [
+                "No",
+                "Yes - once",
+                "Yes - more than once",
+                "Not sure"
+              ]
+            }
+          ],
+          "video": "mls_lafc/mission_01_video_12_053.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "dropdown",
+          "question": "Look at the kicker's approach:",
+          "dropdown_options": [
+            {
+              "title": "Number of steps?",
+              "hint": "(Choose number)",
+              "options": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12"
+              ]
+            },
+            {
+              "title": "Check goalkeeper?",
+              "hint": "(Choose action)",
+              "options": [
+                "No",
+                "Yes - once",
+                "Yes - more than once",
+                "Not sure"
+              ]
+            }
+          ],
+          "video": "mls_lafc/mission_01_video_13_004.mp4",
+          "allow_multiple_selection": false
+        }
+      ]
+    },
+    {
+      "id": "mls_lafc_mission_02",
+      "title": "SATURDAY NIGHT: COLUMBUS CREW",
+      "description": "The Columbus Crew visit BMO Stadium on Saturday, and we are in game-planning mode. Help us study their tendencies on set-pieces so we can design plays to take advantage. Let's get a set-piece goal this weekend!",
+      "image": "mls_lafc/mission_02_thumbnail.webp",
+      "focus_type": "Set-piece",
+      "level": "Analyst",
+      "completion_msg": "Thanks, your work will help us identify weaknesses to exploit in our opponent's defense. This kind of intel can lead to goals. Let's get one Saturday!",
+      "completion_image": "mls_lafc/mission_02_completion.webp",
+      "questions": [
+        {
+          "question_type": "dropdown",
+          "question": "How many defenders are in the wall?",
+          "dropdown_options": [
+            {
+              "title": "Number of defenders:",
+              "hint": "(Choose number)",
+              "options": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10"
+              ]
+            }
+          ],
+          "video": "mls_lafc/mission_02_video_01_nsh.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "2_options_list",
+          "question": "Which of the defenders track a man (as opposed to playing zone defense)?",
+          "options": [
+            "#6",
+            "#31",
+            "#9",
+            "#12",
+            "#2",
+            "#8",
+            "#23",
+            "#18"
+          ],
+          "video": "mls_lafc/mission_02_video_01_nsh.mp4",
+          "allow_multiple_selection": true,
+          "options_title_left": "Choose all that apply"
+        },
+        {
+          "question_type": "2_options_list",
+          "question": "Which of the defenders track a man (as opposed to playing zone defense)?",
+          "options": [
+            "#6",
+            "#31",
+            "#9",
+            "#5",
+            "#2",
+            "#23",
+            "#11",
+            "#8"
+          ],
+          "video": "mls_lafc/mission_02_video_02_phi.mp4",
+          "allow_multiple_selection": true,
+          "options_title_left": "Choose all that apply"
+        },
+        {
+          "question_type": "2_options_list",
+          "question": "Which of the defenders move towards the goal before the ball is kicked (they break the line)?",
+          "options": [
+            "#6",
+            "#31",
+            "#9",
+            "#5",
+            "#2",
+            "#23",
+            "#11",
+            "#8"
+          ],
+          "video": "mls_lafc/mission_02_video_02_phi.mp4",
+          "allow_multiple_selection": true,
+          "options_title_left": "Choose all that apply"
+        },
+        {
+          "question_type": "2_options_list",
+          "question": "Which of the defenders is not looking at the ball when it is kicked (they are focused on their man)?",
+          "options": [
+            "#6",
+            "#17",
+            "#7",
+            "#8",
+            "#4",
+            "#25",
+            "#18",
+            "#31"
+          ],
+          "video": "mls_lafc/mission_02_video_03_mtl.mp4",
+          "allow_multiple_selection": true,
+          "options_title_left": "Choose all that apply"
+        },
+        {
+            "question_type": "image",
+            "question": "On the left image, draw a line where the wall is set up.  Then click NEXT.",
+            "video": "mls_lafc/mission_02_video_04_phi.mp4",
+            "option_image": "mls_lafc/mission_02_image_04_phi.webp",
+            "image_option_hint": "Draw a line."
+        },
+        {
+            "question_type": "image",
+            "question": "On the left image, draw a line where the wall is set up.  Then click NEXT.",
+            "video": "mls_lafc/mission_02_video_05_phi.mp4",
+            "option_image": "mls_lafc/mission_02_image_05_phi.webp",
+            "image_option_hint": "Draw a line."
+        }
+      ]
+    },
+    {
+      "id": "mls_lafc_mission_03",
+      "title": "LAFC ACADEMY",
+      "description": "Our LAFC Academy is the future of our club. Help us track the development of our young players. One day, you'll be serenading them at BMO Stadium.",
+      "image": "mls_lafc/mission_03_thumbnail.webp",
+      "focus_type": "MLS Next U-17",
+      "level": "SuperFan",
+      "completion_msg": "Thanks for generating this information, it helps us develop the future of our club.",
+      "completion_image": "mls_lafc/mission_03_completion.webp",
+      "questions": [
+        {
+          "question_type": "dropdown",
+          "question": "Describe the shot by LAFC#24",
+          "dropdown_options": [
+            {
+              "title": "Type of shot:",
+              "hint": "(Choose type)",
+              "options": [
+                "After a dribble",
+                "Assisted with thru ball",
+                "Header from a cross",
+                "Foot from a cross",
+                "Free kick",
+                "Off a rebound"
+              ]
+            },
+            {
+              "title": "Result of shot:",
+              "hint": "(Choose result)",
+              "options": [
+                "Goal, beat goalkeeper",
+                "Goal, should've been saved",
+                "Saved, difficult save",
+                "Saved, easy save",
+                "Missed goal by a lot",
+                "Near miss",
+                "Blocked by defender"
+              ]
+            }
+          ],
+          "video": "mls_lafc/mission_03_video_01_shot.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "dropdown",
+          "question": "Describe the shot by LAFC#24",
+          "dropdown_options": [
+            {
+              "title": "Type of shot:",
+              "hint": "(Choose type)",
+              "options": [
+                "After a dribble",
+                "Assisted with thru ball",
+                "Header from a cross",
+                "Foot from a cross",
+                "Free kick",
+                "Off a rebound"
+              ]
+            },
+            {
+              "title": "Result of shot:",
+              "hint": "(Choose result)",
+              "options": [
+                "Goal, beat goalkeeper",
+                "Goal, should've been saved",
+                "Saved, difficult save",
+                "Saved, easy save",
+                "Missed goal by a lot",
+                "Near miss",
+                "Blocked by defender"
+              ]
+            }
+          ],
+          "video": "mls_lafc/mission_03_video_02_goal.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "dropdown",
+          "question": "Describe the shot by LAFC#24",
+          "dropdown_options": [
+            {
+              "title": "Type of shot:",
+              "hint": "(Choose type)",
+              "options": [
+                "After a dribble",
+                "Assisted with thru ball",
+                "Header from a cross",
+                "Foot from a cross",
+                "Free kick",
+                "Off a rebound"
+              ]
+            },
+            {
+              "title": "Result of shot:",
+              "hint": "(Choose result)",
+              "options": [
+                "Goal, beat goalkeeper",
+                "Goal, should've been saved",
+                "Saved, difficult save",
+                "Saved, easy save",
+                "Missed goal by a lot",
+                "Near miss",
+                "Blocked by defender"
+              ]
+            }
+          ],
+          "video": "mls_lafc/mission_03_video_03_miss.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "dropdown",
+          "question": "Describe the shot by LAFC#24",
+          "dropdown_options": [
+            {
+              "title": "Type of shot:",
+              "hint": "(Choose type)",
+              "options": [
+                "After a dribble",
+                "Assisted with thru ball",
+                "Header from a cross",
+                "Foot from a cross",
+                "Free kick",
+                "Off a rebound"
+              ]
+            },
+            {
+              "title": "Result of shot:",
+              "hint": "(Choose result)",
+              "options": [
+                "Goal, beat goalkeeper",
+                "Goal, should've been saved",
+                "Saved, difficult save",
+                "Saved, easy save",
+                "Missed goal by a lot",
+                "Near miss",
+                "Blocked by defender"
+              ]
+            }
+          ],
+          "video": "mls_lafc/mission_03_video_04_miss.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "dropdown",
+          "question": "Describe the shot by LAFC#24",
+          "dropdown_options": [
+            {
+              "title": "Type of shot:",
+              "hint": "(Choose type)",
+              "options": [
+                "After a dribble",
+                "Assisted with thru ball",
+                "Header from a cross",
+                "Foot from a cross",
+                "Free kick",
+                "Off a rebound"
+              ]
+            },
+            {
+              "title": "Result of shot:",
+              "hint": "(Choose result)",
+              "options": [
+                "Goal, beat goalkeeper",
+                "Goal, should've been saved",
+                "Saved, difficult save",
+                "Saved, easy save",
+                "Missed goal by a lot",
+                "Near miss",
+                "Blocked by defender"
+              ]
+            }
+          ],
+          "video": "mls_lafc/mission_03_video_05_miss.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "dropdown",
+          "question": "Describe the shot by LAFC#24",
+          "dropdown_options": [
+            {
+              "title": "Type of shot:",
+              "hint": "(Choose type)",
+              "options": [
+                "After a dribble",
+                "Assisted with thru ball",
+                "Header from a cross",
+                "Foot from a cross",
+                "Free kick",
+                "Off a rebound"
+              ]
+            },
+            {
+              "title": "Result of shot:",
+              "hint": "(Choose result)",
+              "options": [
+                "Goal, beat goalkeeper",
+                "Goal, should've been saved",
+                "Saved, difficult save",
+                "Saved, easy save",
+                "Missed goal by a lot",
+                "Near miss",
+                "Blocked by defender"
+              ]
+            }
+          ],
+          "video": "mls_lafc/mission_03_video_06_goal.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "options_list",
+          "question": "How many defenders does LAFC#24 beat with this dribble attack?",
+          "options": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "video": "mls_lafc/mission_03_video_07_loss.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "options_list",
+          "question": "Does the cross by LAFC#24 reach a teammate?",
+          "options": [
+            "Yes, open",
+            "Yes, contested",
+            "No",
+            "Unclear"
+          ],
+          "video": "mls_lafc/mission_03_video_08_cross.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "options_list",
+          "question": "Does the cross by LAFC#24 reach a teammate?",
+          "options": [
+            "Yes, open",
+            "Yes, contested",
+            "No",
+            "Unclear"
+          ],
+          "video": "mls_lafc/mission_03_video_09_cross.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "options_list",
+          "question": "Does the cross by LAFC#24 reach a teammate?",
+          "options": [
+            "Yes, open",
+            "Yes, contested",
+            "No",
+            "Unclear"
+          ],
+          "video": "mls_lafc/mission_03_video_10_cross.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "options_list",
+          "question": "Which team wins this challenge?",
+          "options": [
+            "LAFC",
+            "Opponent",
+            "Unclear"
+          ],
+          "video": "mls_lafc/mission_03_video_11_challenge.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "options_list",
+          "question": "Which team wins this challenge?",
+          "options": [
+            "LAFC",
+            "Opponent",
+            "Unclear"
+          ],
+          "video": "mls_lafc/mission_03_video_12_challenge.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "options_list",
+          "question": "How many touches does LAFC#24 use to maintain possession?",
+          "options": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5 or more"
+          ],
+          "video": "mls_lafc/mission_03_video_13_possession.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "options_list",
+          "question": "How many touches does LAFC#24 use to maintain possession?",
+          "options": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5 or more"
+          ],
+          "video": "mls_lafc/mission_03_video_14_possession.mp4",
+          "allow_multiple_selection": false
+        }
+      ]
+    }
+  ],
+  "ideas": {
+    "default_youtube_thumbnail_image": "mls_lafc/ideas_submit_ad_gallagher.webp",
+    "menu_list": {
+      "review_title": "Playbook",
+      "review_description": "Review free kicks and set-pieces.",
+      "select_title": "Team Building",
+      "select_description": "Help evaluate players for our roster.",
+      "submit_title": "Submit Your Ideas",
+      "submit_description": "If you think something can help us, submit it here."
+    },
+    "play_ideas": [
+      "Salary cap management",
+      "Transfer targets",
+      "Offensive formation",
+      "Defensive shape",
+      "Set-piece design",
+      "Opponent Scouting",
+      "Game management",
+      "Player developement",
+      "Techniques",
+      "Other"
+    ],
+    "review_idea": {
+      "id": "mls_lafc_review_idea",
+      "title": "PLAYBOOK | OFFENSE",
+      "description": "These innovative plays were discovered by your fellow LAFC fans. By describing and rating the plays, you’ll help surface the best ones for our coaching staff to consider for our playbook.",
+      "image": "mls_lafc/review_thumbnail.webp",
+      "completion_msg": "Thanks for developing our playbook. This helps us have the right play for the right moment. I'm going to get my head on one of these!",
+      "completion_image": "mls_lafc/review_completion.webp",
+      "questions": [
+        {
+          "question_type": "dropdown",
+          "question": "Describe this play:",
+          "dropdown_options": [
+            {
+              "title": "Type of shot:",
+              "hint": "(Choose type)",
+              "options": [
+                "After a dribble",
+                "Assisted with thru ball",
+                "Header from a cross",
+                "Foot from a cross",
+                "Free kick",
+                "Off a rebound"
+              ]
+            },
+            {
+              "title": "What player gets the chance:",
+              "hint": "(Choose position)",
+              "options": [
+                "CF, Forward/Striker",
+                "LW, Left Wing (or mid)",
+                "RW, Right Wing (or mid)",
+                "CAM, Central Attacking Mid",
+                "CM, Central Mid",
+                "CDM, Central Defensive Mid",
+                "CB, Center Back",
+                "LB, Left Back",
+                "RB, Right Back",
+                "GK, Goalkeeper",
+                "Unclear"
+              ]
+            }
+          ],
+          "video": "mls_lafc/review_video_01_corner_arsenal.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "dropdown",
+          "question": "Evaluate this play:",
+          "dropdown_options": [
+            {
+              "title": "Quality of chance:",
+              "hint": "(Choose xG)",
+              "options": [
+                "0.0-0.1 xG (1 in 10)",
+                "0.1-0.2 xG (2 in 10)",
+                "0.2-0.3 xG (3 in 10)",
+                "0.3-0.4 xG (4 in 10)",
+                "0.4-0.5 xG (5 in 10)",
+                "0.5-0.6 xG (6 in 10)",
+                "0.6-0.7 xG (7 in 10)",
+                "0.7-0.8 xG (8 in 10)",
+                "0.8-0.9 xG (9 in 10)",
+                "0.9-1.0 xG (100%)"
+              ]
+            },
+            {
+              "title": "Creativity:",
+              "hint": "(Choose level)",
+              "options": [
+                "5 = high creativity",
+                "4",
+                "3",
+                "2",
+                "1 = low creativity"
+              ]
+            }
+          ],
+          "video": "mls_lafc/review_video_01_corner_arsenal.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "dropdown",
+          "question": "Describe this play:",
+          "dropdown_options": [
+            {
+              "title": "Type of shot:",
+              "hint": "(Choose type)",
+              "options": [
+                "After a dribble",
+                "Assisted with thru ball",
+                "Header from a cross",
+                "Foot from a cross",
+                "Free kick",
+                "Off a rebound"
+              ]
+            },
+            {
+              "title": "What player gets the chance:",
+              "hint": "(Choose position)",
+              "options": [
+                "CF, Forward/Striker",
+                "LW, Left Wing (or mid)",
+                "RW, Right Wing (or mid)",
+                "CAM, Central Attacking Mid",
+                "CM, Central Mid",
+                "CDM, Central Defensive Mid",
+                "CB, Center Back",
+                "LB, Left Back",
+                "RB, Right Back",
+                "GK, Goalkeeper",
+                "Unclear"
+              ]
+            }
+          ],
+          "video": "mls_lafc/review_video_02_corner_feynoord.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "dropdown",
+          "question": "Evaluate this play:",
+          "dropdown_options": [
+            {
+              "title": "Quality of chance:",
+              "hint": "(Choose xG)",
+              "options": [
+                "0.0-0.1 xG (1 in 10)",
+                "0.1-0.2 xG (2 in 10)",
+                "0.2-0.3 xG (3 in 10)",
+                "0.3-0.4 xG (4 in 10)",
+                "0.4-0.5 xG (5 in 10)",
+                "0.5-0.6 xG (6 in 10)",
+                "0.6-0.7 xG (7 in 10)",
+                "0.7-0.8 xG (8 in 10)",
+                "0.8-0.9 xG (9 in 10)",
+                "0.9-1.0 xG (100%)"
+              ]
+            },
+            {
+              "title": "Creativity:",
+              "hint": "(Choose level)",
+              "options": [
+                "5 = high creativity",
+                "4",
+                "3",
+                "2",
+                "1 = low creativity"
+              ]
+            }
+          ],
+          "video": "mls_lafc/review_video_02_corner_feynoord.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "dropdown",
+          "question": "Describe this play:",
+          "dropdown_options": [
+            {
+              "title": "Type of shot:",
+              "hint": "(Choose type)",
+              "options": [
+                "After a dribble",
+                "Assisted with thru ball",
+                "Header from a cross",
+                "Foot from a cross",
+                "Free kick",
+                "Off a rebound"
+              ]
+            },
+            {
+              "title": "What player gets the chance:",
+              "hint": "(Choose position)",
+              "options": [
+                "CF, Forward/Striker",
+                "LW, Left Wing (or mid)",
+                "RW, Right Wing (or mid)",
+                "CAM, Central Attacking Mid",
+                "CM, Central Mid",
+                "CDM, Central Defensive Mid",
+                "CB, Center Back",
+                "LB, Left Back",
+                "RB, Right Back",
+                "GK, Goalkeeper",
+                "Unclear"
+              ]
+            }
+          ],
+          "video": "mls_lafc/review_video_03_set_frankfurt.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "dropdown",
+          "question": "Evaluate this play:",
+          "dropdown_options": [
+            {
+              "title": "Quality of chance:",
+              "hint": "(Choose xG)",
+              "options": [
+                "0.0-0.1 xG (1 in 10)",
+                "0.1-0.2 xG (2 in 10)",
+                "0.2-0.3 xG (3 in 10)",
+                "0.3-0.4 xG (4 in 10)",
+                "0.4-0.5 xG (5 in 10)",
+                "0.5-0.6 xG (6 in 10)",
+                "0.6-0.7 xG (7 in 10)",
+                "0.7-0.8 xG (8 in 10)",
+                "0.8-0.9 xG (9 in 10)",
+                "0.9-1.0 xG (100%)"
+              ]
+            },
+            {
+              "title": "Creativity:",
+              "hint": "(Choose level)",
+              "options": [
+                "5 = high creativity",
+                "4",
+                "3",
+                "2",
+                "1 = low creativity"
+              ]
+            }
+          ],
+          "video": "mls_lafc/review_video_03_set_frankfurt.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "dropdown",
+          "question": "Describe this play:",
+          "dropdown_options": [
+            {
+              "title": "Type of shot:",
+              "hint": "(Choose type)",
+              "options": [
+                "After a dribble",
+                "Assisted with thru ball",
+                "Header from a cross",
+                "Foot from a cross",
+                "Free kick",
+                "Off a rebound"
+              ]
+            },
+            {
+              "title": "What player gets the chance:",
+              "hint": "(Choose position)",
+              "options": [
+                "CF, Forward/Striker",
+                "LW, Left Wing (or mid)",
+                "RW, Right Wing (or mid)",
+                "CAM, Central Attacking Mid",
+                "CM, Central Mid",
+                "CDM, Central Defensive Mid",
+                "CB, Center Back",
+                "LB, Left Back",
+                "RB, Right Back",
+                "GK, Goalkeeper",
+                "Unclear"
+              ]
+            }
+          ],
+          "video": "mls_lafc/review_video_04_corner_real_madrid.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "dropdown",
+          "question": "Evaluate this play:",
+          "dropdown_options": [
+            {
+              "title": "Quality of chance:",
+              "hint": "(Choose xG)",
+              "options": [
+                "0.0-0.1 xG (1 in 10)",
+                "0.1-0.2 xG (2 in 10)",
+                "0.2-0.3 xG (3 in 10)",
+                "0.3-0.4 xG (4 in 10)",
+                "0.4-0.5 xG (5 in 10)",
+                "0.5-0.6 xG (6 in 10)",
+                "0.6-0.7 xG (7 in 10)",
+                "0.7-0.8 xG (8 in 10)",
+                "0.8-0.9 xG (9 in 10)",
+                "0.9-1.0 xG (100%)"
+              ]
+            },
+            {
+              "title": "Creativity:",
+              "hint": "(Choose level)",
+              "options": [
+                "5 = high creativity",
+                "4",
+                "3",
+                "2",
+                "1 = low creativity"
+              ]
+            }
+          ],
+          "video": "mls_lafc/review_video_04_corner_real_madrid.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "dropdown",
+          "question": "Describe this play:",
+          "dropdown_options": [
+            {
+              "title": "Type of shot:",
+              "hint": "(Choose type)",
+              "options": [
+                "After a dribble",
+                "Assisted with thru ball",
+                "Header from a cross",
+                "Foot from a cross",
+                "Free kick",
+                "Off a rebound"
+              ]
+            },
+            {
+              "title": "What player gets the chance:",
+              "hint": "(Choose position)",
+              "options": [
+                "CF, Forward/Striker",
+                "LW, Left Wing (or mid)",
+                "RW, Right Wing (or mid)",
+                "CAM, Central Attacking Mid",
+                "CM, Central Mid",
+                "CDM, Central Defensive Mid",
+                "CB, Center Back",
+                "LB, Left Back",
+                "RB, Right Back",
+                "GK, Goalkeeper",
+                "Unclear"
+              ]
+            }
+          ],
+          "video": "mls_lafc/review_video_05_set_phi.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "dropdown",
+          "question": "Evaluate this play:",
+          "dropdown_options": [
+            {
+              "title": "Quality of chance:",
+              "hint": "(Choose xG)",
+              "options": [
+                "0.0-0.1 xG (1 in 10)",
+                "0.1-0.2 xG (2 in 10)",
+                "0.2-0.3 xG (3 in 10)",
+                "0.3-0.4 xG (4 in 10)",
+                "0.4-0.5 xG (5 in 10)",
+                "0.5-0.6 xG (6 in 10)",
+                "0.6-0.7 xG (7 in 10)",
+                "0.7-0.8 xG (8 in 10)",
+                "0.8-0.9 xG (9 in 10)",
+                "0.9-1.0 xG (100%)"
+              ]
+            },
+            {
+              "title": "Creativity:",
+              "hint": "(Choose level)",
+              "options": [
+                "5 = high creativity",
+                "4",
+                "3",
+                "2",
+                "1 = low creativity"
+              ]
+            }
+          ],
+          "video": "mls_lafc/review_video_05_set_phi.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "dropdown",
+          "question": "Describe this play:",
+          "dropdown_options": [
+            {
+              "title": "Type of shot:",
+              "hint": "(Choose type)",
+              "options": [
+                "After a dribble",
+                "Assisted with thru ball",
+                "Header from a cross",
+                "Foot from a cross",
+                "Free kick",
+                "Off a rebound"
+              ]
+            },
+            {
+              "title": "What player gets the chance:",
+              "hint": "(Choose position)",
+              "options": [
+                "CF, Forward/Striker",
+                "LW, Left Wing (or mid)",
+                "RW, Right Wing (or mid)",
+                "CAM, Central Attacking Mid",
+                "CM, Central Mid",
+                "CDM, Central Defensive Mid",
+                "CB, Center Back",
+                "LB, Left Back",
+                "RB, Right Back",
+                "GK, Goalkeeper",
+                "Unclear"
+              ]
+            }
+          ],
+          "video": "mls_lafc/review_video_06_corner_bournemouth.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "dropdown",
+          "question": "Evaluate this play:",
+          "dropdown_options": [
+            {
+              "title": "Quality of chance:",
+              "hint": "(Choose xG)",
+              "options": [
+                "0.0-0.1 xG (1 in 10)",
+                "0.1-0.2 xG (2 in 10)",
+                "0.2-0.3 xG (3 in 10)",
+                "0.3-0.4 xG (4 in 10)",
+                "0.4-0.5 xG (5 in 10)",
+                "0.5-0.6 xG (6 in 10)",
+                "0.6-0.7 xG (7 in 10)",
+                "0.7-0.8 xG (8 in 10)",
+                "0.8-0.9 xG (9 in 10)",
+                "0.9-1.0 xG (100%)"
+              ]
+            },
+            {
+              "title": "Creativity:",
+              "hint": "(Choose level)",
+              "options": [
+                "5 = high creativity",
+                "4",
+                "3",
+                "2",
+                "1 = low creativity"
+              ]
+            }
+          ],
+          "video": "mls_lafc/review_video_06_corner_bournemouth.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "dropdown",
+          "question": "Describe this play:",
+          "dropdown_options": [
+            {
+              "title": "Type of shot:",
+              "hint": "(Choose type)",
+              "options": [
+                "After a dribble",
+                "Assisted with thru ball",
+                "Header from a cross",
+                "Foot from a cross",
+                "Free kick",
+                "Off a rebound"
+              ]
+            },
+            {
+              "title": "What player gets the chance:",
+              "hint": "(Choose position)",
+              "options": [
+                "CF, Forward/Striker",
+                "LW, Left Wing (or mid)",
+                "RW, Right Wing (or mid)",
+                "CAM, Central Attacking Mid",
+                "CM, Central Mid",
+                "CDM, Central Defensive Mid",
+                "CB, Center Back",
+                "LB, Left Back",
+                "RB, Right Back",
+                "GK, Goalkeeper",
+                "Unclear"
+              ]
+            }
+          ],
+          "video": "mls_lafc/review_video_07_set_ecuador.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "dropdown",
+          "question": "Evaluate this play:",
+          "dropdown_options": [
+            {
+              "title": "Quality of chance:",
+              "hint": "(Choose xG)",
+              "options": [
+                "0.0-0.1 xG (1 in 10)",
+                "0.1-0.2 xG (2 in 10)",
+                "0.2-0.3 xG (3 in 10)",
+                "0.3-0.4 xG (4 in 10)",
+                "0.4-0.5 xG (5 in 10)",
+                "0.5-0.6 xG (6 in 10)",
+                "0.6-0.7 xG (7 in 10)",
+                "0.7-0.8 xG (8 in 10)",
+                "0.8-0.9 xG (9 in 10)",
+                "0.9-1.0 xG (100%)"
+              ]
+            },
+            {
+              "title": "Creativity:",
+              "hint": "(Choose level)",
+              "options": [
+                "5 = high creativity",
+                "4",
+                "3",
+                "2",
+                "1 = low creativity"
+              ]
+            }
+          ],
+          "video": "mls_lafc/review_video_07_set_ecuador.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "dropdown",
+          "question": "Describe this play:",
+          "dropdown_options": [
+            {
+              "title": "Type of shot:",
+              "hint": "(Choose type)",
+              "options": [
+                "After a dribble",
+                "Assisted with thru ball",
+                "Header from a cross",
+                "Foot from a cross",
+                "Free kick",
+                "Off a rebound"
+              ]
+            },
+            {
+              "title": "What player gets the chance:",
+              "hint": "(Choose position)",
+              "options": [
+                "CF, Forward/Striker",
+                "LW, Left Wing (or mid)",
+                "RW, Right Wing (or mid)",
+                "CAM, Central Attacking Mid",
+                "CM, Central Mid",
+                "CDM, Central Defensive Mid",
+                "CB, Center Back",
+                "LB, Left Back",
+                "RB, Right Back",
+                "GK, Goalkeeper",
+                "Unclear"
+              ]
+            }
+          ],
+          "video": "mls_lafc/review_video_08_corner_bayern.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "dropdown",
+          "question": "Evaluate this play:",
+          "dropdown_options": [
+            {
+              "title": "Quality of chance:",
+              "hint": "(Choose xG)",
+              "options": [
+                "0.0-0.1 xG (1 in 10)",
+                "0.1-0.2 xG (2 in 10)",
+                "0.2-0.3 xG (3 in 10)",
+                "0.3-0.4 xG (4 in 10)",
+                "0.4-0.5 xG (5 in 10)",
+                "0.5-0.6 xG (6 in 10)",
+                "0.6-0.7 xG (7 in 10)",
+                "0.7-0.8 xG (8 in 10)",
+                "0.8-0.9 xG (9 in 10)",
+                "0.9-1.0 xG (100%)"
+              ]
+            },
+            {
+              "title": "Creativity:",
+              "hint": "(Choose level)",
+              "options": [
+                "5 = high creativity",
+                "4",
+                "3",
+                "2",
+                "1 = low creativity"
+              ]
+            }
+          ],
+          "video": "mls_lafc/review_video_08_corner_bayern.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "dropdown",
+          "question": "Describe this play:",
+          "dropdown_options": [
+            {
+              "title": "Type of shot:",
+              "hint": "(Choose type)",
+              "options": [
+                "After a dribble",
+                "Assisted with thru ball",
+                "Header from a cross",
+                "Foot from a cross",
+                "Free kick",
+                "Off a rebound"
+              ]
+            },
+            {
+              "title": "What player gets the chance:",
+              "hint": "(Choose position)",
+              "options": [
+                "CF, Forward/Striker",
+                "LW, Left Wing (or mid)",
+                "RW, Right Wing (or mid)",
+                "CAM, Central Attacking Mid",
+                "CM, Central Mid",
+                "CDM, Central Defensive Mid",
+                "CB, Center Back",
+                "LB, Left Back",
+                "RB, Right Back",
+                "GK, Goalkeeper",
+                "Unclear"
+              ]
+            }
+          ],
+          "video": "mls_lafc/review_video_09_corner_borchum.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "dropdown",
+          "question": "Evaluate this play:",
+          "dropdown_options": [
+            {
+              "title": "Quality of chance:",
+              "hint": "(Choose xG)",
+              "options": [
+                "0.0-0.1 xG (1 in 10)",
+                "0.1-0.2 xG (2 in 10)",
+                "0.2-0.3 xG (3 in 10)",
+                "0.3-0.4 xG (4 in 10)",
+                "0.4-0.5 xG (5 in 10)",
+                "0.5-0.6 xG (6 in 10)",
+                "0.6-0.7 xG (7 in 10)",
+                "0.7-0.8 xG (8 in 10)",
+                "0.8-0.9 xG (9 in 10)",
+                "0.9-1.0 xG (100%)"
+              ]
+            },
+            {
+              "title": "Creativity:",
+              "hint": "(Choose level)",
+              "options": [
+                "5 = high creativity",
+                "4",
+                "3",
+                "2",
+                "1 = low creativity"
+              ]
+            }
+          ],
+          "video": "mls_lafc/review_video_09_corner_borchum.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "dropdown",
+          "question": "Describe this play:",
+          "dropdown_options": [
+            {
+              "title": "Type of shot:",
+              "hint": "(Choose type)",
+              "options": [
+                "After a dribble",
+                "Assisted with thru ball",
+                "Header from a cross",
+                "Foot from a cross",
+                "Free kick",
+                "Off a rebound"
+              ]
+            },
+            {
+              "title": "What player gets the chance:",
+              "hint": "(Choose position)",
+              "options": [
+                "CF, Forward/Striker",
+                "LW, Left Wing (or mid)",
+                "RW, Right Wing (or mid)",
+                "CAM, Central Attacking Mid",
+                "CM, Central Mid",
+                "CDM, Central Defensive Mid",
+                "CB, Center Back",
+                "LB, Left Back",
+                "RB, Right Back",
+                "GK, Goalkeeper",
+                "Unclear"
+              ]
+            }
+          ],
+          "video": "mls_lafc/review_video_10_set_kyoto.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "dropdown",
+          "question": "Evaluate this play:",
+          "dropdown_options": [
+            {
+              "title": "Quality of chance:",
+              "hint": "(Choose xG)",
+              "options": [
+                "0.0-0.1 xG (1 in 10)",
+                "0.1-0.2 xG (2 in 10)",
+                "0.2-0.3 xG (3 in 10)",
+                "0.3-0.4 xG (4 in 10)",
+                "0.4-0.5 xG (5 in 10)",
+                "0.5-0.6 xG (6 in 10)",
+                "0.6-0.7 xG (7 in 10)",
+                "0.7-0.8 xG (8 in 10)",
+                "0.8-0.9 xG (9 in 10)",
+                "0.9-1.0 xG (100%)"
+              ]
+            },
+            {
+              "title": "Creativity:",
+              "hint": "(Choose level)",
+              "options": [
+                "5 = high creativity",
+                "4",
+                "3",
+                "2",
+                "1 = low creativity"
+              ]
+            }
+          ],
+          "video": "mls_lafc/review_video_10_set_kyoto.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "dropdown",
+          "question": "Describe this play:",
+          "dropdown_options": [
+            {
+              "title": "Type of shot:",
+              "hint": "(Choose type)",
+              "options": [
+                "After a dribble",
+                "Assisted with thru ball",
+                "Header from a cross",
+                "Foot from a cross",
+                "Free kick",
+                "Off a rebound"
+              ]
+            },
+            {
+              "title": "What player gets the chance:",
+              "hint": "(Choose position)",
+              "options": [
+                "CF, Forward/Striker",
+                "LW, Left Wing (or mid)",
+                "RW, Right Wing (or mid)",
+                "CAM, Central Attacking Mid",
+                "CM, Central Mid",
+                "CDM, Central Defensive Mid",
+                "CB, Center Back",
+                "LB, Left Back",
+                "RB, Right Back",
+                "GK, Goalkeeper",
+                "Unclear"
+              ]
+            }
+          ],
+          "video": "mls_lafc/review_video_11_set_arsenal.mp4",
+          "allow_multiple_selection": false
+        },
+        {
+          "question_type": "dropdown",
+          "question": "Evaluate this play:",
+          "dropdown_options": [
+            {
+              "title": "Quality of chance:",
+              "hint": "(Choose xG)",
+              "options": [
+                "0.0-0.1 xG (1 in 10)",
+                "0.1-0.2 xG (2 in 10)",
+                "0.2-0.3 xG (3 in 10)",
+                "0.3-0.4 xG (4 in 10)",
+                "0.4-0.5 xG (5 in 10)",
+                "0.5-0.6 xG (6 in 10)",
+                "0.6-0.7 xG (7 in 10)",
+                "0.7-0.8 xG (8 in 10)",
+                "0.8-0.9 xG (9 in 10)",
+                "0.9-1.0 xG (100%)"
+              ]
+            },
+            {
+              "title": "Creativity:",
+              "hint": "(Choose level)",
+              "options": [
+                "5 = high creativity",
+                "4",
+                "3",
+                "2",
+                "1 = low creativity"
+              ]
+            }
+          ],
+          "video": "mls_lafc/review_video_11_set_arsenal.mp4",
+          "allow_multiple_selection": false
+        }
+      ]
+    },
+    "select_idea": {
+      "id": "mls_lafc_select_idea",
+      "title": "TEAM BUILDING",
+      "description": "Evaluating players for our roster never ends, we are constantly scanning the globe. You can give us another set of eyes to help us make decisions. Take a look at the following sets of players and tell us who you think would be best for our team in terms of fit and impact.",
+      "image": "mls_lafc/select_thumbnail.webp",
+      "completion_msg": "We value your intel and we'll use it to make the best decisions as we build our team during the transfer window. Thanks for your insight!",
+      "completion_image": "mls_lafc/select_completion.webp",
+      "questions": [
+        {
+          "question_type": "2_options_list",
+          "question": "Choose the U-23 Center Forward playing in Brazil's Série A that fits our roster best. Add attributes that match our needs.",
+          "options": [
+            "Finishing ability",
+            "Off-the-ball movement",
+            "Physicality",
+            "Pace",
+            "Ball control",
+            "Technical ability",
+            "Aerial skill",
+            "Passing & link-up play",
+            "Composure & decision-making",
+            "Tactical awareness",
+            "Pressing",
+            "Teamwork",
+            "Leadership",
+            "Age"
+          ],
+          "image_selection": [
+            {
+              "title": "Luighi, Palmeiras",
+              "image": "mls_lafc/select_cf_01_luighi.webp"
+            },
+            {
+              "title": "Ricardo Mathias, Internacional",
+              "image": "mls_lafc/select_cf_02_ricardo_mathias.webp"
+            },
+            {
+              "title": "Deivid Washington, Santos",
+              "image": "mls_lafc/select_cf_03_deivid_washington.webp"
+            },
+            {
+              "title": "Lucca, Internacional",
+              "image": "mls_lafc/select_cf_04_lucca.webp"
+            },
+            {
+              "title": "Giovane, Corinthians",
+              "image": "mls_lafc/select_cf_05_giovane.webp"
+            },
+            {
+              "title": "Luciano Rodriguez, Bahia",
+              "image": "mls_lafc/select_cf_06_luciano_rodriguez.webp"
+            },
+            {
+              "title": "Thiago Borbas, Bragantino",
+              "image": "mls_lafc/select_cf_07_thiago_borbas.webp"
+            },
+            {
+              "title": "Rwan Cruz, Botafogo",
+              "image": "mls_lafc/select_cf_08_rwan_cruz.webp"
+            }
+          ],
+          "allow_multiple_selection": true,
+          "options_title_left": "Key attributes"
+        },
+        {
+          "question_type": "2_options_list",
+          "question": "Choose the U-23 Left Winger playing in Brazil's Série A that fits our roster best. Add attributes that match our needs.",
+          "options": [
+            "Finishing ability",
+            "Off-the-ball movement",
+            "Physicality",
+            "Pace",
+            "Ball control",
+            "Technical ability",
+            "Aerial skill",
+            "Passing & link-up play",
+            "Composure & decision-making",
+            "Tactical awareness",
+            "Pressing",
+            "Teamwork",
+            "Leadership",
+            "Age"
+          ],
+          "image_selection": [
+            {
+              "title": "Joaquin Lavega, Fluminese",
+              "image": "mls_lafc/select_lw_01_joaquin_lavega.webp"
+            },
+            {
+              "title": "Matheus Martins, Botafogo",
+              "image": "mls_lafc/select_lw_02_matheus_martins.webp"
+            },
+            {
+              "title": "Dylan Borrero, Fortaleza",
+              "image": "mls_lafc/select_lw_03_dylan_borrero.webp"
+            },
+            {
+              "title": "Henry Mosquera, Bragantino",
+              "image": "mls_lafc/select_lw_04_henry_mosquera.webp"
+            }
+          ],
+          "allow_multiple_selection": true,
+          "options_title_left": "Key attributes"
+        },
+        {
+          "question_type": "2_options_list",
+          "question": "Choose the U-23 Right Winger playing in Brazil's Série A that fits our roster best. Add attributes that match our needs.",
+          "options": [
+            "Finishing ability",
+            "Off-the-ball movement",
+            "Physicality",
+            "Pace",
+            "Ball control",
+            "Technical ability",
+            "Aerial skill",
+            "Passing & link-up play",
+            "Composure & decision-making",
+            "Tactical awareness",
+            "Pressing",
+            "Teamwork",
+            "Leadership",
+            "Age"
+          ],
+          "image_selection": [
+            {
+              "title": "Rayan, Vasco da Gama",
+              "image": "mls_lafc/select_rw_01_rayan.webp"
+            },
+            {
+              "title": "Alisson, Mineiro",
+              "image": "mls_lafc/select_rw_02_alisson.webp"
+            },
+            {
+              "title": "Lucas Ronier, Coritiba",
+              "image": "mls_lafc/select_rw_03_lucas_ronier.webp"
+            },
+            {
+              "title": "Nathan Fernandes, Botafogo",
+              "image": "mls_lafc/select_rw_04_nathan_fernandes.webp"
+            },
+            {
+              "title": "Kayky, Bahia",
+              "image": "mls_lafc/select_rw_05_kayky.webp"
+            },
+            {
+              "title": "Brahian Palacios, Mineiro",
+              "image": "mls_lafc/select_rw_06_brahian_palacios.webp"
+            },
+            {
+              "title": "Gabriel Veron, Santos",
+              "image": "mls_lafc/select_rw_07_gabriel_veron.webp"
+            },
+            {
+              "title": "Chrystian Barletta, Sport",
+              "image": "mls_lafc/select_rw_08_chrystian_barletta.webp"
+            }
+          ],
+          "allow_multiple_selection": true,
+          "options_title_left": "Key attributes"
+        },
+        {
+          "question_type": "2_options_list",
+          "question": "These European stars are 33 years old and may come to the MLS in the future. Which one would fit our team the best?",
+          "options": [
+            "Finishing ability",
+            "Off-the-ball movement",
+            "Physicality",
+            "Pace",
+            "Ball control",
+            "Technical ability",
+            "Aerial skill",
+            "Passing & vision",
+            "Set-piece delivery",
+            "Composure & decision-making",
+            "Tactical awareness",
+            "Defensive contribution",
+            "Adaptability",
+            "Teamwork",
+            "Leadership",
+            "Age"
+          ],
+          "image_selection": [
+            {
+              "title": "Antoine Griezmann",
+              "image": "mls_lafc/select_33_antoine_griezmann.webp"
+            },
+            {
+              "title": "Kevin De Bruyne",
+              "image": "mls_lafc/select_33_kevin_debruyne.webp"
+            },
+            {
+              "title": "James Rodriguez",
+              "image": "mls_lafc/select_33_james_rodriguez.webp"
+            }
+          ],
+          "allow_multiple_selection": true,
+          "options_title_left": "Key attributes"
+        },
+        {
+          "question_type": "2_options_list",
+          "question": "Which of these U-23 backup MLS goalkeepers has the most potential?",
+          "options": [
+            "Shot-stopping",
+            "Positioning & awareness",
+            "Aerial ability",
+            "Reactions & reflexes",
+            "Distribution & ball skills",
+            "Sweeper-keeper",
+            "Communication",
+            "Mental strength & composure",
+            "Penalty-stopping",
+            "Teamwork",
+            "Leadership"
+          ],
+          "image_selection": [
+            {
+              "title": "Aidan Stokes, RBNY",
+              "image": "mls_lafc/select_gk_01_aidan_stokes.webp"
+            },
+            {
+              "title": "Brian Schwake, Nashville",
+              "image": "mls_lafc/select_gk_02_brian_schwake.webp"
+            },
+            {
+              "title": "Andrew Rick, Philadelphia",
+              "image": "mls_lafc/select_gk_03_andrew_rick.webp"
+            },
+            {
+              "title": "Paul Walters, Cincinnati",
+              "image": "mls_lafc/select_gk_04_paul_walters.webp"
+            },
+            {
+              "title": "Antonio Carrera, Dallas",
+              "image": "mls_lafc/select_gk_05_antonio_carrera.webp"
+            },
+            {
+              "title": "Xavier Valdez, Nashville",
+              "image": "mls_lafc/select_gk_06_xavier_valdez.webp"
+            },
+            {
+              "title": "Joon-Hong Kim, DC United",
+              "image": "mls_lafc/select_gk_07_joon-hong_kim.webp"
+            },
+            {
+              "title": "Christian Olivares, St. Louis",
+              "image": "mls_lafc/select_gk_09_christian_olivares.webp"
+            },
+            {
+              "title": "Alex Rando, NYCFC",
+              "image": "mls_lafc/select_gk_10_alex_rando.webp"
+            },
+            {
+              "title": "John Pulskamp, Sporting KC",
+              "image": "mls_lafc/select_gk_11_john_pulskamp.webp"
+            },
+            {
+              "title": "Isaac Boehmer, Vancouver",
+              "image": "mls_lafc/select_gk_12_isaac_boehmer.webp"
+            }
+          ],
+          "allow_multiple_selection": true,
+          "options_title_left": "Key attributes"
+        },
+        {
+          "question_type": "2_options_list",
+          "question": "Which of these over-35 stars would you most like to see on our team?",
+          "options": [
+            "Finishing ability",
+            "Off-the-ball movement",
+            "Physicality",
+            "Pace",
+            "Ball control",
+            "Technical ability",
+            "Aerial skill",
+            "Passing & vision",
+            "Set-piece delivery",
+            "Composure & decision-making",
+            "Tactical awareness",
+            "Defensive contribution",
+            "Adaptability",
+            "Teamwork",
+            "Leadership",
+            "Age"
+          ],
+          "image_selection": [
+            {
+              "title": "Luka Modric",
+              "image": "mls_lafc/select_35_luka_modric.webp"
+            },
+            {
+              "title": "Thomas Muller",
+              "image": "mls_lafc/select_35_thomas_muller.webp"
+            },
+            {
+              "title": "Karim Benzema",
+              "image": "mls_lafc/select_35_karim_benzema.webp"
+            },
+            {
+              "title": "Neymar",
+              "image": "mls_lafc/select_35_neymar.webp"
+            },
+            {
+              "title": "Robert Lewandowski",
+              "image": "mls_lafc/select_35_robert_lewandowski.webp"
+            },
+            {
+              "title": "Ronaldo",
+              "image": "mls_lafc/select_35_ronaldo.webp"
+            },
+            {
+              "title": "Pierre-Emerick Aubamayang",
+              "image": "mls_lafc/select_35_pierre-emerick_aubamayang.webp"
+            },
+            {
+              "title": "Manuel Neuer",
+              "image": "mls_lafc/select_35_manuel_neuer.webp"
+            }
+          ],
+          "allow_multiple_selection": true,
+          "options_title_left": "Key attributes"
+        },
+        {
+          "question_type": "2_options_list",
+          "question": "Choose the U-21 Defensive Midfielder playing in the Primera Division of Argentina that fits our roster best.",
+          "options": [
+            "Defensive awareness & positioning",
+            "Tackling & ball-winning",
+            "Interceptions & pressing",
+            "Passing & distribution",
+            "Ball control & press resistance",
+            "Aerial skill",
+            "Set-piece delivery",
+            "Physical attributes",
+            "Tactical awareness & intelligence",
+            "Composure & mental toughness",
+            "Teamwork",
+            "Leadership"
+          ],
+          "image_selection": [
+            {
+              "title": "Elian Irala, San Lorenzo",
+              "image": "mls_lafc/select_dm_01_elian_irala.webp"
+            },
+            {
+              "title": "David Martinez, Independiente",
+              "image": "mls_lafc/select_dm_02_david_martinez.webp"
+            },
+            {
+              "title": "Joaquin Mosqueira, Talleres Cordoba",
+              "image": "mls_lafc/select_dm_03_joaquin_mosqueira.webp"
+            },
+            {
+              "title": "Ignacio Moramon, Boca Juniors",
+              "image": "mls_lafc/select_dm_04_ignacio_moramon.webp"
+            }
+          ],
+          "allow_multiple_selection": true,
+          "options_title_left": "Key attributes"
+        },
+        {
+          "question_type": "2_options_list",
+          "question": "Choose the U-21 Central Midfielder playing in the Primera Division of Argentina that fits our roster best.",
+          "options": [
+            "Passing & vision",
+            "Ball control & dribbling",
+            "Tactical awareness & positioning",
+            "Defensive contribution",
+            "Physical attributes",
+            "Shooting & goal threat",
+            "Aerial skill",
+            "Set-piece delivery",
+            "Versatility",
+            "Pressing",
+            "Teamwork",
+            "Leadership"
+          ],
+          "image_selection": [
+            {
+              "title": "Tomas O'Connor, Rosario Central",
+              "image": "mls_lafc/select_cm_01_tomas_oconnor.webp"
+            },
+            {
+              "title": "Christian Ordonez, Velez Sarsfield",
+              "image": "mls_lafc/select_cm_02_christian_ordonez.webp"
+            },
+            {
+              "title": "Cristian Medina, Estudiantes",
+              "image": "mls_lafc/select_cm_03_cristian_medina.webp"
+            },
+            {
+              "title": "Cesar Perez, Defensa y Justicia",
+              "image": "mls_lafc/select_cm_04_cesar_perez.webp"
+            },
+            {
+              "title": "Juan Ignacio Nardoni, Racing Club",
+              "image": "mls_lafc/select_cm_05_juan_ignacio_nardoni.webp"
+            },
+            {
+              "title": "Matias Fonda, Talleres Cordoba",
+              "image": "mls_lafc/select_cm_06_matias_fonda.webp"
+            },
+            {
+              "title": "Williams Alarcon, Boca Juniors",
+              "image": "mls_lafc/select_cm_07_williams_alarcon.webp"
+            },
+            {
+              "title": "Felipe Loyola, Independiente",
+              "image": "mls_lafc/select_cm_08_felipe_loyola.webp"
+            }
+          ],
+          "allow_multiple_selection": true,
+          "options_title_left": "Key attributes"
+        },
+        {
+          "question_type": "2_options_list",
+          "question": "Choose the U-21 Attacking Midfielder playing in the Primera Division of Argentina that fits our roster best.",
+          "options": [
+            "Vision & creativity",
+            "Passing & playmaking",
+            "Dribbling & ball control",
+            "Shooting & scoring ability",
+            "Set-piece delivery",
+            "Off-the-ball movement",
+            "Tactical awareness",
+            "Pressing & defensive contribution",
+            "Physical attributes",
+            "Versatility",
+            "Teamwork",
+            "Leadership"
+          ],
+          "image_selection": [
+            {
+              "title": "Baltasar Rodriguez",
+              "image": "mls_lafc/select_am_01_baltasar_rodriguez.webp"
+            },
+            {
+              "title": "Damian Puebla",
+              "image": "mls_lafc/select_am_02_damian_puebla.webp"
+            },
+            {
+              "title": "Santiago Toloza",
+              "image": "mls_lafc/select_am_03_santiago_toloza.webp"
+            },
+            {
+              "title": "Ignacio Rodriguez",
+              "image": "mls_lafc/select_am_04_ignacio_rodriguez.webp"
+            },
+            {
+              "title": "Vicente Taborda",
+              "image": "mls_lafc/select_am_05_vicente_taborda.webp"
+            },
+            {
+              "title": "Agustin Martegani",
+              "image": "mls_lafc/select_am_06_agustin_martegani.webp"
+            },
+            {
+              "title": "Carlos Palacios",
+              "image": "mls_lafc/select_am_07_carlos_palacios.webp"
+            },
+            {
+              "title": "Aaron Molinas",
+              "image": "mls_lafc/select_am_08_aaron_molinas.webp"
+            }
+          ],
+          "allow_multiple_selection": true,
+          "options_title_left": "Key attributes"
+        },
+        {
+          "question_type": "2_options_list",
+          "question": "Which of these goalkeepers playing for USL teams has the most potential?",
+          "options": [
+            "Shot-stopping",
+            "Positioning & awareness",
+            "Aerial ability",
+            "Reactions & reflexes",
+            "Distribution & ball skills",
+            "Sweeper-keeper",
+            "Communication",
+            "Mental strength & composure",
+            "Penalty-stopping",
+            "Teamwork",
+            "Leadership"
+          ],
+          "image_selection": [
+            {
+              "title": "Brooks Thompson, Lexington SC",
+              "image": "mls_lafc/select_usl_01_brooks_thompson.webp"
+            },
+            {
+              "title": "Kris Shakes, New Mexico United",
+              "image": "mls_lafc/select_usl_02_kris_shakes.webp"
+            },
+            {
+              "title": "Jacob Randolph, Pittsburgh Riverhounds",
+              "image": "mls_lafc/select_usl_03_jacob_randolph.webp"
+            },
+            {
+              "title": "Greg Monroe, Hartford Athletic",
+              "image": "mls_lafc/select_usl_04_greg_monroe.webp"
+            },
+            {
+              "title": "Trevor Mulqueen, North Carolina FC",
+              "image": "mls_lafc/select_usl_05_trevor_mulqueen.webp"
+            },
+            {
+              "title": "Antony Siaha, Indy Eleven",
+              "image": "mls_lafc/select_usl_06_antony_siaha.webp"
+            },
+            {
+              "title": "Gabriel Perrotta, Pittsburgh Riverhounds",
+              "image": "mls_lafc/select_usl_07_gabriel_perrotta.webp"
+            },
+            {
+              "title": "Jared Mazzola, Sacramento Republic",
+              "image": "mls_lafc/select_usl_08_jared_mazzola.webp"
+            },
+            {
+              "title": "Sebastian Mora-Mora, El Paso Locamotive",
+              "image": "mls_lafc/select_usl_09_sebastian_mora-mora.webp"
+            },
+            {
+              "title": "Daniel Kuzemka, Charleston Battery",
+              "image": "mls_lafc/select_usl_10_daniel_kuzemka.webp"
+            },
+            {
+              "title": "Luis Zamudio, Charleston Battery",
+              "image": "mls_lafc/select_usl_11_luis_zamudio.webp"
+            },
+            {
+              "title": "Carlos Herrera, Detroit City",
+              "image": "mls_lafc/select_usl_12_carlos_herrera.webp"
+            }
+          ],
+          "allow_multiple_selection": true,
+          "options_title_left": "Key attributes"
+        }
+      ]
+    },
+    "submit_idea": {
+      "id": "mls_lafc_submit_idea",
+      "title": "SUBMIT AN IDEA",
+      "description": "Share your expertise here: Find an innovative set-piece from an international team to enhance our playbook. Scout an upcoming oppponent to exploit a weakness. Analyze our salary cap to optimize our roster. Whatever you know that can help, we want to hear it!",
+      "image": "mls_lafc/ideas_submit_ad_gallagher.webp"
+    }
+  }
+}

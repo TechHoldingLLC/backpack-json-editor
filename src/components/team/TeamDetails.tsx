@@ -8,7 +8,6 @@ interface TeamDetailsProps {
     name: string;
     logo_image: string;
     survey_url: string;
-    enabled: boolean;
     welcome_details: {
       title: string;
       description: string;
@@ -44,7 +43,6 @@ export const TeamDetails = ({ team, getFullImageUrl, onTeamChange }: TeamDetails
           name={team.name}
           logoImage={team.logo_image}
           surveyUrl={team.survey_url}
-          enabled={team.enabled}
           getFullImageUrl={getFullImageUrl}
           onBasicInfoChange={(field, value) => onTeamChange('basic_info', field, value)}
         />

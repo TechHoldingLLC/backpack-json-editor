@@ -92,7 +92,6 @@ export interface ExtendedTeam {
   name: string;
   logo_image: string;
   survey_url: string;
-  enabled: boolean;
   welcome_details: {
     title: string;
     description: string;

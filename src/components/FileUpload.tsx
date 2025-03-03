@@ -79,7 +79,6 @@ const FileUpload = ({ type, onFileUpload, onError }: FileUploadProps) => {
     if (!teamData.name) errors.push('Missing team name');
     if (!teamData.logo_image) errors.push('Missing team logo image');
     if (!teamData.survey_url) errors.push('Missing survey URL');
-    if (teamData.enabled === undefined) errors.push('Missing enabled status');
 
     // Validate welcome details
     if (!teamData.welcome_details) {

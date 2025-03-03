@@ -1,20 +1,19 @@
 import { ImagePreview } from './ImagePreview';
-import { 
-  Info, 
-  Hash, 
-  Users, 
-  Link, 
+import {
+  Hash,
+  Link,
   Image as ImageIcon,
-  ToggleLeft,
-  ToggleRight
+  User,
+  Info
 } from 'lucide-react';
+import { Input } from '../ui/input';
+import { Label } from '../ui/label';
 
 interface BasicInfoProps {
   id: string;
   name: string;
   logoImage: string;
   surveyUrl: string;
-  enabled: boolean;
   getFullImageUrl: (path: string) => string;
   onBasicInfoChange: (field: string, value: string | boolean) => void;
 }
@@ -24,7 +23,6 @@ export const BasicInfo = ({
   name,
   logoImage,
   surveyUrl,
-  enabled,
   getFullImageUrl,
   onBasicInfoChange,
 }: BasicInfoProps) => {
@@ -36,19 +34,6 @@ export const BasicInfo = ({
             <Info className="w-6 h-6 text-primary" />
             Basic Information
           </h2>
-          <div className="flex items-center space-x-3 bg-white px-4 py-2 rounded-lg shadow-sm">
-            <input
-              type="checkbox"
-              id="enabled"
-              checked={enabled}
-              onChange={(e) => onBasicInfoChange('enabled', e.target.checked)}
-              className="h-5 w-5 text-primary border-gray-300 rounded focus:ring-primary"
-            />
-            <label htmlFor="enabled" className="text-sm font-medium text-gray-700 flex items-center gap-2">
-              {enabled ? <ToggleRight className="w-4 h-4 text-primary" /> : <ToggleLeft className="w-4 h-4 text-gray-400" />}
-              Team Status: {enabled ? 'Active' : 'Inactive'}
-            </label>
-          </div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -72,7 +57,7 @@ export const BasicInfo = ({
 
             <div>
               <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
-                <Users className="w-4 h-4 text-primary" />
+                <User className="w-4 h-4 text-primary" />
                 Team Name
               </label>
               <div className="relative">
