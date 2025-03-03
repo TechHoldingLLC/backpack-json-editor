@@ -74,6 +74,11 @@ const LeagueCard = ({ league, onUpdate }: LeagueCardProps) => {
     setTeamLogoErrors(errors);
   }, [league.logo_image, teams]);
 
+  // Sync local state with parent props when league changes
+  useEffect(() => {
+    setLeagueId(league.id);
+  }, [league.id]);
+
   const handleToggle = () => {
     const updatedEnabled = !isEnabled;
     setIsEnabled(updatedEnabled);
@@ -86,13 +91,33 @@ const LeagueCard = ({ league, onUpdate }: LeagueCardProps) => {
   const handleIdChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newId = event.target.value;
     setLeagueId(newId);
-    // Debounce the update to parent to prevent focus loss
-    setTimeout(() => {
-      onUpdate({
-        ...league,
-        id: newId,
-      });
-    }, 300);
+    // Update parent immediately with complete league data
+    onUpdate({
+      ...league,
+      id: newId,
+      enabled: isEnabled,
+      teams: teams.map(team => ({
+        id: team.id,
+        logo_image: team.logo_image,
+        enabled: team.enabled
+      }))
+    });
+  };
+
+  // Remove handleIdBlur since we're updating immediately
+  const handleLogoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newLogoPath = e.target.value;
+    onUpdate({
+      ...league,
+      id: leagueId, // Make sure to use the current leagueId
+      logo_image: newLogoPath,
+      enabled: isEnabled,
+      teams: teams.map(team => ({
+        id: team.id,
+        logo_image: team.logo_image,
+        enabled: team.enabled
+      }))
+    });
   };
 
   const handleTeamUpdate = (updatedTeam: Partial<Team>, index: number) => {
@@ -252,7 +277,7 @@ const LeagueCard = ({ league, onUpdate }: LeagueCardProps) => {
                   <div className="w-[400px]">
                     <Input
                       value={league.logo_image}
-                      onChange={(e) => onUpdate({ ...league, logo_image: e.target.value })}
+                      onChange={handleLogoChange}
                       className={`h-9 bg-white text-gray-900 border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary transition-colors ${
                         logoError ? 'border-red-500 focus:ring-red-500' : ''
                       }`}

@@ -56,12 +56,11 @@ function App() {
     setError(errorMessage)
   }
 
-  const handleLeagueUpdate = (updatedLeague: League) => {
+  const handleLeagueUpdate = (updatedLeague: League, index: number) => {
     if (!leagueData) return
 
-    const updatedLeagues = leagueData.leagues.map((league) =>
-      league.id === updatedLeague.id ? updatedLeague : league
-    )
+    const updatedLeagues = [...leagueData.leagues];
+    updatedLeagues[index] = updatedLeague;
 
     setLeagueData({
       ...leagueData,
@@ -84,7 +83,7 @@ function App() {
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
     a.href = url
-    a.download = 'leagues.json'
+    a.download = 'leagues_and_teams.json'
     document.body.appendChild(a)
     a.click()
     document.body.removeChild(a)
@@ -92,11 +91,13 @@ function App() {
   }
 
   const handleSaveTeamJson = () => {
+    if (!teamData) return
+    
     const blob = new Blob([JSON.stringify(teamData, null, 2)], { type: 'application/json' })
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
     a.href = url
-    a.download = 'team.json'
+    a.download = `${teamData.id}.json`
     document.body.appendChild(a)
     a.click()
     document.body.removeChild(a)
@@ -155,11 +156,11 @@ function App() {
                   onValidationError={handleValidationError}
                 />
               </div>
-              {leagueData.leagues.map((league) => (
+              {leagueData.leagues.map((league, index) => (
                 <LeagueCard
-                  key={league.id}
+                  key={index}
                   league={league}
-                  onUpdate={handleLeagueUpdate}
+                  onUpdate={(updatedLeague) => handleLeagueUpdate(updatedLeague, index)}
                 />
               ))}
             </div>
