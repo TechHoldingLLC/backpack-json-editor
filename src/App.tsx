@@ -7,6 +7,7 @@ import { SaveTeamJsonButton } from './components/SaveTeamJsonButton'
 import { ValidationErrors } from './components/ValidationErrors'
 import type { ExtendedTeam } from './components/team/types'
 import { Header } from './components/Header'
+import { AddLeagueButton } from './components/AddLeagueButton'
 
 // Basic interfaces for League data
 interface BasicTeam {
@@ -119,6 +120,17 @@ function App() {
     setValidationErrors([]);
   };
 
+  const handleAddLeague = (newLeague: League) => {
+    if (!leagueData) {
+      setLeagueData({ leagues: [newLeague] });
+    } else {
+      setLeagueData({
+        ...leagueData,
+        leagues: [...leagueData.leagues, newLeague]
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Header activeTab={activeTab} onTabChange={handleTabChange} />
@@ -148,7 +160,8 @@ function App() {
 
           {activeTab === 'leagues' && leagueData && (
             <div className="space-y-6">
-              <div className="flex justify-end">
+              <div className="flex justify-end gap-3">
+                <AddLeagueButton onLeagueAdd={handleAddLeague} />
                 <SaveJsonButton
                   data={leagueData.leagues}
                   onSave={handleSaveLeagueJson}
