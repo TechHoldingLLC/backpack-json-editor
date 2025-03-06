@@ -263,4 +263,17 @@ export const validateS3ImagePath = (path: string): boolean => {
     return false;
   }
   return path.startsWith(assetUrl) || path.startsWith('http://') || path.startsWith('https://');
+};
+
+export const validateUrl = (url: string): boolean => {
+  if (!url) return false;
+  
+  try {
+    // Use the URL constructor to validate the URL format
+    new URL(url);
+    return true;
+  } catch {
+    // If the URL constructor throws an error, the URL is invalid
+    return false;
+  }
 }; 

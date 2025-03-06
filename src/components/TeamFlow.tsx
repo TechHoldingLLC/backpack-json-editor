@@ -20,7 +20,9 @@ const TeamFlow = ({ initialTeam, onTeamUpdate }: TeamFlowProps) => {
     } else if (section === 'welcome_details') {
       updatedTeam.welcome_details[field as keyof typeof team.welcome_details] = value as never;
     } else if (section === 'team_home') {
-      if (typeof value === 'object' && value !== null) {
+      if (field === 'motto' && typeof value === 'string') {
+        updatedTeam.team_home.motto = value;
+      } else if (typeof value === 'object' && value !== null) {
         updatedTeam.team_home[field as keyof typeof team.team_home] = value as never;
       }
     }

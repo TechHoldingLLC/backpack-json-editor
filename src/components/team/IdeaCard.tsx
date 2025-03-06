@@ -1,14 +1,12 @@
 import { Idea } from './types';
 import { Card, CardContent } from '../ui/card';
-import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Textarea } from '../ui/textarea';
 import { Label } from '../ui/label';
 import { 
-  Trash2, 
-  Hash,
-  Type,
-  FileText,
+  Hash, 
+  Type, 
+  FileText, 
   Image as ImageIcon,
   MessageCircle,
   CheckCircle
@@ -20,7 +18,6 @@ interface IdeaCardProps {
   index: number;
   getFullImageUrl: (path: string) => string;
   onIdeaChange: (index: number, field: keyof Idea, value: string) => void;
-  onIdeaRemove: (index: number) => void;
 }
 
 export const IdeaCard = ({
@@ -28,36 +25,25 @@ export const IdeaCard = ({
   index,
   getFullImageUrl,
   onIdeaChange,
-  onIdeaRemove,
 }: IdeaCardProps) => {
   return (
     <Card className="bg-white border border-gray-200 shadow-sm">
       <CardContent className="p-6">
         <div className="space-y-6">
-          {/* ID and Remove Button */}
-          <div className="flex items-start justify-between gap-4">
-            <div className="flex-1">
-              <div className="space-y-1.5">
-                <Label className="text-sm font-medium text-gray-700 flex items-center gap-2">
-                  <Hash className="w-4 h-4 text-primary" />
-                  Idea ID
-                </Label>
-                <Input
-                  value={idea.id}
-                  onChange={(e) => onIdeaChange(index, 'id', e.target.value)}
-                  placeholder="Enter idea ID"
-                  className="h-9 bg-white text-gray-900 border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
-                />
-              </div>
+          {/* ID section without Remove Button */}
+          <div className="flex-1">
+            <div className="space-y-1.5">
+              <Label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                <Hash className="w-4 h-4 text-primary" />
+                Idea ID
+              </Label>
+              <Input
+                value={idea.id}
+                onChange={(e) => onIdeaChange(index, 'id', e.target.value)}
+                placeholder="Enter idea ID"
+                className="h-9 bg-white text-gray-900 border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+              />
             </div>
-            <Button
-              variant="ghost"
-              size="sm"
-              className="text-gray-500 hover:text-red-600 hover:bg-red-50 transition-colors"
-              onClick={() => onIdeaRemove(index)}
-            >
-              <Trash2 className="w-4 h-4" />
-            </Button>
           </div>
 
           {/* Title */}

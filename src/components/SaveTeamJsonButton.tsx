@@ -204,6 +204,7 @@ export const SaveTeamJsonButton = ({ data, onSave, onCancel, onValidationError }
       if (!submit_idea.image) {
         errors.push({ path: 'Ideas - Submit', message: 'Submit idea image is required' });
       }
+      // Completion message and image are not required for submit_idea
     } else {
       errors.push({ path: 'Ideas - Submit', message: 'Submit idea section is required' });
     }

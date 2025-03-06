@@ -93,7 +93,6 @@ export const Ideas = ({
             index={0}
             getFullImageUrl={getFullImageUrl}
             onIdeaChange={(_, field, value) => onIdeaChange('review_idea', field, value)}
-            onIdeaRemove={() => {}}
           />
           <IdeaQuestions
             questions={ideas.review_idea?.questions || []}
@@ -127,7 +126,6 @@ export const Ideas = ({
             index={1}
             getFullImageUrl={getFullImageUrl}
             onIdeaChange={(_, field, value) => onIdeaChange('select_idea', field, value)}
-            onIdeaRemove={() => {}}
           />
           <div className="space-y-4">
             <div className="flex items-center justify-between">
@@ -201,7 +199,6 @@ export const Ideas = ({
             index={2}
             getFullImageUrl={getFullImageUrl}
             onIdeaChange={(_, field, value) => onIdeaChange('submit_idea', field, value)}
-            onIdeaRemove={() => {}}
           />
         </div>
       ),

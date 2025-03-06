@@ -4,8 +4,11 @@ import {
   Link,
   Image as ImageIcon,
   User,
-  Info
+  Info,
+  AlertTriangle
 } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { validateUrl } from '../../utils/validator';
 
 interface BasicInfoProps {
   id: string;
@@ -24,6 +27,19 @@ export const BasicInfo = ({
   getFullImageUrl,
   onBasicInfoChange,
 }: BasicInfoProps) => {
+  const [isSurveyUrlValid, setIsSurveyUrlValid] = useState(true);
+
+  // Validate the survey URL whenever it changes
+  useEffect(() => {
+    // Only validate if there's something to validate
+    if (surveyUrl) {
+      setIsSurveyUrlValid(validateUrl(surveyUrl));
+    } else {
+      // Empty URL is considered valid in terms of format (though it might be required)
+      setIsSurveyUrlValid(true);
+    }
+  }, [surveyUrl]);
+
   return (
     <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-lg border border-gray-100">
       <div className="p-8">
@@ -75,15 +91,25 @@ export const BasicInfo = ({
                 <Link className="w-4 h-4 text-primary" />
                 Survey URL
               </label>
-              <div className="relative">
-                <input
-                  type="url"
-                  id="surveyUrl"
-                  value={surveyUrl}
-                  onChange={(e) => onBasicInfoChange('survey_url', e.target.value)}
-                  className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
-                  placeholder="Enter survey URL"
-                />
+              <div className="space-y-1">
+                <div className="relative">
+                  <input
+                    type="url"
+                    id="surveyUrl"
+                    value={surveyUrl}
+                    onChange={(e) => onBasicInfoChange('survey_url', e.target.value)}
+                    className={`w-full px-4 py-3 bg-white border-2 ${
+                      isSurveyUrlValid ? 'border-gray-200 focus:ring-primary focus:border-primary' : 'border-red-300 focus:ring-red-500 focus:border-red-500'
+                    } rounded-xl transition-colors`}
+                    placeholder="Enter survey URL"
+                  />
+                </div>
+                {!isSurveyUrlValid && (
+                  <div className="text-red-500 text-sm flex items-center gap-1 mt-1">
+                    <AlertTriangle className="w-3.5 h-3.5" />
+                    <span>Please enter a valid URL (e.g., https://example.com)</span>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -113,7 +139,7 @@ export const BasicInfo = ({
                     className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
                     placeholder="Enter logo image path"
                   />
-                  <p className="text-sm text-gray-500 text-center">
+                  <p className="text-xs text-gray-500 text-center">
                     Recommended size: 324 × 402 pixels
                   </p>
                 </div>
