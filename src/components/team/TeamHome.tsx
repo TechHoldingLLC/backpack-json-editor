@@ -8,7 +8,6 @@ import {
   Medal,
   MonitorSmartphone,
   Crown,
-  Star
 } from 'lucide-react';
 
 interface TeamMember {
@@ -97,10 +96,10 @@ export const TeamHome = ({
                   <ImagePreview
                     src={getFullImageUrl(teamHome.best_ideas.user_image)}
                     alt="Best Ideas User"
-                    className="w-24 h-24 rounded-full object-cover bg-gray-50 shadow-md ring-4 ring-yellow-100"
+                    className="w-24 h-24 rounded-full object-cover bg-gray-50 shadow-md ring-4 ring-amber-100"
                   />
-                  <div className="absolute -bottom-1 -right-1 bg-yellow-500 text-white p-1.5 rounded-full">
-                    <Star className="w-4 h-4" />
+                  <div className="absolute -bottom-1 -right-1 bg-amber-500 text-white p-1.5 rounded-full">
+                    <Lightbulb className="w-4 h-4" />
                   </div>
                 </div>
                 <div className="flex-1 space-y-3">
@@ -111,13 +110,18 @@ export const TeamHome = ({
                     className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
                     placeholder="Enter username"
                   />
-                  <input
-                    type="text"
-                    value={teamHome.best_ideas.user_image}
-                    onChange={(e) => handleTeamMemberChange('best_ideas', 'user_image', e.target.value)}
-                    className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
-                    placeholder="Enter user image path"
-                  />
+                  <div className="space-y-1">
+                    <input
+                      type="text"
+                      value={teamHome.best_ideas.user_image}
+                      onChange={(e) => handleTeamMemberChange('best_ideas', 'user_image', e.target.value)}
+                      className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                      placeholder="Enter user image path"
+                    />
+                    <p className="text-xs text-gray-500">
+                      Recommended size: 100 × 100 pixels
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -147,13 +151,18 @@ export const TeamHome = ({
                     className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
                     placeholder="Enter username"
                   />
-                  <input
-                    type="text"
-                    value={teamHome.most_missions.user_image}
-                    onChange={(e) => handleTeamMemberChange('most_missions', 'user_image', e.target.value)}
-                    className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
-                    placeholder="Enter user image path"
-                  />
+                  <div className="space-y-1">
+                    <input
+                      type="text"
+                      value={teamHome.most_missions.user_image}
+                      onChange={(e) => handleTeamMemberChange('most_missions', 'user_image', e.target.value)}
+                      className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                      placeholder="Enter user image path"
+                    />
+                    <p className="text-xs text-gray-500">
+                      Recommended size: 100 × 100 pixels
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -172,7 +181,7 @@ export const TeamHome = ({
                     <ImagePreview
                       src={getFullImageUrl(member.user_image)}
                       alt={`Top Team Member ${index + 1}`}
-                      className="w-24 h-24 rounded-full object-cover shadow-md ring-2 ring-primary/20"
+                      className="w-16 h-16 rounded-full object-cover shadow-md ring-2 ring-primary/20"
                     />
                     <div className="absolute -top-2 -right-2 bg-white shadow-md text-primary font-bold px-2.5 py-1 rounded-lg flex items-center gap-1">
                       <Crown className="w-3 h-3" />
@@ -187,13 +196,18 @@ export const TeamHome = ({
                       className="w-full px-3 py-2 text-sm bg-white border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
                       placeholder="Enter username"
                     />
-                    <input
-                      type="text"
-                      value={member.user_image}
-                      onChange={(e) => handleTopTeamMemberChange(index, 'user_image', e.target.value)}
-                      className="w-full px-3 py-2 text-sm bg-white border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
-                      placeholder="Enter user image path"
-                    />
+                    <div className="space-y-1">
+                      <input
+                        type="text"
+                        value={member.user_image}
+                        onChange={(e) => handleTopTeamMemberChange(index, 'user_image', e.target.value)}
+                        className="w-full px-3 py-2 text-sm bg-white border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                        placeholder="Enter user image path"
+                      />
+                      <p className="text-xs text-gray-500">
+                        Recommended size: 65 × 65 pixels
+                      </p>
+                    </div>
                   </div>
                 </div>
               ))}

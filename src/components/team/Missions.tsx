@@ -91,6 +91,7 @@ export const Missions = ({
                     }
                     onQuestionAdd={() => onQuestionAdd(missionIndex)}
                     onQuestionRemove={(questionIndex) => onQuestionRemove(missionIndex, questionIndex)}
+                    getFullImageUrl={getFullImageUrl}
                   />
                 </div>
               </AccordionContent>

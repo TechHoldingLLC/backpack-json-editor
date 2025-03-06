@@ -149,12 +149,15 @@ export const MissionCard = ({
                   placeholder="Enter mission image URL"
                   className="h-9 bg-white text-gray-900 border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
                 />
+                <p className="text-xs text-gray-500">
+                  Recommended size: 1098 × 633 pixels
+                </p>
                 {mission.image && (
                   <div className="relative">
                     <ImagePreview
                       src={getFullImageUrl(mission.image)}
                       alt="Mission preview"
-                      className="w-full h-[200px] rounded-lg object-cover"
+                      className="w-full aspect-[1098/633] rounded-lg object-cover"
                     />
                     <div className="absolute -top-2 -right-2 bg-white p-1 rounded-full shadow-sm border border-gray-200">
                       <ImageIcon className="w-4 h-4 text-primary" />
@@ -194,12 +197,15 @@ export const MissionCard = ({
                   placeholder="Enter completion image URL"
                   className="h-9 bg-white text-gray-900 border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
                 />
+                <p className="text-xs text-gray-500">
+                  Recommended size: 1725 × 933 pixels
+                </p>
                 {mission.completion_image && (
                   <div className="relative">
                     <ImagePreview
                       src={getFullImageUrl(mission.completion_image)}
                       alt="Completion preview"
-                      className="w-full h-[200px] rounded-lg object-cover"
+                      className="w-full aspect-[1725/933] rounded-lg object-cover"
                     />
                     <div className="absolute -top-2 -right-2 bg-white p-1 rounded-full shadow-sm border border-gray-200">
                       <CheckCircle className="w-4 h-4 text-primary" />

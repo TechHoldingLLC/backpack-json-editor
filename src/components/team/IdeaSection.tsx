@@ -81,18 +81,23 @@ export const IdeaSection = ({
             </div>
             {section.completion_image && (
               <div>
-                <input
-                  type="text"
-                  value={section.completion_image}
-                  onChange={(e) => onSectionChange('completion_image', e.target.value)}
-                  className="w-full mb-2 text-sm text-gray-600 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent px-2 py-1"
-                  placeholder="Completion image path"
-                />
-                <ImagePreview
-                  src={getFullImageUrl(section.completion_image)}
-                  alt="Completion"
-                  className="w-24 h-24 rounded-lg object-cover"
-                />
+                <div className="space-y-2">
+                  <input
+                    type="text"
+                    value={section.completion_image}
+                    onChange={(e) => onSectionChange('completion_image', e.target.value)}
+                    className="w-full mb-2 text-sm text-gray-600 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent px-2 py-1"
+                    placeholder="Completion image path"
+                  />
+                  <p className="text-xs text-gray-500">
+                    Recommended size: 1725 × 933 pixels
+                  </p>
+                  <ImagePreview
+                    src={getFullImageUrl(section.completion_image)}
+                    alt="Completion"
+                    className="w-full max-w-md aspect-[1725/933] rounded-lg object-cover"
+                  />
+                </div>
               </div>
             )}
           </div>

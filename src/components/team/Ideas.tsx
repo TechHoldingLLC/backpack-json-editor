@@ -103,6 +103,7 @@ export const Ideas = ({
             onQuestionAdd={() => onQuestionAdd('review_idea')}
             onQuestionRemove={(questionIndex) => onQuestionRemove('review_idea', questionIndex)}
             sectionTitle="Review Questions"
+            getFullImageUrl={getFullImageUrl}
           />
         </div>
       ),
@@ -176,6 +177,7 @@ export const Ideas = ({
             onQuestionAdd={() => onQuestionAdd('select_idea')}
             onQuestionRemove={(questionIndex) => onQuestionRemove('select_idea', questionIndex)}
             sectionTitle="Selection Questions"
+            getFullImageUrl={getFullImageUrl}
           />
         </div>
       ),

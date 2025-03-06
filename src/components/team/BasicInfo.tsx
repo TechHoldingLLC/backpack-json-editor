@@ -99,7 +99,7 @@ export const BasicInfo = ({
                   <ImagePreview
                     src={getFullImageUrl(logoImage)}
                     alt="Team Logo"
-                    className="w-40 h-40 rounded-2xl object-cover bg-gray-50 shadow-md"
+                    className="w-40 aspect-[324/402] rounded-2xl object-cover bg-gray-50 shadow-md"
                   />
                   <div className="absolute -top-2 -right-2 bg-white p-1 rounded-full shadow-sm border border-gray-200">
                     <ImageIcon className="w-4 h-4 text-primary" />
@@ -114,7 +114,7 @@ export const BasicInfo = ({
                     placeholder="Enter logo image path"
                   />
                   <p className="text-sm text-gray-500 text-center">
-                    Recommended size: 256x256 pixels
+                    Recommended size: 324 × 402 pixels
                   </p>
                 </div>
               </div>

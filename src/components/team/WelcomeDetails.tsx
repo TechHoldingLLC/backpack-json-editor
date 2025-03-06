@@ -103,17 +103,14 @@ export const WelcomeDetails = ({
                 <div className="relative">
                   <ImagePreview
                     src={getFullImageUrl(welcomeImage)}
-                    alt="Welcome"
-                    className="w-full h-56 rounded-xl object-cover bg-gray-50 shadow-md"
+                    alt="Welcome Image"
+                    className="w-full aspect-[1170/1521] rounded-2xl object-cover bg-gray-50 shadow-md"
                   />
                   <div className="absolute -top-2 -right-2 bg-white p-1 rounded-full shadow-sm border border-gray-200">
                     <ImageIcon className="w-4 h-4 text-primary" />
                   </div>
-                  <div className="absolute inset-0 bg-black/40 rounded-xl flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                    <span className="text-white text-sm font-medium">Change Image</span>
-                  </div>
                 </div>
-                <div className="space-y-2">
+                <div className="w-full space-y-2">
                   <input
                     type="text"
                     value={welcomeImage}
@@ -122,7 +119,7 @@ export const WelcomeDetails = ({
                     placeholder="Enter welcome image path"
                   />
                   <p className="text-sm text-gray-500 text-center">
-                    Recommended size: 1200x630 pixels (16:9 ratio)
+                    Recommended size: 1170 × 1521 pixels
                   </p>
                 </div>
               </div>

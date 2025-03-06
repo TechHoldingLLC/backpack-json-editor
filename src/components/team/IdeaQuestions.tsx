@@ -12,6 +12,7 @@ interface IdeaQuestionsProps {
   onQuestionAdd: () => void;
   onQuestionRemove: (questionIndex: number) => void;
   sectionTitle?: string;
+  getFullImageUrl?: (path: string) => string;
 }
 
 export const IdeaQuestions = ({
@@ -20,6 +21,7 @@ export const IdeaQuestions = ({
   onQuestionAdd,
   onQuestionRemove,
   sectionTitle = 'Questions',
+  getFullImageUrl = (path) => path,
 }: IdeaQuestionsProps) => {
   return (
     <Card className="bg-white border border-gray-200">
@@ -77,6 +79,7 @@ export const IdeaQuestions = ({
                         question={question}
                         onChange={(field, value) => onQuestionChange(questionIndex, field, value)}
                         onRemove={() => onQuestionRemove(questionIndex)}
+                        getFullImageUrl={getFullImageUrl}
                       />
                     </div>
                   </div>

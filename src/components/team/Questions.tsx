@@ -162,10 +162,13 @@ export const Questions = ({
                 <div className="space-y-4">
                   <div className="relative">
                     <div className="flex items-center space-x-4">
-                      <ImagePreview
-                        src={getFullImageUrl(question.option_image || '')}
-                        alt="Option Image"
-                      />
+                      <div className="w-full max-w-[555px]">
+                        <ImagePreview
+                          src={getFullImageUrl(question.option_image || '')}
+                          alt="Option Image"
+                          className="w-full aspect-[555/651] rounded-lg object-cover shadow-sm"
+                        />
+                      </div>
                       <div className="flex-1">
                         <input
                           type="text"
@@ -177,6 +180,9 @@ export const Questions = ({
                         <label className="absolute left-20 -top-2.5 bg-white px-2 text-xs text-gray-500">
                           Option Image
                         </label>
+                        <p className="text-xs text-gray-500 mt-1">
+                          Recommended size: 555 × 651 pixels
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -192,6 +198,32 @@ export const Questions = ({
                       Image Option Hint
                     </label>
                   </div>
+                </div>
+              )}
+
+              {/* Image Selection Preview */}
+              {question.image_selection && question.image_selection.length > 0 && (
+                <div className="space-y-4">
+                  <h5 className="text-sm font-medium text-gray-700">Image Selection Preview</h5>
+                  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
+                    {question.image_selection.map((item, idx) => (
+                      <div key={idx} className="space-y-2">
+                        <div className="relative">
+                          <ImagePreview
+                            src={getFullImageUrl(item.image)}
+                            alt={item.title}
+                            className="w-full aspect-square rounded-lg object-cover shadow-sm"
+                          />
+                        </div>
+                        <div className="text-xs text-gray-500 truncate">
+                          {item.title}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-xs text-gray-500 italic">
+                    Recommended size for selection images: 240 × 240 pixels
+                  </p>
                 </div>
               )}
 

@@ -25,11 +25,11 @@ export const YouTubeThumbnail = ({
       <CardContent className="p-6">
         <div className="bg-white p-6 rounded-xl border-2 border-dashed border-gray-200 hover:border-primary transition-colors">
           <div className="flex flex-col items-center space-y-4">
-            <div className="relative">
+            <div className="relative w-full max-w-md">
               <ImagePreview
                 src={getFullImageUrl(imagePath)}
                 alt="Default YouTube Thumbnail"
-                className="w-40 h-32 rounded-xl object-cover shadow-sm"
+                className="w-full aspect-[16/9] rounded-xl object-cover shadow-sm"
               />
               <div className="absolute -top-2 -right-2 bg-white p-1 rounded-full shadow-sm border border-gray-200">
                 <ImageIcon className="w-4 h-4 text-primary" />
@@ -44,7 +44,7 @@ export const YouTubeThumbnail = ({
                 placeholder="YouTube Thumbnail Image Path"
               />
               <p className="mt-2 text-sm text-gray-500 text-center">
-                Recommended size: 1280x720 pixels
+                Recommended size: 1280 × 720 pixels (16:9 aspect ratio)
               </p>
             </div>
           </div>

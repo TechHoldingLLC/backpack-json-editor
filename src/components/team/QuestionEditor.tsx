@@ -5,6 +5,7 @@ import { Label } from '../ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import { Textarea } from '../ui/textarea';
 import { Card, CardContent } from '../ui/card';
+import { ImagePreview } from './ImagePreview';
 import { 
   Trash2, 
   Plus, 
@@ -22,6 +23,7 @@ interface QuestionEditorProps {
   question: Question;
   onChange: (field: keyof Question, value: unknown) => void;
   onRemove: () => void;
+  getFullImageUrl?: (path: string) => string;
 }
 
 const questionTypes = [
@@ -35,6 +37,7 @@ export const QuestionEditor = ({
   question,
   onChange,
   onRemove,
+  getFullImageUrl = (path) => path, // Default implementation if not provided
 }: QuestionEditorProps) => {
   return (
     <Card className="bg-white border border-gray-200 shadow-sm">
@@ -172,17 +175,48 @@ export const QuestionEditor = ({
           )}
 
           {question.question_type === 'image' && (
-            <div className="space-y-1.5">
-              <Label className="text-sm font-medium text-gray-700 flex items-center gap-2">
-                <ImageIcon className="w-4 h-4 text-primary" />
-                Image URL
-              </Label>
-              <Input
-                value={question.option_image}
-                onChange={(e) => onChange('option_image', e.target.value)}
-                placeholder="Enter image URL"
-                className="h-9 bg-white text-gray-900 border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
-              />
+            <div className="space-y-4">
+              <div className="space-y-1.5">
+                <Label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                  <ImageIcon className="w-4 h-4 text-primary" />
+                  Image URL
+                </Label>
+                <Input
+                  value={question.option_image}
+                  onChange={(e) => onChange('option_image', e.target.value)}
+                  placeholder="Enter image URL"
+                  className="h-9 bg-white text-gray-900 border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                />
+                <p className="text-xs text-gray-500 mt-1">
+                  Recommended size: 555 × 651 pixels
+                </p>
+              </div>
+              
+              {question.option_image && (
+                <div className="relative">
+                  <ImagePreview
+                    src={getFullImageUrl(question.option_image)}
+                    alt="Option Image"
+                    className="w-full aspect-[555/651] rounded-lg object-cover shadow-sm"
+                  />
+                  <div className="absolute -top-2 -right-2 bg-white p-1 rounded-full shadow-sm border border-gray-200">
+                    <ImageIcon className="w-4 h-4 text-primary" />
+                  </div>
+                </div>
+              )}
+              
+              <div className="space-y-1.5">
+                <Label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                  <MessageSquare className="w-4 h-4 text-primary" />
+                  Image Hint
+                </Label>
+                <Input
+                  value={question.image_option_hint}
+                  onChange={(e) => onChange('image_option_hint', e.target.value)}
+                  placeholder="Enter hint for image (e.g., Draw a line from the top)"
+                  className="h-9 bg-white text-gray-900 border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                />
+              </div>
             </div>
           )}
 

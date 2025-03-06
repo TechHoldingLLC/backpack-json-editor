@@ -104,11 +104,14 @@ export const IdeaCard = ({
                   placeholder="Enter idea image URL"
                   className="h-9 bg-white text-gray-900 border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
                 />
+                <p className="text-xs text-gray-500">
+                  Recommended size: 1098 × 633 pixels
+                </p>
                 {idea.image && (
                   <ImagePreview
                     src={getFullImageUrl(idea.image)}
                     alt="Idea preview"
-                    className="w-full h-[200px] rounded-lg object-cover"
+                    className="w-full aspect-[1098/633] rounded-lg object-cover"
                   />
                 )}
               </div>
@@ -144,11 +147,14 @@ export const IdeaCard = ({
                   placeholder="Enter completion image URL"
                   className="h-9 bg-white text-gray-900 border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
                 />
+                <p className="text-xs text-gray-500">
+                  Recommended size: 1725 × 933 pixels
+                </p>
                 {idea.completion_image && (
                   <ImagePreview
                     src={getFullImageUrl(idea.completion_image)}
                     alt="Completion preview"
-                    className="w-full h-[200px] rounded-lg object-cover"
+                    className="w-full aspect-[1725/933] rounded-lg object-cover"
                   />
                 )}
               </div>
