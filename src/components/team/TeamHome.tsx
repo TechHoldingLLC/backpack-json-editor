@@ -168,13 +168,13 @@ export const TeamHome = ({
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
               {teamHome.top_team_rank.map((member, index) => (
                 <div key={index} className="bg-gray-50 p-4 rounded-xl space-y-4">
-                  <div className="relative">
+                  <div className="relative flex flex-col items-center justify-center mb-2">
                     <ImagePreview
                       src={getFullImageUrl(member.user_image)}
                       alt={`Top Team Member ${index + 1}`}
-                      className="w-full h-32 rounded-xl object-cover shadow-md"
+                      className="w-24 h-24 rounded-full object-cover shadow-md ring-2 ring-primary/20"
                     />
-                    <div className="absolute top-2 left-2 bg-white shadow-md text-primary font-bold px-2.5 py-1 rounded-lg flex items-center gap-1">
+                    <div className="absolute -top-2 -right-2 bg-white shadow-md text-primary font-bold px-2.5 py-1 rounded-lg flex items-center gap-1">
                       <Crown className="w-3 h-3" />
                       #{index + 1}
                     </div>
