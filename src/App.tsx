@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import FileUpload from './components/FileUpload'
-import LeagueCard from './components/LeagueCard'
+import CollapsibleLeagueCard from './components/CollapsibleLeagueCard'
 import TeamFlow from './components/TeamFlow'
 import { SaveJsonButton } from './components/SaveJsonButton'
 import { SaveTeamJsonButton } from './components/SaveTeamJsonButton'
@@ -169,13 +169,16 @@ function App() {
                   onValidationError={handleValidationError}
                 />
               </div>
-              {leagueData.leagues.map((league, index) => (
-                <LeagueCard
-                  key={index}
-                  league={league}
-                  onUpdate={(updatedLeague) => handleLeagueUpdate(updatedLeague, index)}
-                />
-              ))}
+              <div className="space-y-4">
+                {leagueData.leagues.map((league, index) => (
+                  <CollapsibleLeagueCard
+                    key={index}
+                    league={league}
+                    onUpdate={(updatedLeague) => handleLeagueUpdate(updatedLeague, index)}
+                    defaultExpanded={index === 0} // Only expand the first league by default
+                  />
+                ))}
+              </div>
             </div>
           )}
 
