@@ -17,7 +17,9 @@ import {
   CheckSquare,
   AlignLeft,
   AlignRight,
-  ImagePlus
+  ImagePlus,
+  ChevronDown,
+  SlidersHorizontal
 } from 'lucide-react';
 
 interface QuestionEditorProps {
@@ -172,6 +174,189 @@ export const QuestionEditor = ({
                   className="h-9 bg-white text-gray-900 border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
                 />
               </div>
+            </div>
+          )}
+
+          {question.question_type === 'dropdown' && (
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <Label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                  <ChevronDown className="w-4 h-4 text-primary" />
+                  Dropdown Options
+                </Label>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="h-8 bg-white text-gray-700 border-gray-200 hover:bg-gray-50 hover:text-gray-900 hover:border-gray-300 transition-colors"
+                  onClick={() => {
+                    const newDropdownOptions = [
+                      ...(question.dropdown_options || []),
+                      { 
+                        title: '',
+                        hint: '',
+                        options: ['']
+                      }
+                    ];
+                    onChange('dropdown_options', newDropdownOptions);
+                  }}
+                >
+                  <Plus className="w-4 h-4 mr-1" />
+                  Add Dropdown
+                </Button>
+              </div>
+              
+              <div className="space-y-4">
+                {(question.dropdown_options || []).map((dropdownItem, dropdownIndex) => (
+                  <div 
+                    key={dropdownIndex} 
+                    className="border border-gray-200 rounded-lg p-4 space-y-4 relative"
+                  >
+                    <button 
+                      type="button"
+                      onClick={() => {
+                        const newDropdownOptions = [...(question.dropdown_options || [])];
+                        newDropdownOptions.splice(dropdownIndex, 1);
+                        onChange('dropdown_options', newDropdownOptions);
+                      }}
+                      className="absolute top-2 right-2 p-1 bg-white hover:bg-red-50 text-gray-600 hover:text-red-600 rounded-full shadow-sm border border-gray-200 transition-colors"
+                      aria-label="Delete dropdown option"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                      <div className="space-y-1.5">
+                        <Label className="text-sm font-medium text-gray-700">
+                          Title
+                        </Label>
+                        <Input
+                          value={dropdownItem.title}
+                          onChange={(e) => {
+                            const newDropdownOptions = [...(question.dropdown_options || [])];
+                            newDropdownOptions[dropdownIndex] = {
+                              ...newDropdownOptions[dropdownIndex],
+                              title: e.target.value
+                            };
+                            onChange('dropdown_options', newDropdownOptions);
+                          }}
+                          placeholder="Dropdown title (e.g., 'Type of shot:')"
+                          className="h-9 bg-white text-gray-900 border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                        />
+                      </div>
+                      
+                      <div className="space-y-1.5">
+                        <Label className="text-sm font-medium text-gray-700">
+                          Hint
+                        </Label>
+                        <Input
+                          value={dropdownItem.hint}
+                          onChange={(e) => {
+                            const newDropdownOptions = [...(question.dropdown_options || [])];
+                            newDropdownOptions[dropdownIndex] = {
+                              ...newDropdownOptions[dropdownIndex],
+                              hint: e.target.value
+                            };
+                            onChange('dropdown_options', newDropdownOptions);
+                          }}
+                          placeholder="Placeholder hint (e.g., 'Choose type')"
+                          className="h-9 bg-white text-gray-900 border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                        />
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <Label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                          <SlidersHorizontal className="w-4 h-4 text-primary" />
+                          Options
+                        </Label>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="h-8 bg-white text-gray-700 border-gray-200 hover:bg-gray-50 hover:text-gray-900 hover:border-gray-300 transition-colors"
+                          onClick={() => {
+                            const newDropdownOptions = [...(question.dropdown_options || [])];
+                            const currentOptions = [...(newDropdownOptions[dropdownIndex].options || []), ''];
+                            newDropdownOptions[dropdownIndex] = {
+                              ...newDropdownOptions[dropdownIndex],
+                              options: currentOptions
+                            };
+                            onChange('dropdown_options', newDropdownOptions);
+                          }}
+                        >
+                          <Plus className="w-4 h-4 mr-1" />
+                          Add Option
+                        </Button>
+                      </div>
+                      
+                      <div className="space-y-2 pl-2 border-l-2 border-gray-100">
+                        {dropdownItem.options.map((option, optionIndex) => (
+                          <div key={optionIndex} className="flex items-center gap-2">
+                            <Input
+                              value={option}
+                              onChange={(e) => {
+                                const newDropdownOptions = [...(question.dropdown_options || [])];
+                                const newOptions = [...newDropdownOptions[dropdownIndex].options];
+                                newOptions[optionIndex] = e.target.value;
+                                newDropdownOptions[dropdownIndex] = {
+                                  ...newDropdownOptions[dropdownIndex],
+                                  options: newOptions
+                                };
+                                onChange('dropdown_options', newDropdownOptions);
+                              }}
+                              placeholder={`Option ${optionIndex + 1}`}
+                              className="h-9 bg-white text-gray-900 border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                            />
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              className="h-9 text-gray-500 hover:text-red-600 hover:bg-red-50 transition-colors"
+                              onClick={() => {
+                                const newDropdownOptions = [...(question.dropdown_options || [])];
+                                const newOptions = [...newDropdownOptions[dropdownIndex].options];
+                                newOptions.splice(optionIndex, 1);
+                                newDropdownOptions[dropdownIndex] = {
+                                  ...newDropdownOptions[dropdownIndex],
+                                  options: newOptions
+                                };
+                                onChange('dropdown_options', newDropdownOptions);
+                              }}
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </Button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              
+              {(question.dropdown_options || []).length === 0 && (
+                <div className="border border-dashed border-gray-200 rounded-lg p-6 text-center">
+                  <ChevronDown className="w-8 h-8 text-gray-300 mx-auto mb-2" />
+                  <p className="text-sm text-gray-500">
+                    Add dropdown options for users to select from.
+                  </p>
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className="mt-3"
+                    onClick={() => {
+                      onChange('dropdown_options', [
+                        { 
+                          title: '',
+                          hint: '',
+                          options: ['']
+                        }
+                      ]);
+                    }}
+                  >
+                    <Plus className="w-4 h-4 mr-1" />
+                    Add First Dropdown
+                  </Button>
+                </div>
+              )}
             </div>
           )}
 
