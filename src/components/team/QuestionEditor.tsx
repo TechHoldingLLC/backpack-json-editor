@@ -16,7 +16,8 @@ import {
   Video, 
   CheckSquare,
   AlignLeft,
-  AlignRight
+  AlignRight,
+  ImagePlus
 } from 'lucide-react';
 
 interface QuestionEditorProps {
@@ -245,6 +246,113 @@ export const QuestionEditor = ({
                 Allow Multiple Selection
               </Label>
             </div>
+          </div>
+
+          {/* Image Selection Section - Available for all question types */}
+          <div className="space-y-3 pt-2 border-t border-gray-100">
+            <div className="flex items-center justify-between">
+              <Label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                <ImagePlus className="w-4 h-4 text-primary" />
+                Image Selection (Up to 12 images)
+              </Label>
+              <Button
+                variant="outline"
+                size="sm"
+                className="h-8 bg-white text-gray-700 border-gray-200 hover:bg-gray-50 hover:text-gray-900 hover:border-gray-300 transition-colors"
+                onClick={() => {
+                  const currentImages = [...(question.image_selection || [])];
+                  if (currentImages.length < 12) {
+                    const newImage = { title: '', image: '' };
+                    onChange('image_selection', [...currentImages, newImage]);
+                  }
+                }}
+                disabled={(question.image_selection || []).length >= 12}
+              >
+                <Plus className="w-4 h-4 mr-1" />
+                Add Image
+              </Button>
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {(question.image_selection || []).map((item, index) => (
+                <div key={index} className="border border-gray-200 rounded-lg p-3 space-y-3 relative">
+                  <button 
+                    type="button"
+                    onClick={() => {
+                      const newImages = [...(question.image_selection || [])];
+                      newImages.splice(index, 1);
+                      onChange('image_selection', newImages);
+                    }}
+                    className="absolute top-2 right-2 p-1 bg-white hover:bg-red-50 text-gray-600 hover:text-red-600 rounded-full shadow-sm border border-gray-200 transition-colors"
+                    aria-label="Delete image selection"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+
+                  <div className="space-y-1.5 mt-2">
+                    <Label className="text-sm font-medium text-gray-700">
+                      Title
+                    </Label>
+                    <Input
+                      value={item.title}
+                      onChange={(e) => {
+                        const newImages = [...(question.image_selection || [])];
+                        newImages[index] = { ...newImages[index], title: e.target.value };
+                        onChange('image_selection', newImages);
+                      }}
+                      placeholder="Image title"
+                      className="h-9 bg-white text-gray-900 border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                    />
+                  </div>
+                  
+                  <div className="space-y-1.5">
+                    <Label className="text-sm font-medium text-gray-700">
+                      Image Path
+                    </Label>
+                    <Input
+                      value={item.image}
+                      onChange={(e) => {
+                        const newImages = [...(question.image_selection || [])];
+                        newImages[index] = { ...newImages[index], image: e.target.value };
+                        onChange('image_selection', newImages);
+                      }}
+                      placeholder="Enter image path"
+                      className="h-9 bg-white text-gray-900 border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                    />
+                  </div>
+                  
+                  {item.image && (
+                    <div className="relative">
+                      <ImagePreview
+                        src={getFullImageUrl(item.image)}
+                        alt={item.title || "Selection Image"}
+                        className="w-full aspect-square rounded-lg object-cover shadow-sm"
+                      />
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+            
+            {(question.image_selection || []).length === 0 && (
+              <div className="border border-dashed border-gray-200 rounded-lg p-6 text-center">
+                <ImagePlus className="w-8 h-8 text-gray-300 mx-auto mb-2" />
+                <p className="text-sm text-gray-500">
+                  Add images that users can select as answers to this question.
+                </p>
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="mt-3"
+                  onClick={() => {
+                    onChange('image_selection', [{ title: '', image: '' }]);
+                  }}
+                >
+                  <Plus className="w-4 h-4 mr-1" />
+                  Add First Image
+                </Button>
+              </div>
+            )}
           </div>
         </div>
       </CardContent>

@@ -69,6 +69,19 @@ function App() {
     })
   }
 
+  const handleDeleteLeague = (leagueId: string) => {
+    if (!leagueData) return
+
+    // Filter out the league with the matching ID
+    const updatedLeagues = leagueData.leagues.filter(league => league.id !== leagueId);
+    
+    // Update the state with the new leagues array
+    setLeagueData({
+      ...leagueData,
+      leagues: updatedLeagues,
+    })
+  }
+
   const handleTeamUpdate = (updatedTeam: ExtendedTeam) => {
     setTeamData(updatedTeam)
   }
@@ -175,6 +188,7 @@ function App() {
                     key={index}
                     league={league}
                     onUpdate={(updatedLeague) => handleLeagueUpdate(updatedLeague, index)}
+                    onDelete={handleDeleteLeague}
                     defaultExpanded={index === 0} // Only expand the first league by default
                   />
                 ))}
