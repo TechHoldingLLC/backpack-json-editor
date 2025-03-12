@@ -93,7 +93,8 @@ function App() {
   }
 
   const handleSaveLeagueJson = () => {
-    const blob = new Blob([JSON.stringify({ leagues: leagueData }, null, 2)], { type: 'application/json' })
+    // Save with the correct structure matching league.json
+    const blob = new Blob([JSON.stringify(leagueData, null, 2)], { type: 'application/json' })
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
     a.href = url
