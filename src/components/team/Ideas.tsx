@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Ideas as IdeasType, Idea, Question } from "./types";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
