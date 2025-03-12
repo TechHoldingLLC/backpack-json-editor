@@ -34,6 +34,7 @@ export interface Mission {
   id: string;
   title: string;
   description: string;
+  start_cta_info?: string;
   image: string;
   focus_type: string;
   level: string;
@@ -46,6 +47,7 @@ export interface Idea {
   id: string;
   title: string;
   description: string;
+  start_cta_info?: string;
   image?: string;
   completion_msg?: string;
   completion_image?: string;
@@ -56,6 +58,7 @@ export interface IdeaSection {
   id?: string;
   title: string;
   description: string;
+  start_cta_info?: string;
   image?: string;
   completion_msg?: string;
   completion_image?: string;

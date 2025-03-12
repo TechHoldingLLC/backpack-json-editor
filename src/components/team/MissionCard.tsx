@@ -135,6 +135,21 @@ export const MissionCard = ({
             />
           </div>
 
+          {/* Start CTA Info */}
+          <div className="space-y-2">
+            <Label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+              <Target className="w-4 h-4 text-primary" />
+              Start CTA Info (Optional)
+            </Label>
+            <Textarea
+              value={mission.start_cta_info || ''}
+              onChange={(e) => onMissionChange(index, 'start_cta_info', e.target.value)}
+              placeholder="Enter start CTA info (optional)"
+              rows={2}
+              className="resize-none min-h-[60px] bg-white text-gray-900 border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+            />
+          </div>
+
           {/* Mission Image */}
           <div className="space-y-4">
             <div className="space-y-2">
