@@ -134,6 +134,16 @@ const TeamFlow = ({ initialTeam, onTeamUpdate }: TeamFlowProps) => {
     onTeamUpdate(updatedTeam);
   };
 
+  const handleQuestionCopy = (missionIndex: number, questionIndex: number) => {
+    const updatedMissions = [...team.missions];
+    const questionToCopy = { ...updatedMissions[missionIndex].questions[questionIndex] };
+    // Insert the copied question right after the original
+    updatedMissions[missionIndex].questions.splice(questionIndex + 1, 0, questionToCopy);
+    const updatedTeam = { ...team, missions: updatedMissions };
+    setTeam(updatedTeam);
+    onTeamUpdate(updatedTeam);
+  };
+
   const handleIdeasQuestionChange = (
     section: "review_idea" | "select_idea",
     questionIndex: number,
@@ -188,6 +198,29 @@ const TeamFlow = ({ initialTeam, onTeamUpdate }: TeamFlowProps) => {
         }
       }
     };
+    setTeam(updatedTeam);
+    onTeamUpdate(updatedTeam);
+  };
+
+  const handleIdeasQuestionCopy = (section: "review_idea" | "select_idea", questionIndex: number) => {
+    const sectionData = team.ideas[section] as IdeaSection;
+    const questionsToCopy = [...(sectionData.questions || [])];
+    const questionToCopy = { ...questionsToCopy[questionIndex] };
+    
+    // Insert the copied question right after the original
+    questionsToCopy.splice(questionIndex + 1, 0, questionToCopy);
+    
+    const updatedTeam = {
+      ...team,
+      ideas: {
+        ...team.ideas,
+        [section]: {
+          ...sectionData,
+          questions: questionsToCopy
+        }
+      }
+    };
+    
     setTeam(updatedTeam);
     onTeamUpdate(updatedTeam);
   };
@@ -272,6 +305,7 @@ const TeamFlow = ({ initialTeam, onTeamUpdate }: TeamFlowProps) => {
         onQuestionChange={handleQuestionChange}
         onQuestionAdd={handleQuestionAdd}
         onQuestionRemove={handleQuestionRemove}
+        onQuestionCopy={handleQuestionCopy}
       />
 
       <Ideas
@@ -286,6 +320,7 @@ const TeamFlow = ({ initialTeam, onTeamUpdate }: TeamFlowProps) => {
         onPlayIdeaAdd={handlePlayIdeaAdd}
         onPlayIdeaChange={handlePlayIdeaChange}
         onPlayIdeaRemove={handlePlayIdeaRemove}
+        onQuestionCopy={handleIdeasQuestionCopy}
       />
     </div>
   );

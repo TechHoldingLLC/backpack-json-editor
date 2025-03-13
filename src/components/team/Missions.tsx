@@ -19,6 +19,7 @@ interface MissionsProps {
   onQuestionChange: (missionIndex: number, questionIndex: number, field: string, value: unknown) => void;
   onQuestionAdd: (missionIndex: number) => void;
   onQuestionRemove: (missionIndex: number, questionIndex: number) => void;
+  onQuestionCopy?: (missionIndex: number, questionIndex: number) => void;
 }
 
 export const Missions = ({
@@ -30,6 +31,7 @@ export const Missions = ({
   onQuestionChange,
   onQuestionAdd,
   onQuestionRemove,
+  onQuestionCopy,
 }: MissionsProps) => {
   return (
     <div className="space-y-6 bg-white p-6 rounded-lg border border-gray-200">
@@ -92,6 +94,7 @@ export const Missions = ({
                     onQuestionAdd={() => onQuestionAdd(missionIndex)}
                     onQuestionRemove={(questionIndex) => onQuestionRemove(missionIndex, questionIndex)}
                     getFullImageUrl={getFullImageUrl}
+                    onQuestionCopy={onQuestionCopy ? (questionIndex) => onQuestionCopy(missionIndex, questionIndex) : undefined}
                   />
                 </div>
               </AccordionContent>

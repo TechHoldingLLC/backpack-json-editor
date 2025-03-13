@@ -42,6 +42,10 @@ interface IdeasProps {
     sectionId: "review_idea" | "select_idea",
     questionIndex: number
   ) => void;
+  onQuestionCopy?: (
+    sectionId: "review_idea" | "select_idea",
+    questionIndex: number
+  ) => void;
   onYouTubeThumbnailChange: (value: string) => void;
   onMenuListChange: (
     field: keyof IdeasType["menu_list"],
@@ -59,6 +63,7 @@ export const Ideas = ({
   onQuestionChange,
   onQuestionAdd,
   onQuestionRemove,
+  onQuestionCopy,
   onYouTubeThumbnailChange,
   onMenuListChange,
   onPlayIdeaAdd,
@@ -301,6 +306,9 @@ export const Ideas = ({
                           }
                           sectionTitle="Review Questions"
                           getFullImageUrl={getFullImageUrl}
+                          onQuestionCopy={onQuestionCopy ? (questionIndex) => 
+                            onQuestionCopy("review_idea", questionIndex) 
+                          : undefined}
                         />
                       </div>
                     )}
@@ -472,6 +480,9 @@ export const Ideas = ({
                           }
                           sectionTitle="Selection Questions"
                           getFullImageUrl={getFullImageUrl}
+                          onQuestionCopy={onQuestionCopy ? (questionIndex) => 
+                            onQuestionCopy("select_idea", questionIndex) 
+                          : undefined}
                         />
                       </div>
                     )}
